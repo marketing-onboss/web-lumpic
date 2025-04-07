@@ -1,0 +1,137 @@
+Vamos desenvolver uma landing page com 1 páginas uma para freelancer outra para contratante. com base nas informações abaixo. estou enviando 2 imagens imagem1 e imagem 2. na imagem 1 seria um layout para ter uma base na imagem 2, seria sobre a paleta de cores do site.
+
+Escopo do Projeto
+Plataforma: Marketplace de Serviços em Vídeo
+ Objetivo: Criar um marketplace que conecta freelancers especializados em vídeos a contratantes que precisam de serviços como testemunhais, unboxings e conteúdos promocionais.
+
+SEÇÕES DO SITE PARA O FREELANCER.
+
+🔥 1. Chamada mais emocional no Hero
+“Transforme Seu Talento com Vídeo em Renda Real”
+ Mostre seu rosto, compartilhe sua voz. Nós cuidamos do resto.
+Isso ativa identificação emocional e sentimento de oportunidade única.
+
+🎯 2. Segmentação de tipos de freelancers
+Adicionar um bloco com:
+É para você…
+Gosta de aparecer em frente às câmeras
+
+
+Tem boa dicção e comunicação
+
+
+Já grava vídeos para redes sociais
+
+
+Quer ganhar uma grana extra no seu tempo livre
+
+
+Quer viver de conteúdo
+Quer trabalhar de casa
+Quer trabalhar de qualquer lugar do mundo
+
+
+Ajuda a pessoa a se ver no perfil — conexão imediata.
+
+🎥 3. Mini vitrine de serviços possíveis
+Exemplo:
+O que você pode oferecer na plataforma?
+Depoimentos em vídeo
+
+
+Unboxings de produtos
+
+
+Reações e reviews
+
+
+Vídeos promocionais para marcas
+
+
+Apresentações institucionais
+
+
+
+📱 4. Simulador de Ganhos (interativo ou ilustrativo)
+Se for possível, uma seção tipo:
+Quanto você pode ganhar?
+ Ex: “Vídeo de 1 min = R$ 50”
+ 10 vídeos no mês = R$ 500
+ 20 vídeos no mês = R$ 1.000
+Gatilho de expectativa 💸
+
+🤝 5. Bloco “Por trás da plataforma” (confiança)
+Mesmo que seja um MVP, mostrar um rosto, nome, ou time gera prova social e segurança:
+“Criado por uma equipe apaixonada por vídeo, tecnologia e liberdade criativa.”
+
+📦 6. Oferta de incentivo (se aplicável)
+Se quiser turbinar os cadastros no início:
+🎁 Bônus de Boas-Vindas:
+ Os primeiros 100 freelancers ganham 600 Blinks para começar!
+
+💬 7. FAQ com perguntas reais
+Para remover objeções. Exemplo:
+Preciso ter equipamento profissional?
+ Não. Um celular com boa câmera e som já é o suficiente.
+Posso trabalhar de qualquer lugar?
+ Sim! Basta ter acesso à internet e um ambiente para gravar.
+
+
+
+
+
+
+
+🪙 [Seção] Blink: A Moeda Que Simplifica Tudo
+Esqueça boletos, taxas ocultas e negociações confusas.
+ A Blink é a moeda oficial da plataforma, criada para tornar cada pagamento simples, seguro e rápido.
+
+✅ Como Funciona:
+1 Blink = R$ 0,10 (exemplo ajustável)
+
+
+Você recebe em Blink a cada entrega aprovada
+
+
+Pode acumular e sacar em reais quando quiser
+
+
+Ou usar seus Blinks para contratar outros serviços dentro da plataforma
+
+
+
+💡 Por que é inovador?
+💳 Pagamentos instantâneos e automáticos
+
+
+🚫 Sem intermediários ou surpresas
+
+
+🔐 Controle total sobre o que você ganha
+
+
+📈 Economia de tempo e taxas menores que o mercado
+
+
+
+🔓 Transparência e liberdade
+Tudo que você ganha está no seu painel.
+ Nada escondido.
+Nada retido. Acumule Blinks e receba em R$
+
+
+💸 Receba Seus Ganhos do Jeito Que Quiser
+Entregou, recebeu. Simples assim.
+ Na nossa plataforma, o pagamento é liberado automaticamente 7 dias após a entrega do vídeo, caso o cliente não aprove nem solicite alterações. Nada de enrolação ou burocracia.
+
+🔁 Duas opções, a sua escolha:
+🕒 Pagamento Semanal (Grátis)
+Receba todo o valor sem taxas, toda segunda-feira, direto na sua conta bancária. Ideal pra quem prefere uma agenda fixa e organizada.
+
+📊 Tudo transparente e automático:
+Você acompanha o status de cada projeto numa linha do tempo interativa
+
+
+Quando o pagamento estiver disponível, você escolhe como sacar
+Trabalhou? Recebeu.
+Aqui, o seu talento vale dinheiro real — e chega até você como deve ser: de forma rápida, transparente e segura.
