@@ -1,6 +1,12 @@
 import { Link } from "wouter";
 import SharedNavbar from "@/components/SharedNavbar";
-import { CameraIcon, PencilIcon, ClockIcon, TrendingUpIcon, HeartIcon, CheckCircleIcon, VideoIcon, DollarSignIcon } from "lucide-react";
+import { 
+  CameraIcon, PencilIcon, ClockIcon, TrendingUpIcon, HeartIcon, 
+  CheckCircleIcon, VideoIcon, DollarSignIcon, UserIcon, LightbulbIcon,
+  UsersIcon, CreditCardIcon, PackageIcon, MessageSquareIcon, FlameIcon,
+  BeakerIcon, SmartphoneIcon, BarChartIcon, ShieldCheckIcon, EyeIcon,
+  LifeBuoyIcon, TargetIcon, GiftIcon
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -16,16 +22,16 @@ export default function Home() {
                 <span className="text-primary">Vídeos reais.</span> Resultados reais.
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Chega de campanhas frias com conteúdo genérico! Contrate os melhores produtores de vídeo para sua marca.
+                Chega de campanhas frias com conteúdo genérico! Contrate criadores reais, com histórias verdadeiras, que conectam sua marca com pessoas de verdade.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/empresa">
-                  <button className="px-6 py-3 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">
-                    Contratar criadores
+                  <button className="clipup-btn flex items-center">
+                    <span className="mr-2">👉</span> Quero contratar agora
                   </button>
                 </Link>
                 <Link href="/freelancer">
-                  <button className="px-6 py-3 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition">
+                  <button className="clipup-btn-outline">
                     Sou criador de conteúdo
                   </button>
                 </Link>
@@ -44,11 +50,11 @@ export default function Home() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
                           <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                            <VideoIcon className="h-5 w-5 text-white" />
+                            <VideoIcon className="h-5 w-5 text-black" />
                           </div>
                           <div className="ml-3">
                             <p className="text-white text-sm font-medium">Encontre talentos</p>
-                            <p className="text-white/70 text-xs">+ de 1000 criadores</p>
+                            <p className="text-white/70 text-xs">+ de 3200 criadores</p>
                           </div>
                         </div>
                         <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -64,82 +70,371 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Features Section */}
+      {/* The Pain Point Section */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Por que escolher o ClipUp?</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">😣 Nós sabemos como é difícil…</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Nossa plataforma conecta empresas a criadores de conteúdo de vídeo qualificados, simplificando todo o processo.
+              Você já gastou tempo e dinheiro com:
             </p>
           </div>
           
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            {/* Pain 1 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <UserIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Criadores que somem</h3>
+              <p className="text-muted-foreground">
+                Aqueles que desaparecem logo depois do briefing, deixando seu projeto no ar.
+              </p>
+            </div>
+            
+            {/* Pain 2 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <VideoIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos sem emoção</h3>
+              <p className="text-muted-foreground">
+                Conteúdos que não capturam a essência da sua marca nem conectam com seu público.
+              </p>
+            </div>
+            
+            {/* Pain 3 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <DollarSignIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Agências caras</h3>
+              <p className="text-muted-foreground">
+                Que cobram um valor alto e entregam algo sem alma, distante do que você precisava.
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center bg-card rounded-xl p-8 shadow-md">
+            <p className="text-lg text-foreground mb-4">
+              A gente também já passou por isso. <br />
+              Por isso criamos uma plataforma simples, rápida e feita pra quem precisa
+            </p>
+            <p className="text-xl font-bold text-primary"> de vídeo com verdade, sem enrolação.</p>
+          </div>
+        </div>
+      </section>
+      
+      {/* How It Works Section */}
+      <section className="py-16 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">⚙️ Em poucos cliques, o vídeo que você precisa</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {/* Step 1 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition relative">
+              <div className="clipup-icon-container mx-auto">
+                <LightbulbIcon className="clipup-feature-icon" />
+              </div>
+              <div className="absolute -top-3 -right-3 h-8 w-8 bg-primary rounded-full flex items-center justify-center text-black font-bold">1</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Você diz o que precisa</h3>
+            </div>
+            
+            {/* Step 2 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition relative">
+              <div className="clipup-icon-container mx-auto">
+                <UsersIcon className="clipup-feature-icon" />
+              </div>
+              <div className="absolute -top-3 -right-3 h-8 w-8 bg-primary rounded-full flex items-center justify-center text-black font-bold">2</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Recebe propostas</h3>
+            </div>
+            
+            {/* Step 3 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition relative">
+              <div className="clipup-icon-container mx-auto">
+                <CheckCircleIcon className="clipup-feature-icon" />
+              </div>
+              <div className="absolute -top-3 -right-3 h-8 w-8 bg-primary rounded-full flex items-center justify-center text-black font-bold">3</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Escolhe e aprova</h3>
+            </div>
+            
+            {/* Step 4 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition relative">
+              <div className="clipup-icon-container mx-auto">
+                <CreditCardIcon className="clipup-feature-icon" />
+              </div>
+              <div className="absolute -top-3 -right-3 h-8 w-8 bg-primary rounded-full flex items-center justify-center text-black font-bold">4</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Só paga quando aprovar</h3>
+            </div>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <p className="text-xl font-bold text-foreground">
+              Tudo num só lugar. Sem sair da plataforma. Sem correr riscos.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Video Types Section */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">🎥 Qual tipo de vídeo você precisa?</h2>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
+            {/* Video Type 1 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <CameraIcon className="h-6 w-6 text-primary" />
+                <PackageIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Criadores Verificados</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">📦 Unboxings com pessoas reais</h3>
               <p className="text-muted-foreground">
-                Todos os criadores passam por um processo de verificação rigoroso para garantir qualidade.
+                Demonstrações genuínas de produtos que geram confiança e interesse.
               </p>
             </div>
             
-            {/* Feature 2 */}
+            {/* Video Type 2 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <PencilIcon className="h-6 w-6 text-primary" />
+                <MessageSquareIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Briefings Inteligentes</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">🗣 Depoimentos que geram empatia</h3>
               <p className="text-muted-foreground">
-                Nossa ferramenta de briefing guia você para obter exatamente o que precisa.
+                Histórias reais de usuários que amplificam a credibilidade da sua marca.
               </p>
             </div>
             
-            {/* Feature 3 */}
+            {/* Video Type 3 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <ClockIcon className="h-6 w-6 text-primary" />
+                <FlameIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Entregas Pontuais</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">🔥 Vídeos promocionais</h3>
               <p className="text-muted-foreground">
-                Sistema de prazos transparente e notificações automáticas para manter tudo no cronograma.
+                Conteúdo otimizado para tráfego pago, com alto potencial de conversão.
               </p>
             </div>
             
-            {/* Feature 4 */}
+            {/* Video Type 4 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUpIcon className="h-6 w-6 text-primary" />
+                <BeakerIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Métricas de Desempenho</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">🧪 Conteúdo UGC que performa</h3>
               <p className="text-muted-foreground">
-                Acompanhe o sucesso de seus vídeos com análises detalhadas e insights.
+                Vídeos no estilo User Generated Content, com aparência natural e alta conversão.
               </p>
             </div>
             
-            {/* Feature 5 */}
+            {/* Video Type 5 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <SmartphoneIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">📲 Reviews naturais</h3>
+              <p className="text-muted-foreground">
+                Análises genuínas de produtos feitas especificamente para redes sociais.
+              </p>
+            </div>
+            
+            {/* Platform Feature 6 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <HeartIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Satisfação Garantida</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">❤️ Para todos os objetivos</h3>
               <p className="text-muted-foreground">
-                Se você não estiver satisfeito, trabalhamos para resolver até que esteja.
+                Seja para vender mais, gerar confiança ou humanizar sua marca — temos o criador certo para você.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Metrics Section */}
+      <section className="py-16 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">📊 Prova de que funciona</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {/* Metric 1 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+              <div className="flex flex-col items-center">
+                <VideoIcon className="h-10 w-10 text-primary mb-2" />
+                <h3 className="text-lg font-semibold text-foreground mb-1">Vídeos entregues</h3>
+                <p className="text-3xl font-bold text-primary">12.540+</p>
+              </div>
+            </div>
+            
+            {/* Metric 2 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+              <div className="flex flex-col items-center">
+                <UsersIcon className="h-10 w-10 text-primary mb-2" />
+                <h3 className="text-lg font-semibold text-foreground mb-1">Freelancers ativos</h3>
+                <p className="text-3xl font-bold text-primary">3.200+</p>
+              </div>
+            </div>
+            
+            {/* Metric 3 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+              <div className="flex flex-col items-center">
+                <HeartIcon className="h-10 w-10 text-primary mb-2" />
+                <h3 className="text-lg font-semibold text-foreground mb-1">Clientes satisfeitos</h3>
+                <p className="text-3xl font-bold text-primary">1.870+</p>
+              </div>
+            </div>
+            
+            {/* Metric 4 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+              <div className="flex flex-col items-center">
+                <DollarSignIcon className="h-10 w-10 text-primary mb-2" />
+                <h3 className="text-lg font-semibold text-foreground mb-1">Pagos com segurança</h3>
+                <p className="text-3xl font-bold text-primary">R$ 842.000+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Security Section */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">🔒 Contrate com tranquilidade</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Security 1 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <CheckCircleIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Dinheiro protegido</h3>
+              <p className="text-muted-foreground text-center">
+                Seu dinheiro só é liberado após a entrega do vídeo aprovado.
               </p>
             </div>
             
-            {/* Feature 6 */}
+            {/* Security 2 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
-              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <CheckCircleIcon className="h-6 w-6 text-primary" />
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <ClockIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Pagamentos Seguros</h3>
-              <p className="text-muted-foreground">
-                Nosso sistema de pagamento com Lumpz garante segurança para ambas as partes.
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Período de revisão</h3>
+              <p className="text-muted-foreground text-center">
+                Você tem até 7 dias para revisar e pedir ajustes.
               </p>
             </div>
+            
+            {/* Security 3 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <LifeBuoyIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Suporte dedicado</h3>
+              <p className="text-muted-foreground text-center">
+                Ajuda em qualquer etapa do seu projeto.
+              </p>
+            </div>
+            
+            {/* Security 4 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <EyeIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Total transparência</h3>
+              <p className="text-muted-foreground text-center">
+                Acompanhe cada etapa do início ao fim.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Testimonials Section */}
+      <section className="py-16 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">💬 Quem contratou, recomenda:</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-background rounded-xl p-6 shadow-md">
+              <p className="text-foreground text-lg italic mb-4">
+                "Usei pra criar uma campanha de Dia das Mães. Pedi 2 vídeos, recebi 4. Resultado? Dobrei o faturamento em uma semana."
+              </p>
+              <div className="flex items-center">
+                <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">P</div>
+                <div className="ml-4">
+                  <p className="font-medium text-foreground">Patrícia</p>
+                  <p className="text-sm text-muted-foreground">Loja de presentes personalizados</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="bg-background rounded-xl p-6 shadow-md">
+              <p className="text-foreground text-lg italic mb-4">
+                "Fui atendido em 2h por um criador que parecia ler meus pensamentos. Já virou meu parceiro fixo."
+              </p>
+              <div className="flex items-center">
+                <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">R</div>
+                <div className="ml-4">
+                  <p className="font-medium text-foreground">Rafael</p>
+                  <p className="text-sm text-muted-foreground">Agência de tráfego</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Pricing Section */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">💸 Planos simples, sem surpresas</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <TargetIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Pague por projeto</h3>
+              <p className="text-muted-foreground">Sem mensalidades ou taxas escondidas</p>
+            </div>
+            
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <GiftIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos a partir de 10 Lumpz</h3>
+              <p className="text-muted-foreground">Apenas R$ 49 para começar</p>
+            </div>
+            
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <LightbulbIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Valores transparentes</h3>
+              <p className="text-muted-foreground">Cada serviço mostra exatamente o que está incluso</p>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <Link href="#">
+              <button className="clipup-btn-outline flex items-center mx-auto">
+                <span className="mr-2">📖</span> Ver exemplos e preços
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -177,7 +472,7 @@ export default function Home() {
                 <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-30" style={{ animationDuration: '3s' }}></div>
                 <div className="absolute inset-0 rounded-full bg-primary/30" style={{ transform: 'scale(0.9)' }}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-28 w-28 bg-primary rounded-full flex items-center justify-center text-white font-bold text-3xl shadow-lg">
+                  <div className="h-28 w-28 bg-primary rounded-full flex items-center justify-center text-black font-bold text-3xl shadow-lg">
                     Lumpz
                   </div>
                 </div>
@@ -187,22 +482,23 @@ export default function Home() {
         </div>
       </section>
       
-      {/* CTA Section */}
+      {/* Final CTA Section */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">Pronto para transformar seu conteúdo em vídeo?</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-6">🧲 Seu próximo vídeo pode mudar sua campanha</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Escolha o caminho que melhor se adapta a você e comece a criar conteúdo de vídeo impactante hoje mesmo.
+            🎥 Já pensou em lançar aquela campanha com um vídeo incrível feito por alguém que entende seu público?<br />
+            🤝 Aqui tem criadores prontos pra transformar sua ideia em vídeo — <span className="font-bold text-primary">ainda hoje.</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/empresa">
-              <button className="px-8 py-4 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition text-lg">
-                Sou uma empresa
+              <button className="clipup-btn flex items-center">
+                <span className="mr-2">👉</span> Quero contratar agora
               </button>
             </Link>
             <Link href="/freelancer">
-              <button className="px-8 py-4 bg-card border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition text-lg">
-                Sou freelancer
+              <button className="clipup-btn-outline flex items-center">
+                <span className="mr-2">📂</span> Ver portfólios
               </button>
             </Link>
           </div>
