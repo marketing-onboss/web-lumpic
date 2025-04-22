@@ -177,14 +177,14 @@ export default function TargetAudience() {
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-5">
-            Mais de <span className="text-primary font-bold">3.200 criadores</span> já estão transformando seu talento em renda recorrente. Junte-se a eles!
+            Mais de <span className="text-primary font-bold">1.870 empresas</span> já aumentaram suas conversões com vídeos autênticos. Seja a próxima!
           </p>
           <motion.button 
             className="inline-flex items-center px-5 py-2.5 bg-primary text-white rounded-lg font-medium shadow-lg shadow-primary/20"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Quero começar agora
+            Solicitar demonstração
             <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
         </motion.div>

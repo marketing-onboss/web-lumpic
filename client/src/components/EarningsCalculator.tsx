@@ -130,11 +130,11 @@ export default function EarningsCalculator() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Calculator className="h-4 w-4" />
-            <span>Calculadora de ganhos</span>
+            <span>Calculadora de resultados</span>
           </motion.div>
-          <h2 className="text-3xl font-bold text-foreground mb-4">Quanto você pode ganhar?</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Quanto sua marca pode crescer?</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Calcule seu potencial de ganhos com base no número de vídeos que você pode criar por mês.
+            Calcule o impacto potencial que vídeos autênticos podem ter no engajamento e conversões da sua marca.
           </p>
         </motion.div>
 
@@ -148,7 +148,7 @@ export default function EarningsCalculator() {
           <div className="bg-muted p-6 flex justify-between items-center">
             <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
               <TrendingUp className="text-primary" /> 
-              Simulador de Ganhos
+              Simulador de Resultados
             </h3>
             <button 
               onClick={() => setShowCalculator(!showCalculator)}
@@ -236,7 +236,7 @@ export default function EarningsCalculator() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        Calcular Ganhos
+                        Calcular Impacto
                         <Calculator className="ml-2 h-4 w-4" />
                       </motion.button>
                     </div>

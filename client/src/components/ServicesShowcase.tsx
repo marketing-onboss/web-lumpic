@@ -5,44 +5,48 @@ export default function ServicesShowcase() {
   const services = [
     {
       image: "https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?w=600&h=400&fit=crop",
-      title: "Depoimentos em vídeo",
-      description: "Dê seu testemunho sobre produtos e serviços de forma autêntica e profissional.",
+      title: "Depoimentos de Clientes",
+      description: "Aumente a credibilidade do seu negócio com depoimentos autênticos de clientes satisfeitos.",
       price: "A partir de 500 Blinks",
       duration: "~5 min",
-      badge: "Popular",
+      badge: "+ Credibilidade",
       badgeColor: "bg-purple-500"
     },
     {
       image: "https://images.unsplash.com/photo-1607703703674-df96af81dffa?w=600&h=400&fit=crop",
-      title: "Unboxings de produtos",
-      description: "Abra, explore e apresente produtos de forma envolvente e informativa.",
+      title: "Unboxings de Produtos",
+      description: "Mostre seu produto sendo desembalado e experimentado por criadores de conteúdo autênticos.",
       price: "A partir de 700 Blinks",
       duration: "~8 min",
-      badge: "Alta demanda",
+      badge: "Alta conversão",
       badgeColor: "bg-green-500"
     },
     {
       image: "https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?w=600&h=400&fit=crop",
-      title: "Reações e reviews",
-      description: "Compartilhe suas reações e opiniões honestas sobre diversos produtos e serviços.",
+      title: "Reviews & Avaliações",
+      description: "Obtenha feedback genuíno sobre seus produtos com avaliações detalhadas em vídeo.",
       price: "A partir de 600 Blinks",
-      duration: "~7 min"
+      duration: "~7 min",
+      badge: "Autenticidade",
+      badgeColor: "bg-blue-500"
     },
     {
       image: "https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?w=600&h=400&fit=crop",
-      title: "Vídeos promocionais para marcas",
-      description: "Crie conteúdo atrativo que conecta marcas com seu público-alvo.",
+      title: "Vídeos para Redes Sociais",
+      description: "Conteúdo otimizado para engajamento e conversão nas principais plataformas sociais.",
       price: "A partir de 900 Blinks",
       duration: "~10 min",
-      badge: "Bem pago",
+      badge: "Engajamento",
       badgeColor: "bg-amber-500"
     },
     {
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop",
-      title: "Apresentações institucionais",
-      description: "Represente empresas com profissionalismo e comunique seus valores de forma clara.",
+      title: "Cases de Sucesso",
+      description: "Demonstre o valor real do seu produto com histórias inspiradoras de clientes satisfeitos.",
       price: "A partir de 1000 Blinks",
-      duration: "~15 min"
+      duration: "~15 min",
+      badge: "Storytelling",
+      badgeColor: "bg-emerald-500"
     }
   ];
 
@@ -74,11 +78,11 @@ export default function ServicesShowcase() {
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1 rounded-full text-primary text-sm font-medium mb-4">
             <Sparkles className="h-4 w-4" />
-            <span>Oportunidades de vídeo em alta</span>
+            <span>Formatos que convertem mais</span>
           </div>
-          <h2 className="text-3xl font-bold text-foreground mb-4">O que você pode oferecer na plataforma?</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Tipos de conteúdo para sua marca</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Diversos formatos de vídeo são requisitados diariamente. Encontre os que combinam com seu perfil.
+            Conheça os formatos de vídeo que geram mais credibilidade e engajamento para empresas como a sua.
           </p>
         </motion.div>
 
@@ -122,16 +126,16 @@ export default function ServicesShowcase() {
             >
               <PlusCircleIcon className="h-16 w-16" />
             </motion.div>
-            <h3 className="text-xl font-bold text-foreground mb-2 z-10">E muito mais!</h3>
+            <h3 className="text-xl font-bold text-foreground mb-2 z-10">Soluções Personalizadas</h3>
             <p className="text-muted-foreground text-center z-10">
-              Descubra outras oportunidades para monetizar seu talento na plataforma.
+              Conte com formatos exclusivos desenvolvidos especificamente para as necessidades da sua empresa.
             </p>
             <motion.button 
               className="mt-4 text-primary font-medium flex items-center z-10"
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              Ver todos os serviços
+              Consultar especialista
               <ArrowRight className="h-4 w-4 ml-1" />
             </motion.button>
           </motion.div>
@@ -147,19 +151,23 @@ export default function ServicesShowcase() {
         >
           <div className="bg-background rounded-full px-6 py-2 flex items-center space-x-2">
             <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-            <span className="text-sm">Popular</span>
+            <span className="text-sm">+ Credibilidade</span>
           </div>
           <div className="bg-background rounded-full px-6 py-2 flex items-center space-x-2">
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="text-sm">Alta demanda</span>
+            <span className="text-sm">Alta conversão</span>
           </div>
           <div className="bg-background rounded-full px-6 py-2 flex items-center space-x-2">
             <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-            <span className="text-sm">Bem pago</span>
+            <span className="text-sm">Engajamento</span>
           </div>
           <div className="bg-background rounded-full px-6 py-2 flex items-center space-x-2">
             <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-            <span className="text-sm">Ideal para iniciantes</span>
+            <span className="text-sm">Autenticidade</span>
+          </div>
+          <div className="bg-background rounded-full px-6 py-2 flex items-center space-x-2">
+            <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+            <span className="text-sm">Storytelling</span>
           </div>
         </motion.div>
       </div>
