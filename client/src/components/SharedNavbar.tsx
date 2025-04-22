@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 type SharedNavbarProps = {
   currentPage: "institucional" | "empresa" | "freelancer";
@@ -107,8 +108,9 @@ export default function SharedNavbar({ currentPage }: SharedNavbarProps) {
             </button>
           </div>
 
-          {/* Login/Register buttons */}
+          {/* Login/Register buttons and Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <a href="#" className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium">
               Login
             </a>
