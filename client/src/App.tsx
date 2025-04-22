@@ -9,6 +9,14 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/empresa" component={() => {
+        window.location.href = '/empresa';
+        return null;
+      }} />
+      <Route path="/freelancer" component={() => {
+        window.location.href = '/freelancer';
+        return null;
+      }} />
       <Route component={NotFound} />
     </Switch>
   );
