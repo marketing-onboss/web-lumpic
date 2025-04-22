@@ -1,0 +1,353 @@
+{
+    "version": "0.4",
+    "title": "ClipUp - Calculadora de Resultados",
+    "type": "section",
+    "content": [
+        {
+            "id": "calc123",
+            "elType": "section",
+            "settings": {
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "padding": {
+                    "unit": "px",
+                    "top": "80",
+                    "right": "20",
+                    "bottom": "80",
+                    "left": "20"
+                },
+                "padding_tablet": {
+                    "unit": "px",
+                    "top": "60",
+                    "right": "20",
+                    "bottom": "60",
+                    "left": "20"
+                },
+                "padding_mobile": {
+                    "unit": "px",
+                    "top": "40",
+                    "right": "15",
+                    "bottom": "40",
+                    "left": "15"
+                },
+                "css_classes": "clipup-calculator"
+            },
+            "elements": [
+                {
+                    "id": "calc-col123",
+                    "elType": "column",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null
+                    },
+                    "elements": [
+                        {
+                            "id": "calc-header123",
+                            "elType": "section",
+                            "settings": {
+                                "structure": "10",
+                                "margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "30",
+                                    "left": "0"
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "calc-header-col",
+                                    "elType": "column",
+                                    "settings": {
+                                        "_column_size": 100,
+                                        "_inline_size": null
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "calc-badge123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "icon_list": [
+                                                    {
+                                                        "text": "Faça as contas",
+                                                        "selected_icon": {
+                                                            "value": "fas fa-calculator",
+                                                            "library": "fa-solid"
+                                                        },
+                                                        "_id": "badge1"
+                                                    }
+                                                ],
+                                                "space_between": {
+                                                    "unit": "px",
+                                                    "size": 5,
+                                                    "sizes": []
+                                                },
+                                                "icon_align": "left",
+                                                "icon_color": "var(--e-global-color-primary)",
+                                                "icon_size": {
+                                                    "unit": "px",
+                                                    "size": 14,
+                                                    "sizes": []
+                                                },
+                                                "text_color": "var(--e-global-color-primary)",
+                                                "text_indent": {
+                                                    "unit": "px",
+                                                    "size": 5,
+                                                    "sizes": []
+                                                },
+                                                "typography_typography": "custom",
+                                                "typography_font_size": {
+                                                    "unit": "px",
+                                                    "size": 14,
+                                                    "sizes": []
+                                                },
+                                                "typography_font_weight": "500",
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "5",
+                                                    "right": "15",
+                                                    "bottom": "5",
+                                                    "left": "15",
+                                                    "isLinked": false
+                                                },
+                                                "_background_background": "classic",
+                                                "_background_color": "rgba(var(--e-global-color-primary-rgb), 0.1)",
+                                                "_border_radius": {
+                                                    "unit": "px",
+                                                    "top": "20",
+                                                    "right": "20",
+                                                    "bottom": "20",
+                                                    "left": "20",
+                                                    "isLinked": true
+                                                },
+                                                "_element_width": "auto",
+                                                "align": "center"
+                                            },
+                                            "widgetType": "icon-list"
+                                        },
+                                        {
+                                            "id": "calc-title123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "title": "Calcule o ROI do marketing com vídeos reais",
+                                                "header_size": "h2",
+                                                "align": "center",
+                                                "title_color": "#222222",
+                                                "typography_typography": "custom",
+                                                "typography_font_size": {
+                                                    "unit": "px",
+                                                    "size": 36,
+                                                    "sizes": []
+                                                },
+                                                "typography_font_weight": "700",
+                                                "typography_line_height": {
+                                                    "unit": "em",
+                                                    "size": 1.2,
+                                                    "sizes": []
+                                                },
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "10",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "typography_font_size_tablet": {
+                                                    "unit": "px",
+                                                    "size": 32,
+                                                    "sizes": []
+                                                },
+                                                "typography_font_size_mobile": {
+                                                    "unit": "px",
+                                                    "size": 28,
+                                                    "sizes": []
+                                                }
+                                            },
+                                            "widgetType": "heading"
+                                        },
+                                        {
+                                            "id": "calc-desc123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<p style=\"text-align: center; font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 20px;\">Veja o impacto que vídeos autênticos podem ter nos resultados do seu negócio, baseado em dados reais de empresas como a sua.</p>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "calc-main123",
+                            "elType": "section",
+                            "settings": {
+                                "structure": "20",
+                                "margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "40",
+                                    "left": "0"
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "calc-main-col-left",
+                                    "elType": "column",
+                                    "settings": {
+                                        "_column_size": 50,
+                                        "_inline_size": null,
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "10",
+                                            "right": "20",
+                                            "bottom": "10",
+                                            "left": "10"
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "calc-simulator123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div style=\"background-color: #fff; border: 1px solid #eee; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);\">\n  <div style=\"background-color: #f8f9fa; padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;\">\n    <h3 style=\"font-size: 18px; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 8px;\">\n      <i class=\"fas fa-chart-line\" style=\"color: var(--e-global-color-primary);\"></i> \n      Simulador de Resultados\n    </h3>\n    <button style=\"background: none; border: none; cursor: pointer; color: #777;\">\n      <i class=\"fas fa-chevron-up\"></i>\n    </button>\n  </div>\n  \n  <div style=\"padding: 24px;\">\n    <!-- Slider for videos per month -->\n    <div style=\"margin-bottom: 24px;\">\n      <label style=\"display: block; margin-bottom: 8px; font-weight: 500; color: #333;\">\n        Quantidade de vídeos por mês:\n      </label>\n      <div style=\"display: flex; align-items: center; gap: 16px;\">\n        <input type=\"range\" min=\"1\" max=\"30\" value=\"10\" style=\"flex-grow: 1;\">\n        <span style=\"font-weight: 700; background-color: #f1f1f1; padding: 4px 8px; border-radius: 6px; min-width: 30px; text-align: center;\">10</span>\n      </div>\n    </div>\n    \n    <!-- Video type selection -->\n    <div style=\"margin-bottom: 24px;\">\n      <label style=\"display: block; margin-bottom: 8px; font-weight: 500; color: #333;\">\n        Tipo de vídeo principal:\n      </label>\n      <div style=\"display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;\">\n        <div style=\"border: 2px solid var(--e-global-color-primary); border-radius: 8px; padding: 12px; text-align: center; background-color: rgba(var(--e-global-color-primary-rgb), 0.05);\">\n          <span style=\"font-weight: 600;\">Depoimentos</span>\n        </div>\n        <div style=\"border: 1px solid #ddd; border-radius: 8px; padding: 12px; text-align: center;\">\n          <span>Unboxing</span>\n        </div>\n        <div style=\"border: 1px solid #ddd; border-radius: 8px; padding: 12px; text-align: center;\">\n          <span>Review</span>\n        </div>\n        <div style=\"border: 1px solid #ddd; border-radius: 8px; padding: 12px; text-align: center;\">\n          <span>Promocional</span>\n        </div>\n      </div>\n    </div>\n    \n    <!-- Calculate button -->\n    <div style=\"margin-top: 30px;\">\n      <button style=\"background-color: var(--e-global-color-primary); color: white; border: none; border-radius: 8px; padding: 12px 24px; font-weight: 600; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;\">\n        Calcular ROI estimado\n        <i class=\"fas fa-calculator\"></i>\n      </button>\n    </div>\n  </div>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        },
+                                        {
+                                            "id": "calc-results123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div style=\"background-color: #fff; border: 1px solid #eee; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);\">\n  <div style=\"background-color: var(--e-global-color-primary); padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: center; align-items: center;\">\n    <h3 style=\"font-size: 18px; font-weight: 600; margin: 0; color: white; display: flex; align-items: center; gap: 8px;\">\n      <i class=\"fas fa-chart-bar\"></i> \n      Resultados Projetados\n    </h3>\n  </div>\n  \n  <div style=\"padding: 24px;\">\n    <div style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;\">\n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.05); border-radius: 8px; padding: 16px; text-align: center;\">\n        <div style=\"font-size: 14px; color: #666; margin-bottom: 5px;\">Melhora na conversão</div>\n        <div style=\"font-size: 28px; font-weight: 700; color: var(--e-global-color-primary);\">+27.5%</div>\n      </div>\n      \n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.05); border-radius: 8px; padding: 16px; text-align: center;\">\n        <div style=\"font-size: 14px; color: #666; margin-bottom: 5px;\">ROI estimado</div>\n        <div style=\"font-size: 28px; font-weight: 700; color: var(--e-global-color-primary);\">315%</div>\n      </div>\n      \n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.05); border-radius: 8px; padding: 16px; text-align: center;\">\n        <div style=\"font-size: 14px; color: #666; margin-bottom: 5px;\">Aumento no tempo de sessão</div>\n        <div style=\"font-size: 28px; font-weight: 700; color: var(--e-global-color-primary);\">+82%</div>\n      </div>\n      \n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.05); border-radius: 8px; padding: 16px; text-align: center;\">\n        <div style=\"font-size: 14px; color: #666; margin-bottom: 5px;\">Crescimento em CTR</div>\n        <div style=\"font-size: 28px; font-weight: 700; color: var(--e-global-color-primary);\">+43%</div>\n      </div>\n    </div>\n    \n    <div style=\"font-size: 14px; color: #666; text-align: center; font-style: italic;\">\n      *Resultados baseados em dados agregados de empresas que usam vídeos autênticos em suas estratégias de marketing\n    </div>\n  </div>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "calc-main-col-right",
+                                    "elType": "column",
+                                    "settings": {
+                                        "_column_size": 50,
+                                        "_inline_size": null,
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "10",
+                                            "right": "10",
+                                            "bottom": "10",
+                                            "left": "20"
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "calc-testimonial123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div class=\"clipup-animate\" style=\"background-color: #fff; border: 1px solid #eee; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); padding: 30px;\">\n  <img src=\"https://images.unsplash.com/photo-1560250097-0b93528c311a?w=640&h=400&fit=crop\" alt=\"Case de Sucesso\" style=\"width: 100%; height: 240px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;\">\n  \n  <div style=\"display: flex; align-items: center; margin-bottom: 16px;\">\n    <img src=\"https://randomuser.me/api/portraits/men/32.jpg\" alt=\"Cliente\" style=\"width: 60px; height: 60px; border-radius: 50%; object-fit: cover;\">\n    <div style=\"margin-left: 16px;\">\n      <h4 style=\"font-size: 18px; font-weight: 700; margin: 0 0 4px 0;\">Ricardo Oliveira</h4>\n      <p style=\"font-size: 14px; color: #666; margin: 0;\">Diretor de Marketing, TechSolutions</p>\n    </div>\n  </div>\n  \n  <blockquote style=\"font-size: 16px; color: #333; line-height: 1.6; font-style: italic; margin: 0 0 20px 0; padding-left: 20px; border-left: 3px solid var(--e-global-color-primary);\">\n    \"Implementamos vídeos de depoimentos reais na nossa página de vendas e vimos um aumento de 31% na conversão no primeiro mês. O ROI foi muito superior a outras estratégias de marketing que testamos antes.\"\n  </blockquote>\n  \n  <div style=\"display: flex; gap: 4px;\">\n    <i class=\"fas fa-star\" style=\"color: #ffc107;\"></i>\n    <i class=\"fas fa-star\" style=\"color: #ffc107;\"></i>\n    <i class=\"fas fa-star\" style=\"color: #ffc107;\"></i>\n    <i class=\"fas fa-star\" style=\"color: #ffc107;\"></i>\n    <i class=\"fas fa-star\" style=\"color: #ffc107;\"></i>\n  </div>\n  \n  <div style=\"margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;\">\n    <div style=\"display: flex; flex-wrap: wrap; gap: 10px;\">\n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.1); color: var(--e-global-color-primary); font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 4px;\">\n        +31% Conversão\n      </div>\n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.1); color: var(--e-global-color-primary); font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 4px;\">\n        E-commerce B2C\n      </div>\n      <div style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.1); color: var(--e-global-color-primary); font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 4px;\">\n        Depoimentos reais\n      </div>\n    </div>\n  </div>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        },
+                                        {
+                                            "id": "calc-stats123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 16px;\">\n  <div class=\"clipup-animate\" style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.05); border-radius: 12px; padding: 20px; text-align: center;\">\n    <div style=\"margin-bottom: 10px;\">\n      <i class=\"fas fa-video\" style=\"font-size: 24px; color: var(--e-global-color-primary);\"></i>\n    </div>\n    <h4 style=\"font-size: 16px; font-weight: 700; margin: 0 0 8px 0;\">Impacto em landing pages</h4>\n    <p style=\"font-size: 14px; color: #666; margin: 0 0 10px 0;\">Vídeos aumentam o tempo médio de permanência em páginas de destino</p>\n    <div style=\"font-size: 24px; font-weight: 700; color: var(--e-global-color-primary);\">+54%</div>\n  </div>\n  \n  <div class=\"clipup-animate\" style=\"background-color: rgba(var(--e-global-color-primary-rgb), 0.05); border-radius: 12px; padding: 20px; text-align: center;\">\n    <div style=\"margin-bottom: 10px;\">\n      <i class=\"fas fa-dollar-sign\" style=\"font-size: 24px; color: var(--e-global-color-primary);\"></i>\n    </div>\n    <h4 style=\"font-size: 16px; font-weight: 700; margin: 0 0 8px 0;\">Redução em custo de aquisição</h4>\n    <p style=\"font-size: 14px; color: #666; margin: 0 0 10px 0;\">CAC médio reduzido com vídeos de depoimentos</p>\n    <div style=\"font-size: 24px; font-weight: 700; color: var(--e-global-color-primary);\">-18%</div>\n  </div>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        },
+                                        {
+                                            "id": "calc-cta123",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div style=\"background-color: var(--e-global-color-primary); border-radius: 12px; padding: 24px; text-align: center;\">\n  <h4 style=\"font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: white;\">Pronto para aumentar seus resultados?</h4>\n  <p style=\"font-size: 16px; margin: 0 0 20px 0; color: rgba(255,255,255,0.8);\">Comece hoje mesmo a usar vídeos autênticos na sua estratégia de marketing</p>\n  <a href=\"#\" class=\"clipup-hover\" style=\"display: inline-flex; align-items: center; background-color: white; color: var(--e-global-color-primary); font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;\">\n    Falar com consultor\n    <i class=\"fas fa-arrow-right\" style=\"margin-left: 8px;\"></i>\n  </a>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
