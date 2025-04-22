@@ -2,211 +2,227 @@
  * ClipUp - Animations for Elementor
  * Emulates the animations created with framer-motion in the React version
  */
-
-(function($) {
+(function() {
     'use strict';
-
-    // Helper function to check if element is in viewport
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.bottom >= 0
-        );
-    }
-
-    // Adding entrance animations
-    function setupEntranceAnimations() {
-        const animatedElements = document.querySelectorAll('.clipup-animate');
-        
-        function checkElements() {
-            animatedElements.forEach(element => {
-                if (isInViewport(element) && !element.classList.contains('animated')) {
-                    // Get animation properties from data attributes
-                    const delay = parseFloat(element.getAttribute('data-delay') || 0) * 1000;
-                    const duration = parseFloat(element.getAttribute('data-duration') || 0.5) * 1000;
-                    const animation = element.getAttribute('data-animation') || 'fadeIn';
-                    
-                    // Add animated class to prevent re-triggering
-                    element.classList.add('animated');
-                    
-                    // Apply animation after delay
-                    setTimeout(() => {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translate(0, 0)';
-                        element.style.transition = `opacity ${duration}ms ease, transform ${duration}ms ease`;
-                        
-                        if (animation === 'fadeIn') {
-                            // Already handled by opacity
-                        } else if (animation === 'fadeInUp') {
-                            element.style.transform = 'translate(0, 0)';
-                        } else if (animation === 'fadeInDown') {
-                            element.style.transform = 'translate(0, 0)';
-                        } else if (animation === 'fadeInLeft') {
-                            element.style.transform = 'translate(0, 0)';
-                        } else if (animation === 'fadeInRight') {
-                            element.style.transform = 'translate(0, 0)';
-                        } else if (animation === 'zoomIn') {
-                            element.style.transform = 'scale(1)';
-                        }
-                    }, delay);
-                }
-            });
-        }
-        
-        // Initial check
-        checkElements();
-        
-        // Check on scroll
-        window.addEventListener('scroll', checkElements);
-    }
-
-    // Handle hover animations
-    function setupHoverAnimations() {
-        const hoverElements = document.querySelectorAll('.clipup-hover');
-        
-        hoverElements.forEach(element => {
-            const hoverEffect = element.getAttribute('data-hover-effect') || 'scale';
-            const hoverValue = element.getAttribute('data-hover-value') || '1.05';
-            
-            element.addEventListener('mouseenter', () => {
-                if (hoverEffect === 'scale') {
-                    element.style.transform = `scale(${hoverValue})`;
-                } else if (hoverEffect === 'translateY') {
-                    element.style.transform = `translateY(${hoverValue}px)`;
-                } else if (hoverEffect === 'shadow') {
-                    element.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1)';
-                }
-                element.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                if (hoverEffect === 'scale' || hoverEffect === 'translateY') {
-                    element.style.transform = 'none';
-                } else if (hoverEffect === 'shadow') {
-                    element.style.boxShadow = 'none';
-                }
-            });
-        });
-    }
     
-    // Handle animated counters
-    function setupCounters() {
-        const counters = document.querySelectorAll('.clipup-counter');
-        
-        function animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-target'), 10);
-            const duration = parseInt(element.getAttribute('data-duration') || 2000, 10);
-            const start = parseInt(element.getAttribute('data-start') || 0, 10);
-            const prefix = element.getAttribute('data-prefix') || '';
-            const suffix = element.getAttribute('data-suffix') || '';
-            let current = start;
-            const increment = (target - start) / (duration / 16);
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if ((increment > 0 && current >= target) || (increment < 0 && current <= target)) {
-                    clearInterval(timer);
-                    current = target;
-                }
-                element.textContent = prefix + Math.floor(current) + suffix;
-            }, 16);
-        }
-        
-        function checkCounters() {
-            counters.forEach(counter => {
-                if (isInViewport(counter) && !counter.classList.contains('counted')) {
-                    counter.classList.add('counted');
-                    animateCounter(counter);
-                }
-            });
-        }
-        
-        // Initial check
-        checkCounters();
-        
-        // Check on scroll
-        window.addEventListener('scroll', checkCounters);
-    }
-    
-    // Initialize parallax effects
-    function setupParallax() {
-        const parallaxElements = document.querySelectorAll('.clipup-parallax');
-        
-        function updateParallax() {
-            parallaxElements.forEach(element => {
-                if (isInViewport(element)) {
-                    const scrolled = window.scrollY;
-                    const speed = parseFloat(element.getAttribute('data-speed') || 0.2);
-                    const direction = element.getAttribute('data-direction') || 'up';
-                    
-                    if (direction === 'up') {
-                        element.style.transform = `translateY(${scrolled * -speed}px)`;
-                    } else if (direction === 'down') {
-                        element.style.transform = `translateY(${scrolled * speed}px)`;
-                    } else if (direction === 'left') {
-                        element.style.transform = `translateX(${scrolled * -speed}px)`;
-                    } else if (direction === 'right') {
-                        element.style.transform = `translateX(${scrolled * speed}px)`;
-                    }
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', updateParallax);
-    }
-    
-    // Setup staggered animations for groups of elements
-    function setupStaggeredAnimations() {
-        const staggerContainers = document.querySelectorAll('.clipup-stagger-container');
-        
-        staggerContainers.forEach(container => {
-            const children = container.querySelectorAll('.clipup-stagger-item');
-            const staggerDelay = parseFloat(container.getAttribute('data-stagger-delay') || 0.1);
-            
-            function checkStaggerContainer() {
-                if (isInViewport(container) && !container.classList.contains('staggered')) {
-                    container.classList.add('staggered');
-                    
-                    children.forEach((child, index) => {
-                        const delay = staggerDelay * index;
-                        const duration = parseFloat(child.getAttribute('data-duration') || 0.5);
-                        
-                        setTimeout(() => {
-                            child.style.opacity = '1';
-                            child.style.transform = 'translate(0, 0)';
-                            child.style.transition = `opacity ${duration}s ease, transform ${duration}s ease`;
-                        }, delay * 1000);
-                    });
-                }
-            }
-            
-            // Initial check
-            checkStaggerContainer();
-            
-            // Check on scroll
-            window.addEventListener('scroll', checkStaggerContainer);
-        });
-    }
-    
-    // Initialize on document ready
-    $(document).ready(function() {
+    // Execute when DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize all animations
         setupEntranceAnimations();
         setupHoverAnimations();
         setupCounters();
         setupParallax();
         setupStaggeredAnimations();
+    });
+    
+    // Helper function to check if element is in viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+            rect.bottom >= 0 &&
+            rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+            rect.right >= 0
+        );
+    }
+    
+    // Set up entrance animations with IntersectionObserver when available
+    function setupEntranceAnimations() {
+        const animatedElements = document.querySelectorAll('.clipup-animate');
         
-        // Re-initialize when Elementor frontend is initialized (for editor mode)
-        if (typeof elementorFrontend !== 'undefined') {
-            elementorFrontend.hooks.addAction('frontend/element_ready/global', function() {
-                setupEntranceAnimations();
-                setupHoverAnimations();
-                setupCounters();
-                setupParallax();
-                setupStaggeredAnimations();
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        } else {
+            // Fallback for browsers without IntersectionObserver
+            function checkElements() {
+                animatedElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Check on load and scroll
+            checkElements();
+            window.addEventListener('scroll', checkElements);
+        }
+    }
+    
+    // Set up hover animations
+    function setupHoverAnimations() {
+        const hoverElements = document.querySelectorAll('.clipup-hover');
+        
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'translateY(-2px)';
+                
+                const icon = element.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'translateX(3px)';
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = '';
+                
+                const icon = element.querySelector('i');
+                if (icon) {
+                    icon.style.transform = '';
+                }
+            });
+        });
+        
+        // Service card hover effects
+        const serviceCards = document.querySelectorAll('.clipup-services-showcase .clipup-card');
+        
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const img = card.querySelector('img');
+                const overlay = card.querySelector('.clipup-overlay');
+                
+                if (img) {
+                    img.style.transform = 'scale(1.1)';
+                }
+                
+                if (overlay) {
+                    overlay.style.opacity = '1';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const img = card.querySelector('img');
+                const overlay = card.querySelector('.clipup-overlay');
+                
+                if (img) {
+                    img.style.transform = '';
+                }
+                
+                if (overlay) {
+                    overlay.style.opacity = '0';
+                }
+            });
+        });
+    }
+    
+    // Set up counters (for stats and numbers)
+    function setupCounters() {
+        const counterElements = document.querySelectorAll('[data-counter]');
+        const countersStarted = new Set();
+        
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.counter, 10);
+            const duration = parseInt(element.dataset.duration || 1500, 10);
+            const startTime = performance.now();
+            const prefix = element.dataset.prefix || '';
+            const suffix = element.dataset.suffix || '';
+            
+            function updateCounter(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+                
+                const currentValue = Math.floor(easeProgress * target);
+                element.textContent = `${prefix}${currentValue}${suffix}`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = `${prefix}${target}${suffix}`;
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+        
+        function checkCounters() {
+            counterElements.forEach(element => {
+                if (!countersStarted.has(element) && isInViewport(element)) {
+                    animateCounter(element);
+                    countersStarted.add(element);
+                }
             });
         }
-    });
-
-})(jQuery);
+        
+        // Check on load and scroll
+        checkCounters();
+        window.addEventListener('scroll', checkCounters);
+    }
+    
+    // Set up parallax effect for background elements
+    function setupParallax() {
+        const parallaxElements = document.querySelectorAll('[data-parallax]');
+        
+        if (parallaxElements.length > 0) {
+            function updateParallax() {
+                const scrollTop = window.pageYOffset;
+                
+                parallaxElements.forEach(element => {
+                    const speed = parseFloat(element.dataset.parallax) || 0.15;
+                    const yPos = -(scrollTop * speed);
+                    element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                });
+            }
+            
+            window.addEventListener('scroll', updateParallax);
+            updateParallax();
+        }
+    }
+    
+    // Set up staggered animations
+    function setupStaggeredAnimations() {
+        const staggerContainers = document.querySelectorAll('.clipup-stagger-container');
+        
+        staggerContainers.forEach(container => {
+            const items = container.querySelectorAll('.clipup-card, .clipup-animate');
+            
+            // Set item index for staggered delay
+            items.forEach((item, index) => {
+                item.style.setProperty('--item-index', index);
+            });
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('active');
+                            }, index * 100);
+                        });
+                        observer.unobserve(container);
+                    }
+                }, { threshold: 0.15 });
+                
+                observer.observe(container);
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                function checkStaggerContainer() {
+                    if (isInViewport(container)) {
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('active');
+                            }, index * 100);
+                        });
+                        
+                        // Remove scroll listener after animation starts
+                        window.removeEventListener('scroll', checkStaggerContainer);
+                    }
+                }
+                
+                // Check on load and scroll
+                checkStaggerContainer();
+                window.addEventListener('scroll', checkStaggerContainer);
+            }
+        });
+    }
+})();

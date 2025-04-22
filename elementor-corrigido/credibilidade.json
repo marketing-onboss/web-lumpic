@@ -1,0 +1,93 @@
+{
+    "version": "0.4",
+    "title": "ClipUp - Credibilidade",
+    "type": "section",
+    "content": [
+        {
+            "id": "cred123",
+            "elType": "section",
+            "settings": {
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "padding": {
+                    "unit": "px",
+                    "top": "60",
+                    "right": "20",
+                    "bottom": "60",
+                    "left": "20"
+                },
+                "padding_tablet": {
+                    "unit": "px",
+                    "top": "40",
+                    "right": "20",
+                    "bottom": "40",
+                    "left": "20"
+                },
+                "padding_mobile": {
+                    "unit": "px",
+                    "top": "30",
+                    "right": "15",
+                    "bottom": "30",
+                    "left": "15"
+                },
+                "css_classes": "clipup-credibilidade clipup-animate"
+            },
+            "elements": [
+                {
+                    "id": "cred-col123",
+                    "elType": "column",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null
+                    },
+                    "elements": [
+                        {
+                            "id": "cred-box123",
+                            "elType": "widget",
+                            "settings": {
+                                "editor": "<div style=\"background-color: #fff; border: 1px solid #eee; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); max-width: 900px; margin: 0 auto;\">\n  <div style=\"display: flex; flex-wrap: wrap;\">\n    <div style=\"flex: 1 1 300px; padding-right: 30px; margin-bottom: 20px;\">\n      <blockquote style=\"font-size: 18px; font-style: italic; color: #333; margin: 0 0 16px 0; position: relative; padding-left: 20px; border-left: 3px solid var(--e-global-color-primary);\">\n        \"Conseguimos aumentar o ROI das campanhas em 43% usando vídeos da plataforma.\"\n      </blockquote>\n      <p style=\"margin: 0; font-size: 14px; color: #666;\">— Gerente de Marketing, Loja Alpha</p>\n    </div>\n    \n    <div style=\"flex: 1 1 300px; border-top: 1px solid #eee; padding-top: 20px;\">\n      <div style=\"display: flex; align-items: center; margin-bottom: 16px;\">\n        <div style=\"width: 32px; height: 32px; background-color: rgba(var(--e-global-color-primary-rgb), 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;\">\n          <i class=\"fas fa-check-circle\" style=\"color: var(--e-global-color-primary); font-size: 16px;\"></i>\n        </div>\n        <p style=\"margin: 0; font-size: 14px; color: #555;\">Todos os criadores passam por curadoria.</p>\n      </div>\n      \n      <div style=\"display: flex; align-items: center;\">\n        <div style=\"width: 32px; height: 32px; background-color: rgba(var(--e-global-color-primary-rgb), 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;\">\n          <i class=\"fas fa-coins\" style=\"color: var(--e-global-color-primary); font-size: 16px;\"></i>\n        </div>\n        <p style=\"margin: 0; font-size: 14px; color: #555;\">A entrega é protegida por contrato. Você só paga quando aprova o resultado.</p>\n      </div>\n    </div>\n  </div>\n</div>",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "40",
+                                    "left": "0"
+                                },
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0"
+                                }
+                            },
+                            "widgetType": "text-editor"
+                        },
+                        {
+                            "id": "cred-cta123",
+                            "elType": "widget",
+                            "settings": {
+                                "editor": "<div style=\"text-align: center;\">\n  <p style=\"font-size: 18px; color: #555; margin-bottom: 20px;\">\n    <span style=\"color: var(--e-global-color-primary); font-weight: 700;\">🚀 Pronto para ver sua marca decolar com vídeos autênticos?</span>\n  </p>\n  \n  <a href=\"#\" class=\"clipup-hover\" style=\"display: inline-flex; align-items: center; background-color: var(--e-global-color-primary); color: white; font-weight: 500; padding: 10px 20px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 14px rgba(var(--e-global-color-primary-rgb), 0.3);\">\n    Impulsionar minha marca\n    <i class=\"fas fa-arrow-right\" style=\"margin-left: 8px;\"></i>\n  </a>\n</div>",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0"
+                                },
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0"
+                                }
+                            },
+                            "widgetType": "text-editor"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

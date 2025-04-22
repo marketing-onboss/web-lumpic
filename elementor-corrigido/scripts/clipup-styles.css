@@ -1,56 +1,36 @@
-/**
- * ClipUp - Custom Styles for Elementor
- * Styles to complement the default Elementor styles and match the React version
- */
+/*
+* ClipUp - Estilos e Animações para Elementor
+* Este arquivo contém estilos personalizados e classes de animação
+* para o site ClipUp criado com Elementor
+*/
 
-/* Animation base classes */
-.clipup-animate {
-  opacity: 0;
-  backface-visibility: hidden;
+/* ---- Variáveis ---- */
+:root {
+  --primary-color: var(--e-global-color-primary);
+  --primary-color-rgb: var(--e-global-color-primary-rgb);
+  --secondary-color: var(--e-global-color-secondary);
+  --secondary-color-rgb: var(--e-global-color-secondary-rgb);
+  --heading-color: #222222;
+  --text-color: #666666;
+  --light-bg: #F8F9FA;
+  --border-color: #E5E7EB;
 }
 
-.clipup-animate[data-animation="fadeIn"] {
-  transform: translate(0, 0);
+/* ---- Estilos Gerais ---- */
+.clipup-section {
+  overflow: hidden;
+  position: relative;
 }
 
-.clipup-animate[data-animation="fadeInUp"] {
-  transform: translate(0, 20px);
+/* ---- Hero Section ---- */
+.clipup-hero-gradient {
+  background: radial-gradient(circle at top left, rgba(var(--primary-color-rgb), 0.1) 0%, transparent 60%),
+              radial-gradient(circle at bottom right, rgba(var(--secondary-color-rgb), 0.05) 0%, transparent 60%);
 }
 
-.clipup-animate[data-animation="fadeInDown"] {
-  transform: translate(0, -20px);
-}
-
-.clipup-animate[data-animation="fadeInLeft"] {
-  transform: translate(-20px, 0);
-}
-
-.clipup-animate[data-animation="fadeInRight"] {
-  transform: translate(20px, 0);
-}
-
-.clipup-animate[data-animation="zoomIn"] {
-  transform: scale(0.9);
-}
-
-/* Hover effects */
-.clipup-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-/* Staggered animation containers */
-.clipup-stagger-container {
-  overflow: visible;
-}
-
-.clipup-stagger-item {
-  opacity: 0;
-  transform: translate(0, 20px);
-}
-
-/* Card hover effects */
+/* ---- Cards ---- */
 .clipup-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .clipup-card:hover {
@@ -58,170 +38,146 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Floating elements animation */
-.clipup-float {
-  animation: clipup-float-animation 3s ease-in-out infinite;
+/* Hover overlay for service cards */
+.clipup-card:hover .clipup-overlay {
+  opacity: 1;
 }
 
-@keyframes clipup-float-animation {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+/* ---- Animations ---- */
+.clipup-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.clipup-animate.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.clipup-stagger-container .clipup-card {
+  transition-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+.clipup-float {
+  animation: clipup-float 6s ease-in-out infinite;
 }
 
 .clipup-pulse {
-  animation: clipup-pulse-animation 5s ease-in-out infinite;
-}
-
-@keyframes clipup-pulse-animation {
-  0% { transform: scale(1); opacity: 0.3; }
-  50% { transform: scale(1.2); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 0.3; }
+  animation: clipup-pulse 2s ease-in-out infinite;
 }
 
 .clipup-rotate {
-  animation: clipup-rotate-animation 4s ease-in-out infinite;
+  animation: clipup-rotate 7s linear infinite;
 }
 
-@keyframes clipup-rotate-animation {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(3deg); }
-  75% { transform: rotate(-3deg); }
-  100% { transform: rotate(0deg); }
+.clipup-rotate-slow {
+  animation: clipup-rotate 15s linear infinite;
 }
 
-/* Hero section specific styles */
-.clipup-hero-gradient {
-  position: relative;
-  overflow: hidden;
+.clipup-hover:hover {
+  transform: translateY(-2px);
 }
 
-.clipup-hero-gradient::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--e-global-color-primary);
-  opacity: 0.05;
-  filter: blur(80px);
-  z-index: 0;
+.clipup-hover:hover i {
+  transform: translateX(3px);
 }
 
-.clipup-hero-gradient::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--e-global-color-secondary);
-  opacity: 0.05;
-  filter: blur(80px);
-  z-index: 0;
+.clipup-hover i {
+  transition: transform 0.3s ease;
 }
 
-/* Blob background shapes */
-.clipup-blob-1 {
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--e-global-color-primary);
-  opacity: 0.05;
-  filter: blur(60px);
-  z-index: 0;
+/* ---- Animation Keyframes ---- */
+@keyframes clipup-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-.clipup-blob-2 {
-  position: absolute;
-  bottom: -50px;
-  right: -50px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--e-global-color-secondary);
-  opacity: 0.05;
-  filter: blur(60px);
-  z-index: 0;
+@keyframes clipup-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
 }
 
-/* Avatar overlap effect */
-.clipup-avatar-overlap {
-  display: flex;
+@keyframes clipup-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.clipup-avatar-overlap .elementor-image {
-  margin-left: -10px;
-  border: 2px solid white;
-  border-radius: 50%;
-  overflow: hidden;
+/* ---- Responsividade do Menu ---- */
+@media (max-width: 991px) {
+  .clipup-desktop-menu {
+    display: none !important;
+  }
+  
+  .clipup-mobile-menu-toggle {
+    display: flex !important;
+  }
 }
 
-.clipup-avatar-overlap .elementor-image:first-child {
-  margin-left: 0;
+@media (min-width: 992px) {
+  .clipup-desktop-menu {
+    display: flex !important;
+  }
+  
+  .clipup-mobile-menu-toggle {
+    display: none !important;
+  }
+  
+  .clipup-mobile-menu {
+    display: none !important;
+  }
 }
 
-/* Icon rotation on hover */
-.clipup-icon-hover-rotate:hover i {
-  animation: clipup-rotate-once 0.5s ease;
+/* ---- Serviços Showcase ---- */
+.clipup-services-showcase .clipup-card:hover img {
+  transform: scale(1.1);
 }
 
-@keyframes clipup-rotate-once {
-  0% { transform: rotate(0); }
-  33% { transform: rotate(-10deg); }
-  66% { transform: rotate(10deg); }
-  100% { transform: rotate(0); }
+.clipup-services-showcase img {
+  transition: transform 0.5s ease;
 }
 
-/* Button hover effects */
-.clipup-button-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+/* ---- FAQ ---- */
+.elementor-widget-accordion .elementor-active .elementor-accordion-icon i:before {
+  content: "\f068" !important; /* Minus icon */
 }
 
-.clipup-button-hover:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2) !important;
+/* ---- Footer ---- */
+.clipup-footer a:hover {
+  color: var(--primary-color) !important;
 }
 
-.clipup-button-hover:active {
-  transform: scale(0.97) !important;
+/* ---- Utilities ---- */
+.clipup-shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-/* Custom Badge style */
-.clipup-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 12px;
-  border-radius: 20px;
-  background-color: rgba(var(--e-global-color-primary-rgb), 0.1);
-  color: var(--e-global-color-primary);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1;
+.clipup-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.clipup-badge i {
-  margin-right: 5px;
-  font-size: 14px;
+.clipup-shadow-md {
+  box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1), 0 2px 6px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* Stats counter styling */
-.clipup-stat-card {
-  padding: 1.5rem;
-  border-radius: 8px;
-  background-color: var(--e-global-color-background);
-  border: 1px solid rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+.clipup-shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-.clipup-stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  border-color: rgba(var(--e-global-color-primary-rgb), 0.3);
+.clipup-shadow-primary {
+  box-shadow: 0 4px 14px rgba(var(--primary-color-rgb), 0.25);
 }
