@@ -14,10 +14,10 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-4">
-              Transforme Seu Talento com Vídeo em <span className="text-primary">Renda Real</span>
+              Potencialize sua Marca com <span className="text-primary">Vídeos Autênticos</span>
             </h1>
             <p className="text-xl text-card-foreground mb-8">
-              Mostre seu rosto, compartilhe sua voz. Nós cuidamos do resto.
+              Conectamos sua empresa a criadores de conteúdo prontos para gerar engajamento e conversão.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <motion.div
@@ -57,7 +57,7 @@ export default function Hero() {
                 ))}
               </div>
               <span className="text-sm text-card-foreground">
-                <span className="font-medium">250+ criadores</span> começaram esta semana
+                <span className="font-medium">250+ empresas</span> ampliaram alcance com vídeos
               </span>
             </motion.div>
           </motion.div>
@@ -114,8 +114,8 @@ export default function Hero() {
                 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <p className="text-card-foreground text-sm">Ganhos do mês</p>
-                <p className="text-primary font-bold text-xl">R$ 1.240,00</p>
+                <p className="text-card-foreground text-sm">Impacto em vendas</p>
+                <p className="text-primary font-bold text-xl">+27,8%</p>
               </motion.div>
               
               {/* Floating video icon animado */}
@@ -151,29 +151,29 @@ export default function Hero() {
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Vídeos Entregues</p>
+            <p className="text-muted-foreground text-sm">Vídeos Produzidos</p>
             <p className="text-foreground font-bold text-2xl">12.540+</p>
           </motion.div>
           <motion.div 
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Freelancers Ativos</p>
+            <p className="text-muted-foreground text-sm">Criadores Certificados</p>
             <p className="text-foreground font-bold text-2xl">3.200+</p>
           </motion.div>
           <motion.div 
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Clientes Satisfeitos</p>
+            <p className="text-muted-foreground text-sm">Empresas Parceiras</p>
             <p className="text-foreground font-bold text-2xl">1.870+</p>
           </motion.div>
           <motion.div 
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Valores Pagos</p>
-            <p className="text-foreground font-bold text-2xl">R$ 1.2M+</p>
+            <p className="text-muted-foreground text-sm">Conversão Média</p>
+            <p className="text-foreground font-bold text-2xl">37%+</p>
           </motion.div>
         </motion.div>
       </div>

@@ -5,48 +5,48 @@ export default function TargetAudience() {
   const audienceCards = [
     {
       icon: <VideoIcon className="h-8 w-8" />,
-      title: "Gosta de aparecer em frente às câmeras",
-      description: "Você tem carisma e não tem medo de se expressar? Aqui você transforma esse talento em renda.",
+      title: "Autenticidade Garantida",
+      description: "Depoimentos reais feitos por pessoas reais geram confiança e credibilidade que anúncios tradicionais não conseguem.",
       color: "text-primary",
       bgColor: "bg-primary/5",
       borderColor: "border-primary/20"
     },
     {
       icon: <MicrophoneIcon className="h-8 w-8" />,
-      title: "Tem boa dicção e comunicação",
-      description: "Sua voz e clareza na comunicação são seus diferenciais? Use-os para criar conteúdo valioso.",
+      title: "Maior Engajamento",
+      description: "Vídeos de criadores autênticos são 2,2x mais memoráveis e geram 28% mais engajamento que conteúdo tradicional.",
       color: "text-primary",
       bgColor: "bg-primary/5",
       borderColor: "border-primary/20"
     },
     {
       icon: <MobileIcon className="h-8 w-8" />,
-      title: "Já grava vídeos para redes sociais",
-      description: "Você já está criando conteúdo? Monetize ainda mais seu talento com nossa plataforma.",
+      title: "Conversão Comprovada",
+      description: "Empresas que usam vídeos de depoimentos reais reportam aumento médio de 34% nas taxas de conversão.",
       color: "text-primary",
       bgColor: "bg-primary/5",
       borderColor: "border-primary/20"
     },
     {
       icon: <CoinsIcon className="h-8 w-8" />,
-      title: "Quer ganhar uma grana extra no seu tempo livre",
-      description: "Trabalhe quando quiser e aumente sua renda com projetos flexíveis que se encaixam na sua rotina.",
+      title: "Conteúdo Multiformato",
+      description: "Cada vídeo pode ser adaptado para diferentes canais, maximizando seu investimento nas redes sociais.",
       color: "text-secondary",
       bgColor: "bg-secondary/5",
       borderColor: "border-secondary/20"
     },
     {
       icon: <HomeIcon className="h-8 w-8" />,
-      title: "Quer trabalhar de casa",
-      description: "Monte seu mini estúdio em casa e produza conteúdo profissional sem sair do conforto do seu lar.",
+      title: "Economia de Recursos",
+      description: "Reduza custos com produção interna e agências tradicionais acessando nossa rede de criadores certificados.",
       color: "text-secondary",
       bgColor: "bg-secondary/5", 
       borderColor: "border-secondary/20"
     },
     {
       icon: <GlobeIcon className="h-8 w-8" />,
-      title: "Quer trabalhar de qualquer lugar do mundo",
-      description: "Liberdade geográfica real. Tudo que você precisa é de um smartphone e conexão com internet.",
+      title: "Alcance Específico",
+      description: "Escolha criadores com perfil alinhado ao seu público-alvo, garantindo maior ressonância com sua audiência ideal.",
       color: "text-secondary",
       bgColor: "bg-secondary/5",
       borderColor: "border-secondary/20"
@@ -113,11 +113,11 @@ export default function TargetAudience() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <CheckCircle className="h-4 w-4" />
-            <span>Para todos os tipos de criadores</span>
+            <span>Para empresas de todos os tamanhos</span>
           </motion.div>
-          <h2 className="text-3xl font-bold text-foreground mb-4">É para você...</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Benefícios para sua Empresa</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Se você se identifica com um ou mais destes perfis, o ClipUp é a plataforma perfeita para você.
+            Conheça as vantagens de ter criadores de vídeo profissionais promovendo sua marca e produtos.
           </p>
         </motion.div>
 
@@ -155,7 +155,7 @@ export default function TargetAudience() {
                 transition={{ delay: 0.3 }}
               >
                 <span className="text-sm text-muted-foreground">
-                  {index % 2 === 0 ? 'Ideal para iniciantes' : 'Criadores experientes'}
+                  {index % 2 === 0 ? 'Recomendado para PMEs' : 'Perfeito para grandes marcas'}
                 </span>
                 <motion.button
                   className={`${card.color} text-sm`}
