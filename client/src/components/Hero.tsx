@@ -14,10 +14,10 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-4">
-              Potencialize sua Marca com <span className="text-primary">Vídeos Autênticos</span>
+              <span className="text-primary">Sua marca</span> merece ser contada por quem inspira confiança
             </h1>
             <p className="text-xl text-card-foreground mb-8">
-              Conectamos sua empresa a criadores de conteúdo prontos para gerar engajamento e conversão.
+              Conecte-se com criadores profissionais e leve sua empresa até o seu público com vídeos autênticos, diretos e que convertem.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <motion.div
@@ -151,29 +151,29 @@ export default function Hero() {
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Vídeos Produzidos</p>
-            <p className="text-foreground font-bold text-2xl">12.540+</p>
+            <p className="text-muted-foreground text-sm">Conversão em Páginas</p>
+            <p className="text-foreground font-bold text-2xl">+70%</p>
           </motion.div>
           <motion.div 
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Criadores Certificados</p>
-            <p className="text-foreground font-bold text-2xl">3.200+</p>
+            <p className="text-muted-foreground text-sm">Aumento no ROI</p>
+            <p className="text-foreground font-bold text-2xl">+43%</p>
           </motion.div>
           <motion.div 
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Empresas Parceiras</p>
-            <p className="text-foreground font-bold text-2xl">1.870+</p>
+            <p className="text-muted-foreground text-sm">Engajamento nas Redes</p>
+            <p className="text-foreground font-bold text-2xl">3x maior</p>
           </motion.div>
           <motion.div 
             className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
           >
-            <p className="text-muted-foreground text-sm">Conversão Média</p>
-            <p className="text-foreground font-bold text-2xl">37%+</p>
+            <p className="text-muted-foreground text-sm">Redução de Devoluções</p>
+            <p className="text-foreground font-bold text-2xl">-42%</p>
           </motion.div>
         </motion.div>
       </div>
