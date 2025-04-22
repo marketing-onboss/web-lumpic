@@ -335,7 +335,7 @@ export default function Home() {
             {/* Security 3 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <LifeBuoyIcon className="h-6 w-6 text-primary" />
+                <HeartIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Suporte dedicado</h3>
               <p className="text-muted-foreground text-center">
@@ -346,7 +346,7 @@ export default function Home() {
             {/* Security 4 */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <EyeIcon className="h-6 w-6 text-primary" />
+                <VideoIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Total transparência</h3>
               <p className="text-muted-foreground text-center">
@@ -406,7 +406,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <TargetIcon className="h-6 w-6 text-primary" />
+                <DollarSignIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Pague por projeto</h3>
               <p className="text-muted-foreground">Sem mensalidades ou taxas escondidas</p>
@@ -414,7 +414,7 @@ export default function Home() {
             
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <GiftIcon className="h-6 w-6 text-primary" />
+                <PackageIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos a partir de 10 Lumpz</h3>
               <p className="text-muted-foreground">Apenas R$ 49 para começar</p>
