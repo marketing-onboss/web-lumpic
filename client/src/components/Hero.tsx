@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/button";
-import { PlayCircle } from "lucide-react";
+import { PlayCircle, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="pt-24 pb-12 hero-gradient">
+    <section className="pt-24 pb-12 hero-gradient overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
+          <motion.div 
+            className="md:w-1/2 mb-10 md:mb-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-4">
               Transforme Seu Talento com Vídeo em <span className="text-primary">Renda Real</span>
             </h1>
@@ -14,19 +20,78 @@ export default function Hero() {
               Mostre seu rosto, compartilhe sua voz. Nós cuidamos do resto.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-lg px-8 py-6">
-                Começar Agora
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                Como Funciona <PlayCircle className="ml-2 h-5 w-5" />
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" className="text-lg px-8 py-6 shadow-lg shadow-primary/20">
+                  Começar Agora <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                  Como Funciona <PlayCircle className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
             </div>
-          </div>
+            
+            {/* Novo banner de confiança */}
+            <motion.div 
+              className="mt-8 flex items-center gap-2 bg-card/50 backdrop-blur-sm p-3 rounded-lg inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <div className="flex -space-x-2">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-8 h-8 rounded-full bg-primary/20 border-2 border-white overflow-hidden">
+                    <img 
+                      src={`https://i.pravatar.cc/40?img=${i + 10}`} 
+                      alt="Creator" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              <span className="text-sm text-card-foreground">
+                <span className="font-medium">250+ criadores</span> começaram esta semana
+              </span>
+            </motion.div>
+          </motion.div>
           
-          <div className="md:w-1/2 flex justify-center relative">
+          <motion.div 
+            className="md:w-1/2 flex justify-center relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <div className="relative w-full max-w-md">
-              <div className="absolute -top-4 -left-4 w-60 h-60 rounded-full bg-primary/20 filter blur-xl"></div>
-              <div className="absolute -bottom-4 -right-4 w-60 h-60 rounded-full bg-secondary/20 filter blur-xl"></div>
+              {/* Efeitos de fundo animados */}
+              <motion.div 
+                className="absolute -top-4 -left-4 w-60 h-60 rounded-full bg-primary/20 filter blur-xl"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ 
+                  duration: 8,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              ></motion.div>
+              <motion.div 
+                className="absolute -bottom-4 -right-4 w-60 h-60 rounded-full bg-secondary/20 filter blur-xl"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{ 
+                  duration: 10,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              ></motion.div>
               
               {/* Main image */}
               <img 
@@ -35,41 +100,82 @@ export default function Hero() {
                 className="relative z-10 rounded-xl object-cover shadow-2xl w-full"
               />
               
-              {/* Floating earnings card */}
-              <div className="absolute top-8 -right-12 z-20 bg-card p-4 rounded-lg shadow-xl border border-muted transform rotate-6">
+              {/* Floating earnings card animado */}
+              <motion.div 
+                className="absolute top-8 -right-12 z-20 bg-card p-4 rounded-lg shadow-xl border border-muted transform rotate-6"
+                initial={{ y: -10 }}
+                animate={{ y: 0 }}
+                transition={{ 
+                  y: {
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }
+                }}
+                whileHover={{ scale: 1.05 }}
+              >
                 <p className="text-card-foreground text-sm">Ganhos do mês</p>
                 <p className="text-primary font-bold text-xl">R$ 1.240,00</p>
-              </div>
+              </motion.div>
               
-              {/* Floating video icon */}
-              <div className="absolute -bottom-6 -left-6 z-20 bg-card p-3 rounded-full shadow-lg border border-muted">
+              {/* Floating video icon animado */}
+              <motion.div 
+                className="absolute -bottom-6 -left-6 z-20 bg-card p-3 rounded-full shadow-lg border border-muted"
+                initial={{ rotate: 0 }}
+                animate={{ rotate: 5 }}
+                transition={{ 
+                  rotate: {
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }
+                }}
+                whileHover={{ scale: 1.1 }}
+              >
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center">
                   <VideoIcon className="h-6 w-6 text-white" />
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
         
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
-          <div className="bg-card rounded-lg p-4 border border-muted">
+        {/* Stats com animação de número crescente */}
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <motion.div 
+            className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
+            whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+          >
             <p className="text-muted-foreground text-sm">Vídeos Entregues</p>
             <p className="text-foreground font-bold text-2xl">12.540+</p>
-          </div>
-          <div className="bg-card rounded-lg p-4 border border-muted">
+          </motion.div>
+          <motion.div 
+            className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
+            whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+          >
             <p className="text-muted-foreground text-sm">Freelancers Ativos</p>
             <p className="text-foreground font-bold text-2xl">3.200+</p>
-          </div>
-          <div className="bg-card rounded-lg p-4 border border-muted">
+          </motion.div>
+          <motion.div 
+            className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
+            whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+          >
             <p className="text-muted-foreground text-sm">Clientes Satisfeitos</p>
             <p className="text-foreground font-bold text-2xl">1.870+</p>
-          </div>
-          <div className="bg-card rounded-lg p-4 border border-muted">
+          </motion.div>
+          <motion.div 
+            className="bg-card rounded-lg p-4 border border-muted hover:border-primary/50 transition-all duration-300"
+            whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+          >
             <p className="text-muted-foreground text-sm">Valores Pagos</p>
             <p className="text-foreground font-bold text-2xl">R$ 1.2M+</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
