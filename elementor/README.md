@@ -4,10 +4,18 @@ Este diretório contém os arquivos necessários para implementar o site ClipUp 
 
 ## Conteúdo da Pasta
 
-- `clipup-home.json` - Template completo da página inicial
-- `scripts/animations.js` - Script para animações e efeitos
-- `scripts/clipup-styles.css` - Estilos complementares para o Elementor
+### Arquivos JSON para Importação
+- `hero-section.json` - Seção Hero principal (importar primeiro)
+- `dor-empresario-section.json` - Seção "Dor do Empresário" (segunda seção)
+- `clipup-home.json` - Template completo (alternativa - para referência)
+
+### Scripts e Estilos
+- `scripts/animations.js` - Script para animações e efeitos 
+- `scripts/clipup-styles.css` - Estilos complementares para Elementor
+
+### Ferramentas e Referências
 - `home-structure.html` - Arquivo de referência para estrutura (não é usado na importação)
+- `validate.js` - Script para validar arquivos JSON
 
 ## Requisitos
 
@@ -17,13 +25,26 @@ Este diretório contém os arquivos necessários para implementar o site ClipUp 
 
 ## Instruções de Importação
 
-### 1. Importe o Template
+### 1. Método por Seções (Recomendado)
+
+1. Primeiro, crie uma nova página no WordPress
+2. Edite a página com o Elementor
+3. No Elementor, clique no ícone de Pasta (Biblioteca de Templates)
+4. Selecione "Importar Template"
+5. Importe primeiro o arquivo `hero-section.json`
+6. Insira esta seção na página
+7. Repita o processo para `dor-empresario-section.json`
+8. Continue importando as demais seções à medida que for testando
+
+### 2. Método Template Completo (Alternativo)
 
 1. No WordPress, navegue até Elementor > Templates > Páginas
 2. Clique em "Importar Templates"
 3. Selecione o arquivo `clipup-home.json`
 4. Aguarde a conclusão da importação
 5. Aplique o template a uma nova página
+
+> **Nota**: Recomendamos o método por seções para evitar problemas de compatibilidade
 
 ### 2. Adicione os Scripts e Estilos
 
