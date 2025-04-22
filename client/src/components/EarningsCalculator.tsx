@@ -306,9 +306,9 @@ export default function EarningsCalculator() {
                         >
                           <div className="flex items-center mb-1">
                             <Sparkles className="h-4 w-4 text-primary mr-2" />
-                            <p className="text-muted-foreground text-sm">Blinks por vídeo</p>
+                            <p className="text-muted-foreground text-sm">Impacto por vídeo</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">{blinksPerVideo}</p>
+                          <p className="text-primary font-bold text-2xl">{blinksPerVideo} blinks</p>
                         </motion.div>
                         <motion.div 
                           className="bg-muted p-4 rounded-lg border border-muted shadow-sm"
@@ -319,9 +319,9 @@ export default function EarningsCalculator() {
                         >
                           <div className="flex items-center mb-1">
                             <CalendarClock className="h-4 w-4 text-primary mr-2" />
-                            <p className="text-muted-foreground text-sm">Total de Blinks</p>
+                            <p className="text-muted-foreground text-sm">Alcance potencial</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">{totalBlinks}</p>
+                          <p className="text-primary font-bold text-2xl">{totalBlinks * 150}+ pessoas</p>
                         </motion.div>
                         <motion.div 
                           className="bg-muted p-4 rounded-lg border border-muted shadow-sm"
@@ -332,9 +332,9 @@ export default function EarningsCalculator() {
                         >
                           <div className="flex items-center mb-1">
                             <DollarSign className="h-4 w-4 text-primary mr-2" />
-                            <p className="text-muted-foreground text-sm">Valor em Reais</p>
+                            <p className="text-muted-foreground text-sm">Retorno estimado</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">R$ {animatedValue.toFixed(2)}</p>
+                          <p className="text-primary font-bold text-2xl">R$ {(animatedValue * 3.5).toFixed(2)}</p>
                         </motion.div>
                       </motion.div>
                     )}
@@ -344,15 +344,15 @@ export default function EarningsCalculator() {
                 <div className="p-6 bg-muted border-t border-muted">
                   <p className="text-muted-foreground mb-4 text-sm">
                     <InfoIcon className="inline-block mr-2 h-4 w-4" /> 
-                    Este é apenas um cálculo estimado com base nos valores médios. O valor real pode variar 
-                    de acordo com a demanda e especificações de cada projeto.
+                    Este é apenas um cálculo estimado com base nos resultados médios observados. O impacto real pode variar 
+                    de acordo com o setor, público-alvo e objetivos específicos da sua empresa.
                   </p>
                   <motion.div
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                   >
                     <Button className="w-full shadow-lg shadow-primary/20 font-medium">
-                      Começar a ganhar agora <ArrowRight className="ml-2 h-4 w-4" />
+                      Impulsionar minha marca agora <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </motion.div>
                 </div>
@@ -369,29 +369,29 @@ export default function EarningsCalculator() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <h3 className="text-2xl font-bold text-foreground text-center mb-8">O que nossos criadores dizem</h3>
+          <h3 className="text-2xl font-bold text-foreground text-center mb-8">O que nossas empresas parceiras dizem</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop",
-                name: "Laura Santos",
-                role: "Design de Interiores",
-                testimonial: "Comecei gravando 5 depoimentos por semana. Em 3 meses, já estava fazendo disso minha renda principal. A plataforma conecta você com clientes que realmente valorizam qualidade.",
+                name: "Carolina Mendonça",
+                role: "Diretora de Marketing, TechSoft",
+                testimonial: "Após 3 meses usando vídeos de depoimentos reais, aumentamos nossa taxa de conversão em 37%. Os consumidores confiam muito mais em opiniões autênticas do que em nossa própria publicidade.",
                 rating: 5
               },
               {
                 image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=150&h=150&fit=crop",
-                name: "Carlos Mendes",
-                role: "Professor",
-                testimonial: "Faço unboxings e reviews nos finais de semana. No primeiro mês já faturei mais de R$ 1.200. O melhor é a flexibilidade e o pagamento pontual, sem complicações.",
+                name: "Roberto Almeida",
+                role: "CEO, Móveis Design",
+                testimonial: "Os unboxings geraram um impacto imenso nas nossas vendas online. Clientes podem ver o produto sendo desembalado e usado por pessoas reais, diminuindo nossas devoluções em 42%.",
                 rating: 5
               },
               {
                 image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop",
-                name: "Marina Costa",
-                role: "Estudante",
-                testimonial: "Consigo conciliar os estudos com a criação de conteúdo. Gravo entre 10-15 vídeos por mês e isso me ajuda a pagar as contas e ainda sobra para investir. Plataforma incrível!",
+                name: "Fernanda Torres",
+                role: "Gerente de Produto, BeautyCosmetics",
+                testimonial: "Contratamos 5 vídeos para redes sociais e o ROI foi impressionante. O engajamento aumentou 3x comparado aos nossos anúncios tradicionais e o custo por aquisição caiu pela metade.",
                 rating: 4.5
               }
             ].map((testimonial, index) => (
