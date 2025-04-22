@@ -137,10 +137,10 @@ export default function Home() {
               </div>
               
               <Link href="/freelancer">
-                <a className="inline-flex items-center text-primary font-medium">
+                <div className="inline-flex items-center text-primary font-medium cursor-pointer">
                   Saiba mais sobre como ganhar dinheiro
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </div>
               </Link>
             </div>
           </div>
@@ -283,18 +283,18 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
             <Link href="/empresa">
-              <a className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white text-lg px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+              <div className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white text-lg px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 cursor-pointer">
                 <Building className="h-5 w-5" />
                 Área da Empresa
                 <ChevronRight className="h-5 w-5" />
-              </a>
+              </div>
             </Link>
             <Link href="/freelancer">
-              <a className="w-full sm:w-auto bg-card hover:bg-muted border border-muted text-foreground text-lg px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+              <div className="w-full sm:w-auto bg-card hover:bg-muted border border-muted text-foreground text-lg px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 cursor-pointer">
                 <User className="h-5 w-5" />
                 Área do Freelancer
                 <ChevronRight className="h-5 w-5" />
-              </a>
+              </div>
             </Link>
           </div>
         </div>
@@ -356,23 +356,23 @@ export default function Home() {
               <ul className="space-y-4">
                 <li>
                   <Link href="/">
-                    <a className="text-muted-foreground hover:text-foreground transition-colors">
+                    <div className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
                       Página Inicial
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li>
                   <Link href="/empresa">
-                    <a className="text-muted-foreground hover:text-foreground transition-colors">
+                    <div className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
                       Para Empresas
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li>
                   <Link href="/freelancer">
-                    <a className="text-muted-foreground hover:text-foreground transition-colors">
+                    <div className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
                       Para Freelancers
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li>
