@@ -1,0 +1,235 @@
+{
+    "version": "0.4",
+    "title": "ClipUp - Como Funciona",
+    "type": "section",
+    "content": [
+        {
+            "id": "cfunc123",
+            "elType": "section",
+            "settings": {
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "padding": {
+                    "unit": "px",
+                    "top": "60",
+                    "right": "20",
+                    "bottom": "60",
+                    "left": "20"
+                },
+                "padding_tablet": {
+                    "unit": "px",
+                    "top": "40",
+                    "right": "20",
+                    "bottom": "40",
+                    "left": "20"
+                },
+                "padding_mobile": {
+                    "unit": "px",
+                    "top": "30",
+                    "right": "15",
+                    "bottom": "30",
+                    "left": "15"
+                },
+                "css_classes": "clipup-como-funciona"
+            },
+            "elements": [
+                {
+                    "id": "cfunc-col123",
+                    "elType": "column",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null
+                    },
+                    "elements": [
+                        {
+                            "id": "cfunc-titulo123",
+                            "elType": "widget",
+                            "settings": {
+                                "title": "Como funciona",
+                                "header_size": "h2",
+                                "align": "center",
+                                "title_color": "#222222",
+                                "typography_typography": "custom",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 32,
+                                    "sizes": []
+                                },
+                                "typography_font_weight": "700",
+                                "typography_line_height": {
+                                    "unit": "em",
+                                    "size": 1.2,
+                                    "sizes": []
+                                },
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "40",
+                                    "left": "0",
+                                    "isLinked": false
+                                }
+                            },
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "cfunc-grid123",
+                            "elType": "section",
+                            "settings": {
+                                "structure": "30",
+                                "margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "30",
+                                    "left": "0"
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "cfunc-step1-col",
+                                    "elType": "column",
+                                    "settings": {
+                                        "_column_size": 33,
+                                        "_inline_size": null,
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "10",
+                                            "right": "10",
+                                            "bottom": "10",
+                                            "left": "10"
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "cfunc-step1",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div class=\"clipup-card clipup-animate\" style=\"background-color: #fff; border: 1px solid #eee; border-radius: 12px; padding: 24px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); text-align: center; position: relative;\">\n  <div style=\"position: absolute; top: -16px; left: -16px; width: 32px; height: 32px; background-color: var(--e-global-color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;\">1</div>\n  \n  <div style=\"width: 48px; height: 48px; background-color: rgba(var(--e-global-color-primary-rgb), 0.1); color: var(--e-global-color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;\">\n    <i class=\"fas fa-check-circle\" style=\"font-size: 24px;\"></i>\n  </div>\n  \n  <h4 style=\"font-size: 18px; font-weight: 700; margin-bottom: 8px;\">Publique o tipo de vídeo</h4>\n  <p style=\"color: #666; font-size: 14px;\">Defina o tipo de conteúdo que sua empresa precisa</p>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "cfunc-step2-col",
+                                    "elType": "column",
+                                    "settings": {
+                                        "_column_size": 33,
+                                        "_inline_size": null,
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "10",
+                                            "right": "10",
+                                            "bottom": "10",
+                                            "left": "10"
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "cfunc-step2",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div class=\"clipup-card clipup-animate\" style=\"background-color: #fff; border: 1px solid #eee; border-radius: 12px; padding: 24px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); text-align: center; position: relative;\">\n  <div style=\"position: absolute; top: -16px; left: -16px; width: 32px; height: 32px; background-color: var(--e-global-color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;\">2</div>\n  \n  <div style=\"width: 48px; height: 48px; background-color: rgba(var(--e-global-color-primary-rgb), 0.1); color: var(--e-global-color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;\">\n    <i class=\"fas fa-video\" style=\"font-size: 24px;\"></i>\n  </div>\n  \n  <h4 style=\"font-size: 18px; font-weight: 700; margin-bottom: 8px;\">Receba propostas</h4>\n  <p style=\"color: #666; font-size: 14px;\">Compare e escolha entre criadores verificados</p>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "cfunc-step3-col",
+                                    "elType": "column",
+                                    "settings": {
+                                        "_column_size": 33,
+                                        "_inline_size": null,
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "10",
+                                            "right": "10",
+                                            "bottom": "10",
+                                            "left": "10"
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "cfunc-step3",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "editor": "<div class=\"clipup-card clipup-animate\" style=\"background-color: #fff; border: 1px solid #eee; border-radius: 12px; padding: 24px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); text-align: center; position: relative;\">\n  <div style=\"position: absolute; top: -16px; left: -16px; width: 32px; height: 32px; background-color: var(--e-global-color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;\">3</div>\n  \n  <div style=\"width: 48px; height: 48px; background-color: rgba(var(--e-global-color-primary-rgb), 0.1); color: var(--e-global-color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;\">\n    <i class=\"fas fa-microphone\" style=\"font-size: 24px;\"></i>\n  </div>\n  \n  <h4 style=\"font-size: 18px; font-weight: 700; margin-bottom: 8px;\">Aprove e receba</h4>\n  <p style=\"color: #666; font-size: 14px;\">Vídeo finalizado em poucos dias</p>\n</div>",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0"
+                                                }
+                                            },
+                                            "widgetType": "text-editor"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cfunc-footer123",
+                            "elType": "widget",
+                            "settings": {
+                                "editor": "<div style=\"text-align: center; background-color: rgba(var(--e-global-color-primary-rgb), 0.05); padding: 16px; border-radius: 8px;\">\n  <p style=\"margin: 0; color: #555; font-size: 14px; font-weight: 500;\">\n    Sem contratos complexos. Sem agência. Sem enrolação.\n  </p>\n</div>",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0"
+                                },
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0"
+                                }
+                            },
+                            "widgetType": "text-editor"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
