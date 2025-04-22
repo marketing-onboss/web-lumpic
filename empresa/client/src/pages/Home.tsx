@@ -5,6 +5,7 @@ import EarningsCalculator from "@/components/EarningsCalculator";
 import LumpzCurrency from "@/components/LumpzCurrency";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
+import SharedNavbar from "@/components/SharedNavbar";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Home() {
