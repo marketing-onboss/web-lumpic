@@ -40,13 +40,13 @@ export function ThemeToggle() {
             <span 
               className={`${animated ? 'theme-toggle-icon-out' : 'theme-toggle-icon-in'}`}
             >
-              <Sun className="h-5 w-5 text-amber-500" />
+              <Sun className="h-5 w-5 text-primary" />
             </span>
           ) : (
             <span 
               className={`${animated ? 'theme-toggle-icon-out' : 'theme-toggle-icon-in'}`}
             >
-              <Moon className="h-5 w-5 text-blue-400" />
+              <Moon className="h-5 w-5 text-secondary" />
             </span>
           )}
         </div>
