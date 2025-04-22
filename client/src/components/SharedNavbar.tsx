@@ -151,15 +151,20 @@ export default function SharedNavbar({ currentPage }: SharedNavbarProps) {
             </a>
           </div>
           <div className="pt-4 pb-3 border-t border-muted">
-            <div className="flex items-center px-5">
-              <div className="flex-shrink-0">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-medium">
-                  ?
+            <div className="flex items-center justify-between px-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-medium">
+                    ?
+                  </div>
+                </div>
+                <div className="ml-3">
+                  <div className="text-base font-medium text-foreground">Visitante</div>
+                  <div className="text-sm font-medium text-muted-foreground">visitante@exemplo.com</div>
                 </div>
               </div>
-              <div className="ml-3">
-                <div className="text-base font-medium text-foreground">Visitante</div>
-                <div className="text-sm font-medium text-muted-foreground">visitante@exemplo.com</div>
+              <div>
+                <ThemeToggle />
               </div>
             </div>
             <div className="mt-3 px-2 space-y-1">

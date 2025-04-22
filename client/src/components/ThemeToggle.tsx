@@ -5,11 +5,24 @@ import { useEffect, useState } from "react";
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [animated, setAnimated] = useState(false);
 
   // Ensure the component is mounted before rendering to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const toggleTheme = () => {
+    setAnimated(true);
+    setTimeout(() => {
+      setTheme(theme === "light" ? "dark" : "light");
+    }, 150);
+    
+    // Reset animation state after completion
+    setTimeout(() => {
+      setAnimated(false);
+    }, 500);
+  };
 
   if (!mounted) {
     return null;
@@ -18,21 +31,24 @@ export function ThemeToggle() {
   return (
     <div className="relative inline-block">
       <button
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="bg-background border border-muted rounded-full p-2 hover:bg-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
+        onClick={toggleTheme}
+        className="bg-card border border-muted rounded-full p-2 hover:bg-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary shadow-md"
         aria-label="Toggle theme"
       >
         <div className="relative w-6 h-6 flex items-center justify-center overflow-hidden">
-          <span 
-            className={`absolute transition-all duration-500 ease-in-out transform ${theme === 'dark' ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
-          >
-            <Sun className="h-5 w-5 text-amber-500" />
-          </span>
-          <span 
-            className={`absolute transition-all duration-500 ease-in-out transform ${theme === 'dark' ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}
-          >
-            <Moon className="h-5 w-5 text-blue-400" />
-          </span>
+          {theme === 'light' ? (
+            <span 
+              className={`${animated ? 'theme-toggle-icon-out' : 'theme-toggle-icon-in'}`}
+            >
+              <Sun className="h-5 w-5 text-amber-500" />
+            </span>
+          ) : (
+            <span 
+              className={`${animated ? 'theme-toggle-icon-out' : 'theme-toggle-icon-in'}`}
+            >
+              <Moon className="h-5 w-5 text-blue-400" />
+            </span>
+          )}
         </div>
       </button>
     </div>
