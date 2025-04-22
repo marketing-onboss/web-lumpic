@@ -5,6 +5,7 @@ import EarningsCalculator from "@/components/EarningsCalculator";
 import LumpzCurrency from "@/components/LumpzCurrency";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
+import SharedNavbar from "@/components/SharedNavbar";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
 
   return (
     <div className="bg-background">
+      <SharedNavbar currentPage="freelancer" />
       {/* Hero Section - Freelancer */}
       <section className="pt-20 pb-16 md:pb-24 bg-background" id="hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

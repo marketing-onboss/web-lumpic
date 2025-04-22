@@ -13,6 +13,7 @@ export default function Home() {
 
   return (
     <div className="bg-background">
+      <SharedNavbar currentPage="empresa" />
       {/* Hero Section - Empresas */}
       <section className="pt-20 pb-16 md:pb-24 bg-background" id="hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
