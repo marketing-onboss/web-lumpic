@@ -1,183 +1,204 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { MenuIcon, XIcon } from "lucide-react";
 
-type SharedNavbarProps = {
-  currentPage: "institucional" | "empresa" | "freelancer";
-};
+interface SharedNavbarProps {
+  currentPage: "institucional" | "freelancer" | "empresa";
+}
 
-export default function SharedNavbar({ currentPage }: SharedNavbarProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-muted z-50">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md shadow-sm py-3"
+          : "bg-transparent py-5"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <nav className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/">
-              <div className="flex items-center space-x-2 cursor-pointer">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-primary"
-                >
-                  <rect
-                    x="6"
-                    y="6"
-                    width="20"
-                    height="20"
-                    rx="5"
-                    className="fill-primary"
-                  />
-                  <path
-                    d="M15 12L20 16L15 20V12Z"
-                    fill="white"
-                  />
-                </svg>
-                <span className="text-xl font-bold text-foreground">ClipUp</span>
-              </div>
-            </Link>
-          </div>
+          <Link href="/">
+            <a className="flex items-center space-x-2">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-primary"
+              >
+                <rect
+                  x="6"
+                  y="6"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  className="fill-primary"
+                />
+                <path
+                  d="M15 12L20 16L15 20V12Z"
+                  fill="white"
+                />
+              </svg>
+              <span className="text-xl font-bold text-foreground">ClipUp</span>
+            </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link href="/">
-              <div className={`text-muted-foreground hover:text-foreground transition-colors px-1 py-2 text-sm font-medium cursor-pointer ${currentPage === 'institucional' ? 'text-foreground font-semibold border-b-2 border-primary' : ''}`}>
-                Início
-              </div>
-            </Link>
-            <Link href="/empresa">
-              <div className={`text-muted-foreground hover:text-foreground transition-colors px-1 py-2 text-sm font-medium cursor-pointer ${currentPage === 'empresa' ? 'text-foreground font-semibold border-b-2 border-primary' : ''}`}>
-                Para Empresas
-              </div>
+              <a className={`text-sm font-medium transition-colors hover:text-primary ${
+                currentPage === "institucional" ? "text-primary" : "text-foreground"
+              }`}>
+                Página Inicial
+              </a>
             </Link>
             <Link href="/freelancer">
-              <div className={`text-muted-foreground hover:text-foreground transition-colors px-1 py-2 text-sm font-medium cursor-pointer ${currentPage === 'freelancer' ? 'text-foreground font-semibold border-b-2 border-primary' : ''}`}>
+              <a className={`text-sm font-medium transition-colors hover:text-primary ${
+                currentPage === "freelancer" ? "text-primary" : "text-foreground"
+              }`}>
                 Para Freelancers
-              </div>
+              </a>
             </Link>
-            <div className="relative">
-              <button
-                className="flex items-center text-muted-foreground hover:text-foreground transition-colors px-1 py-2 text-sm font-medium"
-                onClick={toggleDropdown}
-              >
-                <span>Recursos</span>
-                <ChevronDown className={`ml-1 h-4 w-4 transform transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-background rounded-md shadow-lg border border-muted py-1 z-50">
-                  <a href="#" className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted">
-                    Blog
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted">
-                    Tutoriais
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted">
-                    Documentação
-                  </a>
-                </div>
-              )}
-            </div>
-          </nav>
+            <Link href="/empresa">
+              <a className={`text-sm font-medium transition-colors hover:text-primary ${
+                currentPage === "empresa" ? "text-primary" : "text-foreground"
+              }`}>
+                Para Empresas
+              </a>
+            </Link>
+            <a href="#" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
+              Blog
+            </a>
+            <a href="#" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
+              Ajuda
+            </a>
+          </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              className="text-foreground inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
-              onClick={toggleMenu}
+          {/* Right Side Actions */}
+          <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-2">
+              <Link href="/login">
+                <a className="text-sm font-medium text-foreground px-3 py-2 rounded-md transition-colors hover:bg-muted">
+                  Entrar
+                </a>
+              </Link>
+              <Link href="/cadastro">
+                <a className="text-sm font-medium bg-primary text-primary-foreground px-3 py-2 rounded-md transition-colors hover:bg-primary/90">
+                  Cadastrar
+                </a>
+              </Link>
+            </div>
+            
+            <ThemeToggle />
+            
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden h-10 w-10 flex items-center justify-center rounded-full bg-muted text-muted-foreground hover:text-foreground"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
+              {mobileMenuOpen ? (
+                <XIcon className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <MenuIcon className="h-5 w-5" />
               )}
             </button>
           </div>
-
-          {/* Login/Register buttons and Theme Toggle */}
-          <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
-            <a href="#" className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium">
-              Login
-            </a>
-            <a href="#" className="bg-primary text-white hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium">
-              Cadastrar
-            </a>
-          </div>
-        </div>
+        </nav>
       </div>
 
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-muted">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-card/95 backdrop-blur-md overflow-hidden transition-all duration-300">
+          <div className="px-4 py-6 space-y-5">
             <Link href="/">
-              <div className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer ${currentPage === 'institucional' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}>
-                Início
-              </div>
-            </Link>
-            <Link href="/empresa">
-              <div className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer ${currentPage === 'empresa' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}>
-                Para Empresas
-              </div>
+              <a 
+                className={`block text-center text-base font-medium py-3 rounded-md transition-colors ${
+                  currentPage === "institucional" 
+                    ? "bg-primary/10 text-primary" 
+                    : "text-foreground hover:bg-muted"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Página Inicial
+              </a>
             </Link>
             <Link href="/freelancer">
-              <div className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer ${currentPage === 'freelancer' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}>
+              <a 
+                className={`block text-center text-base font-medium py-3 rounded-md transition-colors ${
+                  currentPage === "freelancer" 
+                    ? "bg-primary/10 text-primary" 
+                    : "text-foreground hover:bg-muted"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Para Freelancers
-              </div>
+              </a>
             </Link>
-            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:bg-muted">
+            <Link href="/empresa">
+              <a 
+                className={`block text-center text-base font-medium py-3 rounded-md transition-colors ${
+                  currentPage === "empresa" 
+                    ? "bg-primary/10 text-primary" 
+                    : "text-foreground hover:bg-muted"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Para Empresas
+              </a>
+            </Link>
+            <a 
+              href="#" 
+              className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Blog
             </a>
-            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:bg-muted">
-              Tutoriais
+            <a 
+              href="#" 
+              className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Ajuda
             </a>
-            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:bg-muted">
-              Documentação
-            </a>
-          </div>
-          <div className="pt-4 pb-3 border-t border-muted">
-            <div className="flex items-center justify-between px-5">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-medium">
-                    ?
-                  </div>
-                </div>
-                <div className="ml-3">
-                  <div className="text-base font-medium text-foreground">Visitante</div>
-                  <div className="text-sm font-medium text-muted-foreground">visitante@exemplo.com</div>
-                </div>
-              </div>
-              <div>
-                <ThemeToggle />
-              </div>
-            </div>
-            <div className="mt-3 px-2 space-y-1">
-              <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:bg-muted">
-                Login
-              </a>
-              <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:bg-muted bg-primary/10 text-primary">
-                Cadastrar
-              </a>
+            
+            <div className="flex flex-col space-y-3 pt-4 border-t border-border">
+              <Link href="/login">
+                <a 
+                  className="block text-center text-base font-medium text-foreground py-3 rounded-md border border-border hover:bg-muted transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Entrar
+                </a>
+              </Link>
+              <Link href="/cadastro">
+                <a 
+                  className="block text-center text-base font-medium bg-primary text-primary-foreground py-3 rounded-md hover:bg-primary/90 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Cadastrar
+                </a>
+              </Link>
             </div>
           </div>
         </div>
       )}
     </header>
   );
-}
+};
+
+export default SharedNavbar;

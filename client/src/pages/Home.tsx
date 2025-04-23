@@ -6,7 +6,7 @@ import {
   CheckCircleIcon, VideoIcon, DollarSignIcon, UserIcon, LightbulbIcon,
   UsersIcon, CreditCardIcon, PackageIcon, MessageSquareIcon, FlameIcon,
   BeakerIcon, SmartphoneIcon, BarChartIcon, ShieldCheckIcon, EyeIcon,
-  LifeBuoyIcon, TargetIcon, GiftIcon
+  LifeBuoyIcon, TargetIcon, GiftIcon, StarIcon
 } from "lucide-react";
 import { initAnimations } from "@/scripts/animations";
 
@@ -196,74 +196,110 @@ export default function Home() {
       {/* Video Types Section */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">🎥 Qual tipo de vídeo você precisa?</h2>
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Qual tipo de vídeo você precisa?</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Diversas categorias de conteúdo para atender às necessidades específicas do seu negócio
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
             {/* Video Type 1 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <PackageIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">📦 Unboxings com pessoas reais</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Unboxings com pessoas reais</h3>
               <p className="text-muted-foreground">
-                Demonstrações genuínas de produtos que geram confiança e interesse.
+                Demonstrações genuínas de produtos que geram confiança e interesse nos consumidores.
               </p>
             </div>
             
             {/* Video Type 2 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <MessageSquareIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">🗣 Depoimentos que geram empatia</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Depoimentos que geram empatia</h3>
               <p className="text-muted-foreground">
-                Histórias reais de usuários que amplificam a credibilidade da sua marca.
+                Histórias reais de usuários que amplificam a credibilidade da sua marca e aumentam conversões.
               </p>
             </div>
             
             {/* Video Type 3 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <FlameIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">🔥 Vídeos promocionais</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos promocionais</h3>
               <p className="text-muted-foreground">
-                Conteúdo otimizado para tráfego pago, com alto potencial de conversão.
+                Conteúdo otimizado para tráfego pago, com alto potencial de conversão e retorno sobre investimento.
               </p>
             </div>
             
             {/* Video Type 4 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <BeakerIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">🧪 Conteúdo UGC que performa</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Conteúdo UGC que performa</h3>
               <p className="text-muted-foreground">
-                Vídeos no estilo User Generated Content, com aparência natural e alta conversão.
+                Vídeos no estilo User Generated Content, com aparência natural e alta taxa de engajamento.
               </p>
             </div>
             
             {/* Video Type 5 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <SmartphoneIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">📲 Reviews naturais</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Reviews naturais</h3>
               <p className="text-muted-foreground">
-                Análises genuínas de produtos feitas especificamente para redes sociais.
+                Análises genuínas de produtos feitas especificamente para redes sociais e plataformas de vídeo.
               </p>
             </div>
             
-            {/* Platform Feature 6 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            {/* Video Type 6 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <HeartIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">❤️ Para todos os objetivos</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Conteúdo para engajamento</h3>
               <p className="text-muted-foreground">
-                Seja para vender mais, gerar confiança ou humanizar sua marca — temos o criador certo para você.
+                Material pensado para conquistar audiências nas redes sociais e manter suas páginas ativas.
+              </p>
+            </div>
+            
+            {/* Video Type 7 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <TargetIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos para nichos específicos</h3>
+              <p className="text-muted-foreground">
+                Conteúdo customizado para mercados especializados que demandam conhecimento técnico.
+              </p>
+            </div>
+            
+            {/* Video Type 8 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <GiftIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Lançamentos de produtos</h3>
+              <p className="text-muted-foreground">
+                Apresentações impactantes de novos produtos para gerar expectativa e primeiras vendas.
+              </p>
+            </div>
+            
+            {/* Video Type 9 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <LifeBuoyIcon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Tutoriais e instruções</h3>
+              <p className="text-muted-foreground">
+                Demonstrações claras de como usar produtos e serviços, reduzindo dúvidas e suporte.
               </p>
             </div>
           </div>
@@ -273,13 +309,16 @@ export default function Home() {
       {/* Metrics Section */}
       <section className="py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">📊 Prova de que funciona</h2>
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Resultados comprovados</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Números que demonstram o impacto da nossa plataforma no mercado de vídeo
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 stagger-container">
             {/* Metric 1 */}
-            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="flex flex-col items-center">
                 <VideoIcon className="h-10 w-10 text-primary mb-2" />
                 <h3 className="text-lg font-semibold text-foreground mb-1">Vídeos entregues</h3>
@@ -288,7 +327,7 @@ export default function Home() {
             </div>
             
             {/* Metric 2 */}
-            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="flex flex-col items-center">
                 <UsersIcon className="h-10 w-10 text-primary mb-2" />
                 <h3 className="text-lg font-semibold text-foreground mb-1">Freelancers ativos</h3>
@@ -297,7 +336,7 @@ export default function Home() {
             </div>
             
             {/* Metric 3 */}
-            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="flex flex-col items-center">
                 <HeartIcon className="h-10 w-10 text-primary mb-2" />
                 <h3 className="text-lg font-semibold text-foreground mb-1">Clientes satisfeitos</h3>
@@ -306,7 +345,7 @@ export default function Home() {
             </div>
             
             {/* Metric 4 */}
-            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition">
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="flex flex-col items-center">
                 <DollarSignIcon className="h-10 w-10 text-primary mb-2" />
                 <h3 className="text-lg font-semibold text-foreground mb-1">Pagos com segurança</h3>
@@ -314,60 +353,74 @@ export default function Home() {
               </div>
             </div>
           </div>
+          
+          <div className="mt-10 text-center">
+            <p className="text-lg text-muted-foreground">Mais de 98% dos clientes relatam aumento nas conversões após utilizarem nossos serviços</p>
+          </div>
         </div>
       </section>
       
       {/* Security Section */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">🔒 Contrate com tranquilidade</h2>
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Contrate com tranquilidade</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Sistema de proteção para garantir a qualidade das entregas e segurança para ambas as partes
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-container">
             {/* Security 1 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <CheckCircleIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Dinheiro protegido</h3>
               <p className="text-muted-foreground text-center">
-                Seu dinheiro só é liberado após a entrega do vídeo aprovado.
+                Seu dinheiro só é liberado após a entrega do vídeo aprovado e sua satisfação confirmada.
               </p>
             </div>
             
             {/* Security 2 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <ClockIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Período de revisão</h3>
               <p className="text-muted-foreground text-center">
-                Você tem até 7 dias para revisar e pedir ajustes.
+                Você tem até 7 dias para revisar e solicitar ajustes nos vídeos entregues.
               </p>
             </div>
             
             {/* Security 3 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <HeartIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Suporte dedicado</h3>
               <p className="text-muted-foreground text-center">
-                Ajuda em qualquer etapa do seu projeto.
+                Equipe disponível para ajudar em qualquer etapa do seu projeto, desde a contratação até a entrega.
               </p>
             </div>
             
             {/* Security 4 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <VideoIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Total transparência</h3>
               <p className="text-muted-foreground text-center">
-                Acompanhe cada etapa do início ao fim.
+                Acompanhe cada etapa do processo em tempo real, com atualizações de status automatizadas.
               </p>
             </div>
+          </div>
+          
+          <div className="mt-12 bg-card/50 rounded-xl p-8 shadow-md border border-primary/10">
+            <h3 className="text-xl font-bold text-foreground mb-4 text-center">Garantia de qualidade ClipUp</h3>
+            <p className="text-muted-foreground text-center">
+              Se você não ficar satisfeito com a entrega, devolvemos 100% do seu investimento ou encontramos outro profissional sem custo adicional.
+            </p>
           </div>
         </div>
       </section>
@@ -375,38 +428,84 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">💬 Quem contratou, recomenda:</h2>
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Depoimentos de clientes satisfeitos</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Histórias reais de quem experimentou nossos serviços e obteve resultados tangíveis
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-container">
             {/* Testimonial 1 */}
-            <div className="bg-background rounded-xl p-6 shadow-md">
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="mb-6">
+                <div className="flex">
+                  {Array(5).fill(0).map((_, i) => (
+                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                  ))}
+                </div>
+              </div>
               <p className="text-foreground text-lg italic mb-4">
-                "Usei pra criar uma campanha de Dia das Mães. Pedi 2 vídeos, recebi 4. Resultado? Dobrei o faturamento em uma semana."
+                "Usei para criar uma campanha de Dia das Mães. Pedi 2 vídeos, recebi 4. Resultado? Dobrei o faturamento em uma semana."
               </p>
               <div className="flex items-center">
                 <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">P</div>
                 <div className="ml-4">
-                  <p className="font-medium text-foreground">Patrícia</p>
+                  <p className="font-medium text-foreground">Patrícia Mendes</p>
                   <p className="text-sm text-muted-foreground">Loja de presentes personalizados</p>
                 </div>
               </div>
             </div>
             
             {/* Testimonial 2 */}
-            <div className="bg-background rounded-xl p-6 shadow-md">
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="mb-6">
+                <div className="flex">
+                  {Array(5).fill(0).map((_, i) => (
+                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                  ))}
+                </div>
+              </div>
               <p className="text-foreground text-lg italic mb-4">
-                "Fui atendido em 2h por um criador que parecia ler meus pensamentos. Já virou meu parceiro fixo."
+                "Fui atendido em 2 horas por um criador que parecia ler meus pensamentos. Já virou meu parceiro fixo para todas as campanhas."
               </p>
               <div className="flex items-center">
                 <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">R</div>
                 <div className="ml-4">
-                  <p className="font-medium text-foreground">Rafael</p>
-                  <p className="text-sm text-muted-foreground">Agência de tráfego</p>
+                  <p className="font-medium text-foreground">Rafael Torres</p>
+                  <p className="text-sm text-muted-foreground">Agência de tráfego digital</p>
                 </div>
               </div>
             </div>
+            
+            {/* Testimonial 3 */}
+            <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="mb-6">
+                <div className="flex">
+                  {Array(5).fill(0).map((_, i) => (
+                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-foreground text-lg italic mb-4">
+                "A qualidade dos vídeos superou minhas expectativas. Conseguimos uma taxa de conversão 3x maior que nossa média anterior."
+              </p>
+              <div className="flex items-center">
+                <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">M</div>
+                <div className="ml-4">
+                  <p className="font-medium text-foreground">Mariana Costa</p>
+                  <p className="text-sm text-muted-foreground">E-commerce de moda</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link href="#">
+              <button className="clipup-btn-outline mx-auto">
+                Ver mais depoimentos
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -414,40 +513,80 @@ export default function Home() {
       {/* Pricing Section */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">💸 Planos simples, sem surpresas</h2>
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Planos simples, sem surpresas</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Estrutura de preços transparente e acessível para qualquer orçamento
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 stagger-container">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <DollarSignIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Pague por projeto</h3>
-              <p className="text-muted-foreground">Sem mensalidades ou taxas escondidas</p>
+              <p className="text-muted-foreground">Sem mensalidades ou taxas escondidas. Você só paga pelo que usar, quando usar.</p>
             </div>
             
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <PackageIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos a partir de 10 Lumpz</h3>
-              <p className="text-muted-foreground">Apenas R$ 49 para começar</p>
+              <p className="text-muted-foreground">Apenas R$ 49,90 para começar seus primeiros projetos. Investimento acessível com alto retorno.</p>
             </div>
             
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center">
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <LightbulbIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Valores transparentes</h3>
-              <p className="text-muted-foreground">Cada serviço mostra exatamente o que está incluso</p>
+              <p className="text-muted-foreground">Cada serviço mostra exatamente o que está incluso, sem cobranças extras ou surpresas desagradáveis.</p>
             </div>
           </div>
           
-          <div className="text-center">
+          <div className="mt-10 bg-card/50 p-8 rounded-xl shadow-md border border-primary/10">
+            <h3 className="text-xl font-bold text-foreground mb-4 text-center">Tabela comparativa de planos</h3>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-4 px-6 text-left">Tipo de vídeo</th>
+                    <th className="py-4 px-6 text-center">Básico</th>
+                    <th className="py-4 px-6 text-center">Padrão</th>
+                    <th className="py-4 px-6 text-center">Premium</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <td className="py-4 px-6">Depoimento</td>
+                    <td className="py-4 px-6 text-center">10 Lumpz</td>
+                    <td className="py-4 px-6 text-center">20 Lumpz</td>
+                    <td className="py-4 px-6 text-center">30 Lumpz</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-4 px-6">Unboxing</td>
+                    <td className="py-4 px-6 text-center">15 Lumpz</td>
+                    <td className="py-4 px-6 text-center">25 Lumpz</td>
+                    <td className="py-4 px-6 text-center">40 Lumpz</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6">Promocional</td>
+                    <td className="py-4 px-6 text-center">20 Lumpz</td>
+                    <td className="py-4 px-6 text-center">35 Lumpz</td>
+                    <td className="py-4 px-6 text-center">50 Lumpz</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
             <Link href="#">
-              <button className="clipup-btn-outline flex items-center mx-auto">
-                <span className="mr-2">📖</span> Ver exemplos e preços
+              <button className="clipup-btn-outline mx-auto">
+                Ver detalhes completos de preços
               </button>
             </Link>
           </div>
