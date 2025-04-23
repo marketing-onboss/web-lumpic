@@ -54,7 +54,7 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
                   fill="white"
                 />
               </svg>
-              <span className="text-xl font-bold text-foreground">ClipUp</span>
+              <span className="text-xl font-bold text-foreground">Lumpic</span>
             </div>
           </Link>
 

@@ -2,11 +2,12 @@ import { Link } from "wouter";
 import { useEffect } from "react";
 import SharedNavbar from "@/components/SharedNavbar";
 import { 
-  CameraIcon, SmartphoneIcon, CheckCircleIcon, VideoIcon, 
-  DollarSignIcon, UserIcon, LightbulbIcon, UsersIcon, 
-  CreditCardIcon, StarIcon, TrendingUpIcon, HomeIcon,
-  MapPinIcon, MoreHorizontalIcon, ArrowRightIcon,
-  CheckIcon, ShieldCheckIcon, PackageIcon, MessageSquareIcon
+  Camera, Smartphone, CheckCircle, Video, 
+  DollarSign, User, Lightbulb, Users, 
+  CreditCard, Star, TrendingUp, Home,
+  MapPin, MoreHorizontal, ArrowRight,
+  Check, ShieldCheck, Package, MessageSquare,
+  Heart, Sliders, ChevronDown, Lock
 } from "lucide-react";
 import { initAnimations } from "@/scripts/animations";
 
@@ -477,12 +478,12 @@ export default function FreelancerPage() {
                 
                 <div className="mb-6 text-center">
                   <h3 className="text-lg font-medium text-foreground mb-1">Conversão</h3>
-                  <p className="text-xl text-muted-foreground">1 Lumpz = R$ 5</p>
+                  <p className="text-xl text-muted-foreground">Aproximadamente R$ 2 por Lumpz</p>
                 </div>
                 
                 <div className="text-center">
                   <h3 className="text-lg font-medium text-foreground mb-1">Ganhos totais estimados</h3>
-                  <p className="text-4xl font-bold text-primary">R$ 2.500</p>
+                  <p className="text-4xl font-bold text-primary">R$ 1.000</p>
                 </div>
               </div>
             </div>
@@ -582,7 +583,7 @@ export default function FreelancerPage() {
                       </div>
                     </div>
                     <div className="bg-primary/10 px-3 py-2 rounded-lg">
-                      <p className="text-xs font-semibold text-primary">1 Lumpz = R$ 5</p>
+                      <p className="text-xs font-semibold text-primary">Valor estimado por Lumpz</p>
                     </div>
                   </div>
                   
@@ -590,13 +591,13 @@ export default function FreelancerPage() {
                     <div className="flex-1 bg-card/50 rounded-xl p-5 border border-border">
                       <p className="text-sm text-muted-foreground mb-1">Saldo atual</p>
                       <p className="text-2xl font-bold text-foreground">500 <span className="text-primary">Lumpz</span></p>
-                      <p className="text-sm text-muted-foreground mt-1">= R$ 2.500,00</p>
+                      <p className="text-sm text-muted-foreground mt-1">= R$ 1.000,00</p>
                     </div>
                     
                     <div className="flex-1 bg-card/50 rounded-xl p-5 border border-border">
                       <p className="text-sm text-muted-foreground mb-1">Pendente</p>
                       <p className="text-2xl font-bold text-foreground">50 <span className="text-primary">Lumpz</span></p>
-                      <p className="text-sm text-muted-foreground mt-1">= R$ 250,00</p>
+                      <p className="text-sm text-muted-foreground mt-1">= R$ 100,00</p>
                     </div>
                   </div>
                   
@@ -764,6 +765,304 @@ export default function FreelancerPage() {
             <Link href="/veja-mais-tipos">
               <button className="clipup-btn-outline">
                 Ver todos os tipos de vídeos
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
+      {/* Empresas buscando serviços */}
+      <section className="py-16 bg-card/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Empresas que estão buscando serviços agora</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Oportunidades disponíveis neste momento para criadores se cadastrarem
+            </p>
+          </div>
+          
+          <div className="mb-8">
+            <div className="flex justify-between items-center flex-wrap gap-3 mb-6">
+              <div className="flex overflow-x-auto scrollbar-hide gap-2 pb-2">
+                <button className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium">
+                  Todos
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Vídeo Depoimento
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Unboxing
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Vídeo Promocional
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Tutorial
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Review
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Animação
+                </button>
+                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
+                  Edição
+                </button>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <div className="relative flex items-center">
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-background hover:bg-muted text-foreground text-sm font-medium border border-border">
+                    <div className="flex items-center">
+                      <span>Ordenar por</span>
+                      <ChevronDownIcon className="h-4 w-4 ml-1 text-muted-foreground" />
+                    </div>
+                  </button>
+                </div>
+                
+                <div className="relative flex items-center">
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-background hover:bg-muted text-foreground text-sm font-medium border border-border">
+                    <div className="flex items-center">
+                      <span>Preço</span>
+                      <ChevronDownIcon className="h-4 w-4 ml-1 text-muted-foreground" />
+                    </div>
+                  </button>
+                </div>
+                
+                <button className="p-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary">
+                  <SlidersIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+            {/* Serviço 1 - Visível */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" 
+                  alt="Serviço"
+                  className="w-full h-48 object-cover"
+                />
+                <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
+                  <HeartIcon className="h-4 w-4 text-muted-foreground" />
+                </button>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center mb-3">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary mr-2">L</div>
+                  <p className="text-sm text-muted-foreground">Luiz Brass</p>
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2">Vídeo Depoimento Profissional</h3>
+                <div className="flex mb-3">
+                  <div className="flex">
+                    {Array(5).fill(0).map((_, i) => (
+                      <StarIcon key={i} className="h-4 w-4 text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground ml-1">4.8 (32)</p>
+                  <p className="text-xs text-muted-foreground ml-auto">32 vendas</p>
+                </div>
+                <div className="flex items-center justify-between mt-3">
+                  <p className="text-base font-semibold text-primary">2.500 Lumpz</p>
+                  <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                    Ver detalhes
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 2 - Visível */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1664&q=80" 
+                  alt="Serviço"
+                  className="w-full h-48 object-cover"
+                />
+                <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
+                  <HeartIcon className="h-4 w-4 text-red-500 fill-red-500" />
+                </button>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center mb-3">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary mr-2">A</div>
+                  <p className="text-sm text-muted-foreground">Amanda Rocha</p>
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2">Unboxing de Produtos</h3>
+                <div className="flex mb-3">
+                  <div className="flex">
+                    {Array(5).fill(0).map((_, i) => (
+                      <StarIcon key={i} className="h-4 w-4 text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground ml-1">5.0 (18)</p>
+                  <p className="text-xs text-muted-foreground ml-auto">18 vendas</p>
+                </div>
+                <div className="flex items-center justify-between mt-3">
+                  <p className="text-base font-semibold text-primary">3.200 Lumpz</p>
+                  <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                    Ver detalhes
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 3 - Visível */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                  alt="Serviço"
+                  className="w-full h-48 object-cover"
+                />
+                <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
+                  <HeartIcon className="h-4 w-4 text-muted-foreground" />
+                </button>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center mb-3">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary mr-2">R</div>
+                  <p className="text-sm text-muted-foreground">Ricardo Santos</p>
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2">Vídeo Promocional para Redes Sociais</h3>
+                <div className="flex mb-3">
+                  <div className="flex">
+                    {Array(5).fill(0).map((_, i) => (
+                      <StarIcon key={i} className={`h-4 w-4 ${i < 4 ? 'text-primary' : 'text-muted'}`} />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground ml-1">4.0 (26)</p>
+                  <p className="text-xs text-muted-foreground ml-auto">26 vendas</p>
+                </div>
+                <div className="flex items-center justify-between mt-3">
+                  <p className="text-base font-semibold text-primary">4.000 Lumpz</p>
+                  <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                    Ver detalhes
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 4 - Visível */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80" 
+                  alt="Serviço"
+                  className="w-full h-48 object-cover"
+                />
+                <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
+                  <HeartIcon className="h-4 w-4 text-muted-foreground" />
+                </button>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center mb-3">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary mr-2">P</div>
+                  <p className="text-sm text-muted-foreground">Patricia Alves</p>
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2">Tutorial em Vídeo</h3>
+                <div className="flex mb-3">
+                  <div className="flex">
+                    {Array(5).fill(0).map((_, i) => (
+                      <StarIcon key={i} className={`h-4 w-4 ${i < 4 ? 'text-primary' : 'text-muted'}`} />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground ml-1">4.1 (15)</p>
+                  <p className="text-xs text-muted-foreground ml-auto">15 vendas</p>
+                </div>
+                <div className="flex items-center justify-between mt-3">
+                  <p className="text-base font-semibold text-primary">2.800 Lumpz</p>
+                  <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                    Ver detalhes
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 5 - Borrado */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
+              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10 flex flex-col items-center justify-center">
+                <LockIcon className="h-8 w-8 text-primary mb-3" />
+                <p className="text-lg font-semibold text-foreground mb-2">Conteúdo Exclusivo</p>
+                <p className="text-sm text-muted-foreground mb-4 px-6 text-center">Cadastre-se para acessar todos os serviços disponíveis</p>
+                <Link href="/cadastro">
+                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium">
+                    Criar conta grátis
+                  </button>
+                </Link>
+              </div>
+              <div>
+                <div className="w-full h-48 bg-muted"></div>
+                <div className="p-4">
+                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
+                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
+                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="h-5 w-20 bg-muted rounded"></div>
+                    <div className="h-8 w-24 bg-muted rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 6 - Borrado */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
+              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10"></div>
+              <div>
+                <div className="w-full h-48 bg-muted"></div>
+                <div className="p-4">
+                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
+                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
+                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="h-5 w-20 bg-muted rounded"></div>
+                    <div className="h-8 w-24 bg-muted rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 7 - Borrado */}
+            <div className="hidden md:block bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
+              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10"></div>
+              <div>
+                <div className="w-full h-48 bg-muted"></div>
+                <div className="p-4">
+                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
+                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
+                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="h-5 w-20 bg-muted rounded"></div>
+                    <div className="h-8 w-24 bg-muted rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 8 - Borrado */}
+            <div className="hidden md:block bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
+              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10"></div>
+              <div>
+                <div className="w-full h-48 bg-muted"></div>
+                <div className="p-4">
+                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
+                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
+                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="h-5 w-20 bg-muted rounded"></div>
+                    <div className="h-8 w-24 bg-muted rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <Link href="/cadastro">
+              <button className="clipup-btn">
+                Ver todos os serviços disponíveis
               </button>
             </Link>
           </div>
