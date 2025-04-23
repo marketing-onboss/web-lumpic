@@ -178,7 +178,7 @@ export default function Home() {
               <div className="mt-8">
                 <Link href="/freelancer">
                   <button className="clipup-btn w-full">
-                    {t('how.creators.button')}
+                    Quero ser um criador
                   </button>
                 </Link>
               </div>
@@ -199,7 +199,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">1</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step1.title')}</span> detalhando o tipo de vídeo que precisa
+                    <span className="text-foreground font-medium">Cadastre-se</span> detalhando o tipo de vídeo que precisa
                   </p>
                 </div>
                 
@@ -208,7 +208,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">2</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step2.title')}</span> de criadores qualificados
+                    <span className="text-foreground font-medium">Visualize portfólios</span> de criadores qualificados
                   </p>
                 </div>
                 
@@ -217,7 +217,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">3</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step3.title')}</span> os criadores ideais para seu projeto
+                    <span className="text-foreground font-medium">Selecione</span> os criadores ideais para seu projeto
                   </p>
                 </div>
                 
@@ -226,7 +226,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">4</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step4.title')}</span> vídeos autênticos que convertem
+                    <span className="text-foreground font-medium">Receba</span> vídeos autênticos que convertem
                   </p>
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function Home() {
               <div className="mt-8">
                 <Link href="/empresa">
                   <button className="clipup-btn-outline w-full">
-                    {t('how.business.button')}
+                    Quero contratar criadores
                   </button>
                 </Link>
               </div>
