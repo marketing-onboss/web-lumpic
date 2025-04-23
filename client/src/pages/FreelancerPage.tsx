@@ -58,7 +58,7 @@ export default function FreelancerPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                          <SmartphoneIcon className="h-5 w-5 text-black" />
+                          <Smartphone className="h-5 w-5 text-black" />
                         </div>
                         <div className="ml-3">
                           <p className="text-white text-sm font-medium">Grave de qualquer lugar</p>
@@ -92,7 +92,7 @@ export default function FreelancerPage() {
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="flex justify-center mb-6">
                 <div className="h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <CheckCircleIcon className="h-8 w-8 text-primary" />
+                  <CheckCircle className="h-8 w-8 text-primary" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Você escolhe os serviços</h3>
@@ -105,7 +105,7 @@ export default function FreelancerPage() {
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="flex justify-center mb-6">
                 <div className="h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <TrendingUpIcon className="h-8 w-8 text-primary" />
+                  <TrendingUp className="h-8 w-8 text-primary" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Seu talento é valorizado</h3>
@@ -118,7 +118,7 @@ export default function FreelancerPage() {
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="flex justify-center mb-6">
                 <div className="h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <DollarSignIcon className="h-8 w-8 text-primary" />
+                  <DollarSign className="h-8 w-8 text-primary" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Entregou? Recebeu!</h3>
@@ -175,7 +175,7 @@ export default function FreelancerPage() {
                 <h3 className="text-lg font-semibold text-foreground mb-2">Satisfação geral</h3>
                 <div className="flex justify-center mb-1">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
                 <p className="text-lg font-bold text-primary">4.8 / 5.0</p>
@@ -277,7 +277,7 @@ export default function FreelancerPage() {
             {/* Perfil 1 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <VideoIcon className="h-6 w-6 text-primary" />
+                <Video className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Gosta de aparecer em frente às câmeras</h3>
               <p className="text-muted-foreground text-center">
@@ -288,7 +288,7 @@ export default function FreelancerPage() {
             {/* Perfil 2 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <MessageSquareIcon className="h-6 w-6 text-primary" />
+                <MessageSquare className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Tem boa dicção e comunicação</h3>
               <p className="text-muted-foreground text-center">
@@ -299,7 +299,7 @@ export default function FreelancerPage() {
             {/* Perfil 3 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <SmartphoneIcon className="h-6 w-6 text-primary" />
+                <Smartphone className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Já grava vídeos para redes sociais</h3>
               <p className="text-muted-foreground text-center">
@@ -310,7 +310,7 @@ export default function FreelancerPage() {
             {/* Perfil 4 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <DollarSignIcon className="h-6 w-6 text-primary" />
+                <DollarSign className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Quer fazer uma grana extra no tempo livre</h3>
               <p className="text-muted-foreground text-center">
@@ -321,7 +321,7 @@ export default function FreelancerPage() {
             {/* Perfil 5 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <HomeIcon className="h-6 w-6 text-primary" />
+                <Home className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Quer trabalhar de casa</h3>
               <p className="text-muted-foreground text-center">
@@ -332,7 +332,7 @@ export default function FreelancerPage() {
             {/* Perfil 6 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <MapPinIcon className="h-6 w-6 text-primary" />
+                <MapPin className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2 text-center">Quer trabalhar de qualquer lugar do mundo</h3>
               <p className="text-muted-foreground text-center">
@@ -365,7 +365,7 @@ export default function FreelancerPage() {
             {/* Tipo 1 */}
             <div className="bg-card rounded-xl p-5 shadow-md hover:shadow-lg transition text-center stagger-item">
               <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
-                <VideoIcon className="h-7 w-7 text-primary" />
+                <Video className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground">Depoimentos em vídeo</h3>
             </div>
@@ -373,7 +373,7 @@ export default function FreelancerPage() {
             {/* Tipo 2 */}
             <div className="bg-card rounded-xl p-5 shadow-md hover:shadow-lg transition text-center stagger-item">
               <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
-                <PackageIcon className="h-7 w-7 text-primary" />
+                <Package className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground">Unboxings de produtos</h3>
             </div>
@@ -381,7 +381,7 @@ export default function FreelancerPage() {
             {/* Tipo 3 */}
             <div className="bg-card rounded-xl p-5 shadow-md hover:shadow-lg transition text-center stagger-item">
               <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
-                <StarIcon className="h-7 w-7 text-primary" />
+                <Star className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground">Reações e reviews</h3>
             </div>
@@ -389,7 +389,7 @@ export default function FreelancerPage() {
             {/* Tipo 4 */}
             <div className="bg-card rounded-xl p-5 shadow-md hover:shadow-lg transition text-center stagger-item">
               <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
-                <UserIcon className="h-7 w-7 text-primary" />
+                <User className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground">Vídeos UGC</h3>
             </div>
@@ -397,7 +397,7 @@ export default function FreelancerPage() {
             {/* Tipo 5 */}
             <div className="bg-card rounded-xl p-5 shadow-md hover:shadow-lg transition text-center stagger-item">
               <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
-                <MoreHorizontalIcon className="h-7 w-7 text-primary" />
+                <MoreHorizontal className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground">E muito mais...</h3>
             </div>
@@ -516,28 +516,28 @@ export default function FreelancerPage() {
                 <div className="space-y-4 mb-8">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                      <CheckIcon className="h-3.5 w-3.5 text-primary" />
+                      <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
                     <p className="ml-3 text-foreground">Pagamentos instantâneos e automáticos</p>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                      <CheckIcon className="h-3.5 w-3.5 text-primary" />
+                      <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
                     <p className="ml-3 text-foreground">Sem intermediários ou surpresas</p>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                      <CheckIcon className="h-3.5 w-3.5 text-primary" />
+                      <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
                     <p className="ml-3 text-foreground">Controle total do que você ganha</p>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                      <CheckIcon className="h-3.5 w-3.5 text-primary" />
+                      <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
                     <p className="ml-3 text-foreground">Economia de tempo e taxas menores</p>
                   </div>
@@ -548,19 +548,19 @@ export default function FreelancerPage() {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                        <ArrowRightIcon className="h-3 w-3 text-primary" />
+                        <ArrowRight className="h-3 w-3 text-primary" />
                       </div>
                       <p className="ml-2 text-sm text-muted-foreground">Você recebe em Lumpz a cada entrega aprovada</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                        <ArrowRightIcon className="h-3 w-3 text-primary" />
+                        <ArrowRight className="h-3 w-3 text-primary" />
                       </div>
                       <p className="ml-2 text-sm text-muted-foreground">Pode acumular e sacar em reais quando quiser</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                        <ArrowRightIcon className="h-3 w-3 text-primary" />
+                        <ArrowRight className="h-3 w-3 text-primary" />
                       </div>
                       <p className="ml-2 text-sm text-muted-foreground">Saque flexível a partir de 100 reais acumulados em Lumpz</p>
                     </li>
@@ -575,7 +575,7 @@ export default function FreelancerPage() {
                   <div className="flex justify-between items-center mb-8">
                     <div className="flex items-center">
                       <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center">
-                        <CreditCardIcon className="h-6 w-6 text-white" />
+                        <CreditCard className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
                         <h3 className="text-xl font-bold text-foreground">Sistema Lumpz</h3>
@@ -620,15 +620,15 @@ export default function FreelancerPage() {
                   
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <div className="flex items-center">
-                      <UsersIcon className="h-4 w-4 mr-1 text-muted-foreground" />
+                      <Users className="h-4 w-4 mr-1 text-muted-foreground" />
                       <span>+3200 creators cadastrados</span>
                     </div>
                     <div className="flex items-center">
-                      <StarIcon className="h-4 w-4 mr-1 text-muted-foreground" />
+                      <Star className="h-4 w-4 mr-1 text-muted-foreground" />
                       <span>Avaliação 4.8/5</span>
                     </div>
                     <div className="flex items-center">
-                      <ShieldCheckIcon className="h-4 w-4 mr-1 text-muted-foreground" />
+                      <ShieldCheck className="h-4 w-4 mr-1 text-muted-foreground" />
                       <span>100% Seguro</span>
                     </div>
                   </div>
@@ -653,7 +653,7 @@ export default function FreelancerPage() {
             {/* Dica 1 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <LightbulbIcon className="h-6 w-6 text-primary" />
+                <Lightbulb className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Invista em boa iluminação</h3>
               <p className="text-muted-foreground">
@@ -664,7 +664,7 @@ export default function FreelancerPage() {
             {/* Dica 2 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <VideoIcon className="h-6 w-6 text-primary" />
+                <Video className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Grave em ambientes silenciosos</h3>
               <p className="text-muted-foreground">
@@ -675,7 +675,7 @@ export default function FreelancerPage() {
             {/* Dica 3 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <StarIcon className="h-6 w-6 text-primary" />
+                <Star className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Mantenha alta qualidade</h3>
               <p className="text-muted-foreground">
@@ -815,7 +815,7 @@ export default function FreelancerPage() {
                   <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-background hover:bg-muted text-foreground text-sm font-medium border border-border">
                     <div className="flex items-center">
                       <span>Ordenar por</span>
-                      <ChevronDownIcon className="h-4 w-4 ml-1 text-muted-foreground" />
+                      <ChevronDown className="h-4 w-4 ml-1 text-muted-foreground" />
                     </div>
                   </button>
                 </div>
@@ -824,13 +824,13 @@ export default function FreelancerPage() {
                   <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-background hover:bg-muted text-foreground text-sm font-medium border border-border">
                     <div className="flex items-center">
                       <span>Preço</span>
-                      <ChevronDownIcon className="h-4 w-4 ml-1 text-muted-foreground" />
+                      <ChevronDown className="h-4 w-4 ml-1 text-muted-foreground" />
                     </div>
                   </button>
                 </div>
                 
                 <button className="p-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary">
-                  <SlidersIcon className="h-5 w-5" />
+                  <Sliders className="h-5 w-5" />
                 </button>
               </div>
             </div>
@@ -846,7 +846,7 @@ export default function FreelancerPage() {
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
-                  <HeartIcon className="h-4 w-4 text-muted-foreground" />
+                  <Heart className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
               <div className="p-4">
@@ -858,7 +858,7 @@ export default function FreelancerPage() {
                 <div className="flex mb-3">
                   <div className="flex">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className="h-4 w-4 text-primary" />
+                      <Star key={i} className="h-4 w-4 text-primary" />
                     ))}
                   </div>
                   <p className="text-xs text-muted-foreground ml-1">4.8 (32)</p>
@@ -882,7 +882,7 @@ export default function FreelancerPage() {
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
-                  <HeartIcon className="h-4 w-4 text-red-500 fill-red-500" />
+                  <Heart className="h-4 w-4 text-red-500 fill-red-500" />
                 </button>
               </div>
               <div className="p-4">
@@ -894,7 +894,7 @@ export default function FreelancerPage() {
                 <div className="flex mb-3">
                   <div className="flex">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className="h-4 w-4 text-primary" />
+                      <Star key={i} className="h-4 w-4 text-primary" />
                     ))}
                   </div>
                   <p className="text-xs text-muted-foreground ml-1">5.0 (18)</p>
@@ -918,7 +918,7 @@ export default function FreelancerPage() {
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
-                  <HeartIcon className="h-4 w-4 text-muted-foreground" />
+                  <Heart className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
               <div className="p-4">
@@ -930,7 +930,7 @@ export default function FreelancerPage() {
                 <div className="flex mb-3">
                   <div className="flex">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className={`h-4 w-4 ${i < 4 ? 'text-primary' : 'text-muted'}`} />
+                      <Star key={i} className={`h-4 w-4 ${i < 4 ? 'text-primary' : 'text-muted'}`} />
                     ))}
                   </div>
                   <p className="text-xs text-muted-foreground ml-1">4.0 (26)</p>
@@ -954,7 +954,7 @@ export default function FreelancerPage() {
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
-                  <HeartIcon className="h-4 w-4 text-muted-foreground" />
+                  <Heart className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
               <div className="p-4">
@@ -966,7 +966,7 @@ export default function FreelancerPage() {
                 <div className="flex mb-3">
                   <div className="flex">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className={`h-4 w-4 ${i < 4 ? 'text-primary' : 'text-muted'}`} />
+                      <Star key={i} className={`h-4 w-4 ${i < 4 ? 'text-primary' : 'text-muted'}`} />
                     ))}
                   </div>
                   <p className="text-xs text-muted-foreground ml-1">4.1 (15)</p>
@@ -984,7 +984,7 @@ export default function FreelancerPage() {
             {/* Serviço 5 - Borrado */}
             <div className="bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
               <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10 flex flex-col items-center justify-center">
-                <LockIcon className="h-8 w-8 text-primary mb-3" />
+                <Lock className="h-8 w-8 text-primary mb-3" />
                 <p className="text-lg font-semibold text-foreground mb-2">Conteúdo Exclusivo</p>
                 <p className="text-sm text-muted-foreground mb-4 px-6 text-center">Cadastre-se para acessar todos os serviços disponíveis</p>
                 <Link href="/cadastro">
@@ -1085,7 +1085,7 @@ export default function FreelancerPage() {
               <div className="mb-6">
                 <div className="flex">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
               </div>
@@ -1106,7 +1106,7 @@ export default function FreelancerPage() {
               <div className="mb-6">
                 <div className="flex">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
               </div>
@@ -1127,7 +1127,7 @@ export default function FreelancerPage() {
               <div className="mb-6">
                 <div className="flex">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
               </div>
