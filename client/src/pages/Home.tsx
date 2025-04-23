@@ -9,12 +9,16 @@ import {
   LifeBuoyIcon, TargetIcon, GiftIcon, StarIcon
 } from "lucide-react";
 import { initAnimations } from "@/scripts/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
   // Inicializa as animações quando o componente montar
   useEffect(() => {
     initAnimations();
   }, []);
+  
+  // Hook de tradução
+  const { t } = useLanguage();
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -27,10 +31,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10 fade-in-element">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                A plataforma que conecta criadores reais a marcas autênticas
+                {t('hero.title')}
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Ganhe com seus vídeos ou contrate vídeos que vendem — tudo no mesmo lugar.
+                {t('hero.subtitle')}
               </p>
               <p className="text-lg text-foreground/80 mb-8">
                 Crie ou contrate vídeos originais com agilidade, confiança e retorno real.
@@ -38,12 +42,12 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/freelancer">
                   <button className="clipup-btn flex items-center">
-                    Sou criador de conteúdo
+                    {t('hero.freelancer.button')}
                   </button>
                 </Link>
                 <Link href="/empresa">
                   <button className="clipup-btn-outline">
-                    Sou uma empresa
+                    {t('hero.business.button')}
                   </button>
                 </Link>
               </div>
@@ -136,9 +140,9 @@ export default function Home() {
       <section className="py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Como funciona</h2>
+            <h2 className="clipup-section-title">{t('how.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Um processo simples para ambos os lados da plataforma
+              {t('how.subtitle')}
             </p>
           </div>
           
@@ -158,7 +162,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">1</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Cadastre-se</span> com suas informações e habilidades
+                    <span className="text-foreground font-medium">{t('how.step1.title')}</span> {t('how.step1.description')}
                   </p>
                 </div>
                 
@@ -167,7 +171,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">2</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Aceite projetos</span> que combinam com seu perfil
+                    <span className="text-foreground font-medium">{t('how.step2.title')}</span> {t('how.step2.description')}
                   </p>
                 </div>
                 
@@ -176,7 +180,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">3</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Grave</span> com seu celular seguindo o briefing
+                    <span className="text-foreground font-medium">{t('how.step3.title')}</span> {t('how.step3.description')}
                   </p>
                 </div>
                 
@@ -185,7 +189,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">4</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Ganhe</span> Lumpz após a aprovação do seu trabalho
+                    <span className="text-foreground font-medium">{t('how.step4.title')}</span> {t('how.step4.description')}
                   </p>
                 </div>
               </div>
@@ -214,7 +218,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">1</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Publique um pedido</span> detalhando o tipo de vídeo que precisa
+                    <span className="text-foreground font-medium">{t('how.step1.title')}</span> detalhando o tipo de vídeo que precisa
                   </p>
                 </div>
                 
@@ -223,7 +227,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">2</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Receba propostas</span> de criadores qualificados
+                    <span className="text-foreground font-medium">{t('how.step2.title')}</span> de criadores qualificados
                   </p>
                 </div>
                 
@@ -232,7 +236,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">3</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Selecione</span> os criadores ideais para seu projeto
+                    <span className="text-foreground font-medium">{t('how.step3.title')}</span> os criadores ideais para seu projeto
                   </p>
                 </div>
                 
@@ -241,7 +245,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">4</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Aprove</span> vídeos autênticos que convertem
+                    <span className="text-foreground font-medium">{t('how.step4.title')}</span> vídeos autênticos que convertem
                   </p>
                 </div>
               </div>
