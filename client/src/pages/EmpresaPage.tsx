@@ -2,10 +2,10 @@ import { Link } from "wouter";
 import { useEffect } from "react";
 import SharedNavbar from "@/components/SharedNavbar";
 import { 
-  CheckCircleIcon, VideoIcon, DollarSignIcon, UserIcon, LightbulbIcon,
-  UsersIcon, CreditCardIcon, StarIcon, BarChartIcon, ShieldCheckIcon, 
-  LifeBuoyIcon, TargetIcon, TrendingUpIcon, MessageSquareIcon, PackageIcon,
-  EyeIcon, GiftIcon
+  CheckCircle, Video, DollarSign, User, Lightbulb,
+  Users, CreditCard, Star, BarChart, ShieldCheck, 
+  LifeBuoy, Target, TrendingUp, MessageSquare, Package,
+  Eye, Gift, ChevronUp, ChevronDown, Sliders, ShoppingBag
 } from "lucide-react";
 import { initAnimations } from "@/scripts/animations";
 
@@ -56,7 +56,7 @@ export default function EmpresaPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                          <VideoIcon className="h-5 w-5 text-black" />
+                          <Video className="h-5 w-5 text-black" />
                         </div>
                         <div className="ml-3">
                           <p className="text-white text-sm font-medium">+3.200 criadores</p>
@@ -90,7 +90,7 @@ export default function EmpresaPage() {
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="flex justify-center mb-6">
                 <div className="h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <BarChartIcon className="h-8 w-8 text-primary" />
+                  <BarChart className="h-8 w-8 text-primary" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Maior taxa de conversão</h3>
@@ -103,7 +103,7 @@ export default function EmpresaPage() {
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="flex justify-center mb-6">
                 <div className="h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <TrendingUpIcon className="h-8 w-8 text-primary" />
+                  <TrendingUp className="h-8 w-8 text-primary" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Maior engajamento</h3>
@@ -116,7 +116,7 @@ export default function EmpresaPage() {
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow stagger-item">
               <div className="flex justify-center mb-6">
                 <div className="h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <ShieldCheckIcon className="h-8 w-8 text-primary" />
+                  <ShieldCheck className="h-8 w-8 text-primary" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Maior credibilidade</h3>
@@ -302,7 +302,7 @@ export default function EmpresaPage() {
             {/* Diferencial 1 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <TargetIcon className="h-6 w-6 text-primary" />
+                <Target className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Público-alvo específico</h3>
               <p className="text-muted-foreground">
@@ -313,7 +313,7 @@ export default function EmpresaPage() {
             {/* Diferencial 2 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <DollarSignIcon className="h-6 w-6 text-primary" />
+                <DollarSign className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Preços transparentes</h3>
               <p className="text-muted-foreground">
@@ -324,7 +324,7 @@ export default function EmpresaPage() {
             {/* Diferencial 3 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <CheckCircleIcon className="h-6 w-6 text-primary" />
+                <CheckCircle className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Garantia de qualidade</h3>
               <p className="text-muted-foreground">
@@ -335,7 +335,7 @@ export default function EmpresaPage() {
             {/* Diferencial 4 */}
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <LifeBuoyIcon className="h-6 w-6 text-primary" />
+                <LifeBuoy className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Suporte especializado</h3>
               <p className="text-muted-foreground">
@@ -365,7 +365,7 @@ export default function EmpresaPage() {
                   <p className="font-medium text-foreground">Marcos Silva</p>
                   <div className="flex items-center">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className="h-3 w-3 text-primary" />
+                      <Star key={i} className="h-3 w-3 text-primary" />
                     ))}
                     <span className="ml-1 text-xs text-muted-foreground">4.9</span>
                   </div>
@@ -395,7 +395,7 @@ export default function EmpresaPage() {
                   <p className="font-medium text-foreground">Luana Santos</p>
                   <div className="flex items-center">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className="h-3 w-3 text-primary" />
+                      <Star key={i} className="h-3 w-3 text-primary" />
                     ))}
                     <span className="ml-1 text-xs text-muted-foreground">4.8</span>
                   </div>
@@ -425,7 +425,7 @@ export default function EmpresaPage() {
                   <p className="font-medium text-foreground">Felipe Costa</p>
                   <div className="flex items-center">
                     {Array(5).fill(0).map((_, i) => (
-                      <StarIcon key={i} className="h-3 w-3 text-primary" />
+                      <Star key={i} className="h-3 w-3 text-primary" />
                     ))}
                     <span className="ml-1 text-xs text-muted-foreground">4.9</span>
                   </div>
@@ -478,7 +478,7 @@ export default function EmpresaPage() {
               <div className="mb-6">
                 <div className="flex">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
               </div>
@@ -499,7 +499,7 @@ export default function EmpresaPage() {
               <div className="mb-6">
                 <div className="flex">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
               </div>
@@ -520,7 +520,7 @@ export default function EmpresaPage() {
               <div className="mb-6">
                 <div className="flex">
                   {Array(5).fill(0).map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary" />
+                    <Star key={i} className="h-5 w-5 text-primary" />
                   ))}
                 </div>
               </div>
@@ -539,135 +539,538 @@ export default function EmpresaPage() {
         </div>
       </section>
       
-      {/* Preços */}
+      {/* Marketplace de Serviços */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Investimento que traz retorno</h2>
+            <h2 className="clipup-section-title">O que empresas estão contratando</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Planos flexíveis que se adaptam ao tamanho e necessidades do seu negócio
+              Explore os serviços mais requisitados por marcas como a sua
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 stagger-container">
-            {/* Plano 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 stagger-container">
+            {/* Serviço 1 - visível */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border border-border hover:border-primary stagger-item">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-foreground">Plano Inicial</h3>
-                <p className="text-sm text-muted-foreground mb-4">Para pequenas empresas</p>
-                <p className="text-4xl font-bold text-foreground">50 <span className="text-primary">Lumpz</span></p>
-                <p className="text-sm text-muted-foreground">R$ 250</p>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Package className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-foreground">Unboxing de Produto</p>
+                    <p className="text-sm text-muted-foreground">Alta demanda</p>
+                  </div>
+                </div>
+                <div className="bg-accent/20 px-3 py-1 rounded-full">
+                  <p className="text-xs font-medium text-accent-foreground">42 Lumpz</p>
+                </div>
               </div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Até 3 vídeos por mês</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">1 revisão por vídeo</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Acesso a criadores iniciantes e intermediários</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Suporte por email</span>
-                </li>
-              </ul>
-              <Link href="/contratar-pacote?plano=inicial">
-                <button className="w-full py-2 border border-primary text-primary rounded-md hover:bg-primary/10 transition">
-                  Escolher este plano
+              <p className="text-sm text-muted-foreground mb-3">
+                Vídeos de desembalagem e primeira impressão do produto, ideal para lançamentos.
+              </p>
+              <Link href="/servico/unboxing">
+                <button className="w-full py-2 border border-primary text-primary text-sm rounded-md hover:bg-primary/10 transition">
+                  Ver detalhes
                 </button>
               </Link>
             </div>
             
-            {/* Plano 2 */}
-            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border-2 border-primary relative stagger-item">
-              <div className="absolute -top-3 right-6 bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Mais popular</div>
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-foreground">Plano Negócios</h3>
-                <p className="text-sm text-muted-foreground mb-4">Para empresas em crescimento</p>
-                <p className="text-4xl font-bold text-foreground">120 <span className="text-primary">Lumpz</span></p>
-                <p className="text-sm text-muted-foreground">R$ 600</p>
+            {/* Serviço 2 - visível */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border border-border hover:border-primary stagger-item">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-foreground">Depoimento de Cliente</p>
+                    <p className="text-sm text-muted-foreground">Sempre em alta</p>
+                  </div>
+                </div>
+                <div className="bg-accent/20 px-3 py-1 rounded-full">
+                  <p className="text-xs font-medium text-accent-foreground">35 Lumpz</p>
+                </div>
               </div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Até 8 vídeos por mês</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">2 revisões por vídeo</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Acesso a todos os criadores</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Suporte prioritário</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Relatórios de desempenho básicos</span>
-                </li>
-              </ul>
-              <Link href="/contratar-pacote?plano=negocios">
-                <button className="w-full py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition">
-                  Escolher este plano
+              <p className="text-sm text-muted-foreground mb-3">
+                Depoimentos gravados por usuários reais do seu produto ou serviço.
+              </p>
+              <Link href="/servico/depoimento">
+                <button className="w-full py-2 border border-primary text-primary text-sm rounded-md hover:bg-primary/10 transition">
+                  Ver detalhes
                 </button>
               </Link>
             </div>
             
-            {/* Plano 3 */}
+            {/* Serviço 3 - visível */}
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border border-border hover:border-primary stagger-item">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-foreground">Plano Empresarial</h3>
-                <p className="text-sm text-muted-foreground mb-4">Para grandes empresas</p>
-                <p className="text-4xl font-bold text-foreground">250+ <span className="text-primary">Lumpz</span></p>
-                <p className="text-sm text-muted-foreground">Personalizado</p>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Video className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-foreground">Tutorial de Uso</p>
+                    <p className="text-sm text-muted-foreground">Popular</p>
+                  </div>
+                </div>
+                <div className="bg-accent/20 px-3 py-1 rounded-full">
+                  <p className="text-xs font-medium text-accent-foreground">38 Lumpz</p>
+                </div>
               </div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Vídeos ilimitados</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Revisões ilimitadas</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Acesso a criadores premium</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Gerente de conta dedicado</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-sm">Relatórios completos de performance</span>
-                </li>
-              </ul>
-              <Link href="/contratar-pacote?plano=empresarial">
-                <button className="w-full py-2 border border-primary text-primary rounded-md hover:bg-primary/10 transition">
-                  Contato comercial
+              <p className="text-sm text-muted-foreground mb-3">
+                Demonstrações passo a passo de como usar seu produto e aproveitar todos os recursos.
+              </p>
+              <Link href="/servico/tutorial">
+                <button className="w-full py-2 border border-primary text-primary text-sm rounded-md hover:bg-primary/10 transition">
+                  Ver detalhes
                 </button>
               </Link>
             </div>
+            
+            {/* Serviços 4-6 borrados */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border border-border hover:border-primary stagger-item relative overflow-hidden">
+              <div className="absolute inset-0 backdrop-blur-md bg-background/70 z-10 flex flex-col items-center justify-center">
+                <p className="font-semibold text-foreground mb-2">Conteúdo exclusivo</p>
+                <p className="text-sm text-muted-foreground mb-4 text-center px-6">Cadastre-se para ver todos os serviços disponíveis</p>
+                <Link href="/cadastro">
+                  <button className="clipup-btn-sm">
+                    Criar conta grátis
+                  </button>
+                </Link>
+              </div>
+              <div className="flex items-center justify-between mb-4 blur-sm">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <ShoppingBag className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-foreground">Review Comparativo</p>
+                    <p className="text-sm text-muted-foreground">Tendência</p>
+                  </div>
+                </div>
+                <div className="bg-accent/20 px-3 py-1 rounded-full">
+                  <p className="text-xs font-medium text-accent-foreground">45 Lumpz</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3 blur-sm">
+                Comparação do seu produto com concorrentes, destacando vantagens e benefícios exclusivos.
+              </p>
+            </div>
+            
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border border-border hover:border-primary stagger-item relative overflow-hidden">
+              <div className="absolute inset-0 backdrop-blur-md bg-background/70 z-10 flex flex-col items-center justify-center">
+                <p className="font-semibold text-foreground mb-2">Conteúdo exclusivo</p>
+                <p className="text-sm text-muted-foreground mb-4 text-center px-6">Cadastre-se para ver todos os serviços disponíveis</p>
+                <Link href="/cadastro">
+                  <button className="clipup-btn-sm">
+                    Criar conta grátis
+                  </button>
+                </Link>
+              </div>
+              <div className="flex items-center justify-between mb-4 blur-sm">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <MessageSquare className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-foreground">Q&A Especialista</p>
+                    <p className="text-sm text-muted-foreground">Exclusivo</p>
+                  </div>
+                </div>
+                <div className="bg-accent/20 px-3 py-1 rounded-full">
+                  <p className="text-xs font-medium text-accent-foreground">52 Lumpz</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3 blur-sm">
+                Perguntas e respostas sobre seu produto com experts da área que utilizam regularmente.
+              </p>
+            </div>
+            
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition border border-border hover:border-primary stagger-item relative overflow-hidden">
+              <div className="absolute inset-0 backdrop-blur-md bg-background/70 z-10 flex flex-col items-center justify-center">
+                <p className="font-semibold text-foreground mb-2">Conteúdo exclusivo</p>
+                <p className="text-sm text-muted-foreground mb-4 text-center px-6">Cadastre-se para ver todos os serviços disponíveis</p>
+                <Link href="/cadastro">
+                  <button className="clipup-btn-sm">
+                    Criar conta grátis
+                  </button>
+                </Link>
+              </div>
+              <div className="flex items-center justify-between mb-4 blur-sm">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Lightbulb className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-foreground">Dicas e Hacks</p>
+                    <p className="text-sm text-muted-foreground">Em crescimento</p>
+                  </div>
+                </div>
+                <div className="bg-accent/20 px-3 py-1 rounded-full">
+                  <p className="text-xs font-medium text-accent-foreground">40 Lumpz</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3 blur-sm">
+                Conteúdo criativo mostrando usos alternativos e dicas exclusivas para aproveitar melhor seu produto.
+              </p>
+            </div>
           </div>
           
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground mb-4">
-              Não encontrou o que procura? Temos opções customizadas para sua empresa.
+          <div className="bg-card/40 rounded-xl p-8 text-center shadow-md border border-primary/10">
+            <h3 className="text-xl font-bold text-foreground mb-4">+24 tipos de conteúdo disponíveis para sua marca</h3>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Cadastre-se hoje e acesse nosso catálogo completo de serviços e criadores verificados.
             </p>
-            <Link href="/contato-comercial">
-              <button className="clipup-btn-outline">
-                Fale com nossa equipe comercial
+            <Link href="/cadastro">
+              <button className="clipup-btn">
+                Criar conta gratuita
               </button>
             </Link>
+          </div>
+        </div>
+      </section>
+      
+      {/* Casos de Uso por Segmento */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Casos de sucesso por segmento</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Resultados reais obtidos por marcas que utilizam nossos criadores
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 stagger-container">
+            {/* Caso 1 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="flex items-center mb-4">
+                <ShoppingBag className="h-8 w-8 text-primary mr-4" />
+                <h3 className="text-xl font-semibold text-foreground">E-commerce</h3>
+              </div>
+              <p className="text-lg font-medium text-foreground mb-2">
+                Vídeos de unboxing aumentaram o tempo médio na página em 36%
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Uma loja de eletrônicos substituiu fotos por vídeos de unboxing e a taxa de devolução caiu 28%, enquanto o tempo de permanência na página e conversão aumentaram significativamente.
+              </p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <p className="bg-primary/10 px-2 py-1 rounded-full text-primary text-xs font-medium">+217% em conversão</p>
+              </div>
+            </div>
+            
+            {/* Caso 2 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="flex items-center mb-4">
+                <Lightbulb className="h-8 w-8 text-primary mr-4" />
+                <h3 className="text-xl font-semibold text-foreground">Infoprodutos</h3>
+              </div>
+              <p className="text-lg font-medium text-foreground mb-2">
+                Depoimentos reais geraram +185% em vendas no último lançamento
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Um curso online utilizou depoimentos de alunos reais em vez de atores, resultando em um aumento expressivo nas conversões e redução no custo de aquisição de clientes.
+              </p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <p className="bg-primary/10 px-2 py-1 rounded-full text-primary text-xs font-medium">-32% no custo por lead</p>
+              </div>
+            </div>
+            
+            {/* Caso 3 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="flex items-center mb-4">
+                <Package className="h-8 w-8 text-primary mr-4" />
+                <h3 className="text-xl font-semibold text-foreground">Marcas D2C</h3>
+              </div>
+              <p className="text-lg font-medium text-foreground mb-2">
+                Criadores com perfis alinhados geraram CAC 40% menor
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Uma marca de cosméticos naturais contratou criadores com perfil demográfico idêntico ao seu público-alvo, resultando em campanhas muito mais eficientes e autênticas.
+              </p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <p className="bg-primary/10 px-2 py-1 rounded-full text-primary text-xs font-medium">+94% em engajamento</p>
+              </div>
+            </div>
+            
+            {/* Caso 4 */}
+            <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
+              <div className="flex items-center mb-4">
+                <MessageSquare className="h-8 w-8 text-primary mr-4" />
+                <h3 className="text-xl font-semibold text-foreground">SaaS B2B</h3>
+              </div>
+              <p className="text-lg font-medium text-foreground mb-2">
+                Vídeos de casos de uso reduziram ciclo de vendas em 47%
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Uma empresa de software B2B utilizou vídeos demonstrativos criados por usuários experientes, facilitando o entendimento do produto e acelerando decisões de compra.
+              </p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <p className="bg-primary/10 px-2 py-1 rounded-full text-primary text-xs font-medium">+68% em trial-to-paid</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Simulador de Orçamento */}
+      <section className="py-16 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 fade-in-element">
+            <h2 className="clipup-section-title">Simule seu investimento</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              Calcule quanto você precisará investir para suas campanhas de vídeo
+            </p>
+          </div>
+          
+          <div className="bg-background rounded-xl p-8 shadow-md border border-border mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <h3 className="text-xl font-semibold text-foreground mb-6">Selecione os tipos de vídeo que você precisa</h3>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center justify-between p-4 bg-card rounded-lg">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                        <Package className="h-5 w-5 text-primary" />
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium text-foreground">Unboxing de produto</p>
+                        <p className="text-sm text-muted-foreground">Vídeo de desembalagem</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <p className="text-primary font-medium mr-3">35 Lumpz</p>
+                      <select className="bg-background border border-border rounded-md py-1 px-2 text-sm">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-card rounded-lg">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                        <Users className="h-5 w-5 text-primary" />
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium text-foreground">Depoimento de cliente</p>
+                        <p className="text-sm text-muted-foreground">Usuário real falando sobre o produto</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <p className="text-primary font-medium mr-3">42 Lumpz</p>
+                      <select className="bg-background border border-border rounded-md py-1 px-2 text-sm">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-card rounded-lg">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                        <Video className="h-5 w-5 text-primary" />
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium text-foreground">Tutorial de uso</p>
+                        <p className="text-sm text-muted-foreground">Como usar o produto passo a passo</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <p className="text-primary font-medium mr-3">38 Lumpz</p>
+                      <select className="bg-background border border-border rounded-md py-1 px-2 text-sm">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <button className="text-primary text-sm flex items-center">
+                    <ChevronDown className="h-4 w-4 mr-1" /> Ver mais opções de vídeo
+                  </button>
+                  <button className="text-primary text-sm flex items-center">
+                    <Sliders className="h-4 w-4 mr-1" /> Mais opções de personalização
+                  </button>
+                </div>
+              </div>
+              
+              <div className="bg-card p-6 rounded-xl border border-border">
+                <h3 className="text-xl font-semibold text-foreground mb-4">Resumo do orçamento</h3>
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Unboxing (x1)</span>
+                    <span>35 Lumpz</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Depoimento (x2)</span>
+                    <span>84 Lumpz</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Tutoriais (x1)</span>
+                    <span>38 Lumpz</span>
+                  </div>
+                  <div className="h-px bg-border my-2"></div>
+                  <div className="flex justify-between font-medium">
+                    <span>Total</span>
+                    <span className="text-primary">157 Lumpz</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Valor aproximado: R$ 314</p>
+                </div>
+                <button className="w-full py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition mb-3">
+                  Solicitar orçamento detalhado
+                </button>
+                <p className="text-xs text-center text-muted-foreground">
+                  Sem compromisso ou assinatura. Pague apenas pelos vídeos que aprovar.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Mini Guia de Briefing + ROI Estimado */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Mini Guia */}
+            <div>
+              <div className="mb-8 fade-in-element">
+                <h2 className="clipup-section-title mb-4">Mini guia de briefing eficaz</h2>
+                <p className="text-lg text-muted-foreground">
+                  Pontos-chave para preparar seu briefing e obter os melhores resultados
+                </p>
+              </div>
+              
+              <div className="space-y-6 stagger-container">
+                <div className="flex stagger-item">
+                  <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                    <Target className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Defina seu objetivo principal</h3>
+                    <p className="text-muted-foreground">
+                      Quer gerar vendas ou reconhecimento? Deseja educar sobre o produto ou apenas engajar? Defina um objetivo claro e mensurável.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex stagger-item">
+                  <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                    <Users className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Conheça sua audiência</h3>
+                    <p className="text-muted-foreground">
+                      Seu público é jovem, técnico ou aspiracional? Entender quem assitirá ao vídeo ajuda a definir o tom e a abordagem.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex stagger-item">
+                  <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Estabeleça o tom de voz</h3>
+                    <p className="text-muted-foreground">
+                      Descontraído e autêntico ou formal e técnico? Divertido ou sério? O tom deve refletir a personalidade de sua marca.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex stagger-item">
+                  <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                    <Eye className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Especifique pontos-chave</h3>
+                    <p className="text-muted-foreground">
+                      Liste até 3 características ou benefícios essenciais que devem ser destacados no vídeo para maior impacto.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8">
+                <Link href="/guia-briefing">
+                  <button className="clipup-btn-outline">
+                    Baixar template de briefing completo
+                  </button>
+                </Link>
+              </div>
+            </div>
+            
+            {/* ROI Estimado */}
+            <div>
+              <div className="mb-8 fade-in-element">
+                <h2 className="clipup-section-title mb-4">ROI estimado com Lumpic</h2>
+                <p className="text-lg text-muted-foreground">
+                  Resultados médios obtidos por empresas que utilizam nossa plataforma
+                </p>
+              </div>
+              
+              <div className="bg-card rounded-xl p-8 shadow-md border border-border mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center stagger-container">
+                  <div className="stagger-item">
+                    <h3 className="text-primary text-4xl font-bold mb-1">+217%</h3>
+                    <p className="text-sm text-muted-foreground">em conversão</p>
+                    <div className="h-1 w-1/2 bg-primary/20 rounded-full mx-auto mt-2 overflow-hidden">
+                      <div className="h-full w-full bg-primary rounded-full" style={{ width: '100%' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="stagger-item">
+                    <h3 className="text-primary text-4xl font-bold mb-1">-60%</h3>
+                    <p className="text-sm text-muted-foreground">no custo de produção</p>
+                    <div className="h-1 w-1/2 bg-primary/20 rounded-full mx-auto mt-2 overflow-hidden">
+                      <div className="h-full w-full bg-primary rounded-full" style={{ width: '60%' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="stagger-item">
+                    <h3 className="text-primary text-4xl font-bold mb-1">+2.7x</h3>
+                    <p className="text-sm text-muted-foreground">de engajamento</p>
+                    <div className="h-1 w-1/2 bg-primary/20 rounded-full mx-auto mt-2 overflow-hidden">
+                      <div className="h-full w-full bg-primary rounded-full" style={{ width: '80%' }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-card rounded-xl p-6 border border-primary/20">
+                <div className="flex">
+                  <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                    <BarChart className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">Calcule seu próprio ROI</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Nossa calculadora avançada utiliza dados de campanhas reais para estimar o retorno específico para seu setor e tipo de campanha.
+                    </p>
+                    <Link href="/calculadora-roi">
+                      <button className="clipup-btn-sm">
+                        Acessar calculadora de ROI
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
