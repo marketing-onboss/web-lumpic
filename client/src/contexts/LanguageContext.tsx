@@ -25,10 +25,14 @@ const translations: Translations = {
   'pt-BR': {
     // Navegação
     'nav.home': 'Início',
+    'nav.home_short': 'Início',
     'nav.freelancer': 'Freelancer',
+    'nav.freelancer_short': 'Freelancer',
     'nav.business': 'Empresa',
+    'nav.business_short': 'Empresa',
     'nav.login': 'Entrar',
     'nav.signup': 'Cadastre-se',
+    'nav.account': 'Conta',
     
     // Hero Section
     'hero.title': 'Vídeos reais. Resultados reais.',
@@ -132,10 +136,14 @@ const translations: Translations = {
   'en-US': {
     // Navigation
     'nav.home': 'Home',
+    'nav.home_short': 'Home',
     'nav.freelancer': 'Freelancer',
+    'nav.freelancer_short': 'Creator',
     'nav.business': 'Business',
+    'nav.business_short': 'Business',
     'nav.login': 'Log In',
     'nav.signup': 'Sign Up',
+    'nav.account': 'Account',
     
     // Hero Section
     'hero.title': 'Real videos. Real results.',
@@ -239,10 +247,14 @@ const translations: Translations = {
   'es-ES': {
     // Navegación
     'nav.home': 'Inicio',
+    'nav.home_short': 'Inicio',
     'nav.freelancer': 'Freelancer',
+    'nav.freelancer_short': 'Creador',
     'nav.business': 'Empresa',
+    'nav.business_short': 'Empresa',
     'nav.login': 'Iniciar Sesión',
     'nav.signup': 'Registrarse',
+    'nav.account': 'Cuenta',
     
     // Sección Hero
     'hero.title': 'Videos reales. Resultados reales.',

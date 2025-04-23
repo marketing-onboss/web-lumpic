@@ -94,7 +94,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                 Blog
               </div>
               <div className="text-sm font-medium text-foreground transition-colors hover:text-primary cursor-pointer">
-                Ajuda
+                {t('footer.help')}
               </div>
             </div>
 
@@ -105,12 +105,12 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                 
                 <Link href="/login">
                   <div className="text-sm font-medium text-foreground px-3 py-2 rounded-md transition-colors hover:bg-muted cursor-pointer">
-                    Entrar
+                    {t('nav.login')}
                   </div>
                 </Link>
                 <Link href="/cadastro">
                   <div className="text-sm font-medium bg-primary text-primary-foreground px-3 py-2 rounded-md transition-colors hover:bg-primary/90 cursor-pointer">
-                    Cadastrar
+                    {t('nav.signup')}
                   </div>
                 </Link>
               </div>
@@ -145,7 +145,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Página Inicial
+                {t('nav.home')}
               </div>
             </Link>
             <Link href="/freelancer">
@@ -157,7 +157,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Para Freelancers
+                {t('nav.freelancer')}
               </div>
             </Link>
             <Link href="/empresa">
@@ -169,7 +169,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Para Empresas
+                {t('nav.business')}
               </div>
             </Link>
             <div 
@@ -182,7 +182,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
               className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors cursor-pointer"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Ajuda
+              {t('footer.help')}
             </div>
             
             <div className="flex flex-col space-y-3 pt-4 border-t border-border">
@@ -195,7 +195,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                   className="block text-center text-base font-medium text-foreground py-3 rounded-md border border-border hover:bg-muted transition-colors cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Entrar
+                  {t('nav.login')}
                 </div>
               </Link>
               <Link href="/cadastro">
@@ -203,7 +203,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                   className="block text-center text-base font-medium bg-primary text-primary-foreground py-3 rounded-md hover:bg-primary/90 transition-colors cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Cadastrar
+                  {t('nav.signup')}
                 </div>
               </Link>
             </div>
@@ -221,7 +221,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
               currentPage === "institucional" ? "text-primary" : "text-muted-foreground"
             }`}>
               <HomeIcon className="h-5 w-5 mb-1" />
-              <span className="text-xs">Início</span>
+              <span className="text-xs">{t('nav.home_short')}</span>
             </div>
           </Link>
           
@@ -230,7 +230,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
               currentPage === "freelancer" ? "text-primary" : "text-muted-foreground"
             }`}>
               <BriefcaseIcon className="h-5 w-5 mb-1" />
-              <span className="text-xs">Freelancer</span>
+              <span className="text-xs">{t('nav.freelancer_short')}</span>
             </div>
           </Link>
           
@@ -239,7 +239,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
               currentPage === "empresa" ? "text-primary" : "text-muted-foreground"
             }`}>
               <BuildingIcon className="h-5 w-5 mb-1" />
-              <span className="text-xs">Empresa</span>
+              <span className="text-xs">{t('nav.business_short')}</span>
             </div>
           </Link>
           
@@ -251,7 +251,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
           <Link href="/login">
             <div className="flex flex-col items-center py-3 px-2 text-muted-foreground">
               <UserIcon className="h-5 w-5 mb-1" />
-              <span className="text-xs">Conta</span>
+              <span className="text-xs">{t('nav.account')}</span>
             </div>
           </Link>
         </div>
