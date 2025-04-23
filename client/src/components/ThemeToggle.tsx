@@ -1,56 +1,87 @@
 import { useTheme } from "@/contexts/ThemeProvider";
-import { Moon, Sun } from "lucide-react";
+import { SunIcon, MoonIcon, MonitorIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [animated, setAnimated] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Ensure the component is mounted before rendering to avoid hydration mismatch
+  // Soluciona o problema de hidratação
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const toggleTheme = () => {
-    setAnimated(true);
-    setTimeout(() => {
-      setTheme(theme === "light" ? "dark" : "light");
-    }, 150);
-    
-    // Reset animation state after completion
-    setTimeout(() => {
-      setAnimated(false);
-    }, 500);
-  };
 
   if (!mounted) {
     return null;
   }
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const themeOptions = [
+    { value: "light", label: "Claro", icon: SunIcon },
+    { value: "dark", label: "Escuro", icon: MoonIcon },
+    { value: "system", label: "Sistema", icon: MonitorIcon },
+  ];
+
+  const handleThemeChange = (newTheme: "light" | "dark" | "system") => {
+    setTheme(newTheme);
+    setIsOpen(false);
+  };
+
+  const currentThemeIcon = () => {
+    switch (theme) {
+      case "light":
+        return <SunIcon className="h-5 w-5" />;
+      case "dark":
+        return <MoonIcon className="h-5 w-5" />;
+      case "system":
+        return <MonitorIcon className="h-5 w-5" />;
+    }
+  };
+
   return (
-    <div className="relative inline-block">
+    <div className="relative">
       <button
-        onClick={toggleTheme}
-        className="bg-card border border-muted rounded-full p-2 hover:bg-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary shadow-md"
-        aria-label="Toggle theme"
+        onClick={toggleMenu}
+        className="h-10 w-10 flex items-center justify-center rounded-full bg-muted text-muted-foreground hover:text-foreground transition-all duration-300"
+        aria-label="Alterar tema"
       >
-        <div className="relative w-6 h-6 flex items-center justify-center overflow-hidden">
-          {theme === 'light' ? (
-            <span 
-              className={`${animated ? 'theme-toggle-icon-out' : 'theme-toggle-icon-in'}`}
-            >
-              <Sun className="h-5 w-5 text-primary" />
-            </span>
-          ) : (
-            <span 
-              className={`${animated ? 'theme-toggle-icon-out' : 'theme-toggle-icon-in'}`}
-            >
-              <Moon className="h-5 w-5 text-secondary" />
-            </span>
-          )}
-        </div>
+        {currentThemeIcon()}
       </button>
+
+      {isOpen && (
+        <div className="absolute right-0 mt-2 py-2 w-48 bg-card rounded-lg shadow-lg border border-border z-50">
+          {themeOptions.map((option) => (
+            <button
+              key={option.value}
+              className={`w-full flex items-center px-4 py-2 text-sm hover:bg-muted transition-colors ${
+                theme === option.value ? "text-primary" : "text-foreground"
+              }`}
+              onClick={() => handleThemeChange(option.value as "light" | "dark" | "system")}
+            >
+              <option.icon className="mr-2 h-4 w-4" />
+              {option.label}
+              {theme === option.value && (
+                <svg
+                  className="ml-auto h-4 w-4 text-primary"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

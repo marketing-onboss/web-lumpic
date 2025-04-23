@@ -32,7 +32,7 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <a className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 cursor-pointer">
               <svg
                 width="32"
                 height="32"
@@ -55,52 +55,52 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
                 />
               </svg>
               <span className="text-xl font-bold text-foreground">ClipUp</span>
-            </a>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link href="/">
-              <a className={`text-sm font-medium transition-colors hover:text-primary ${
+              <div className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                 currentPage === "institucional" ? "text-primary" : "text-foreground"
               }`}>
                 Página Inicial
-              </a>
+              </div>
             </Link>
             <Link href="/freelancer">
-              <a className={`text-sm font-medium transition-colors hover:text-primary ${
+              <div className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                 currentPage === "freelancer" ? "text-primary" : "text-foreground"
               }`}>
                 Para Freelancers
-              </a>
+              </div>
             </Link>
             <Link href="/empresa">
-              <a className={`text-sm font-medium transition-colors hover:text-primary ${
+              <div className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                 currentPage === "empresa" ? "text-primary" : "text-foreground"
               }`}>
                 Para Empresas
-              </a>
+              </div>
             </Link>
-            <a href="#" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
+            <div className="text-sm font-medium text-foreground transition-colors hover:text-primary cursor-pointer">
               Blog
-            </a>
-            <a href="#" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
+            </div>
+            <div className="text-sm font-medium text-foreground transition-colors hover:text-primary cursor-pointer">
               Ajuda
-            </a>
+            </div>
           </div>
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-2">
               <Link href="/login">
-                <a className="text-sm font-medium text-foreground px-3 py-2 rounded-md transition-colors hover:bg-muted">
+                <div className="text-sm font-medium text-foreground px-3 py-2 rounded-md transition-colors hover:bg-muted cursor-pointer">
                   Entrar
-                </a>
+                </div>
               </Link>
               <Link href="/cadastro">
-                <a className="text-sm font-medium bg-primary text-primary-foreground px-3 py-2 rounded-md transition-colors hover:bg-primary/90">
+                <div className="text-sm font-medium bg-primary text-primary-foreground px-3 py-2 rounded-md transition-colors hover:bg-primary/90 cursor-pointer">
                   Cadastrar
-                </a>
+                </div>
               </Link>
             </div>
             
@@ -126,8 +126,8 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
         <div className="md:hidden bg-card/95 backdrop-blur-md overflow-hidden transition-all duration-300">
           <div className="px-4 py-6 space-y-5">
             <Link href="/">
-              <a 
-                className={`block text-center text-base font-medium py-3 rounded-md transition-colors ${
+              <div 
+                className={`block text-center text-base font-medium py-3 rounded-md transition-colors cursor-pointer ${
                   currentPage === "institucional" 
                     ? "bg-primary/10 text-primary" 
                     : "text-foreground hover:bg-muted"
@@ -135,11 +135,11 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Página Inicial
-              </a>
+              </div>
             </Link>
             <Link href="/freelancer">
-              <a 
-                className={`block text-center text-base font-medium py-3 rounded-md transition-colors ${
+              <div 
+                className={`block text-center text-base font-medium py-3 rounded-md transition-colors cursor-pointer ${
                   currentPage === "freelancer" 
                     ? "bg-primary/10 text-primary" 
                     : "text-foreground hover:bg-muted"
@@ -147,11 +147,11 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Para Freelancers
-              </a>
+              </div>
             </Link>
             <Link href="/empresa">
-              <a 
-                className={`block text-center text-base font-medium py-3 rounded-md transition-colors ${
+              <div 
+                className={`block text-center text-base font-medium py-3 rounded-md transition-colors cursor-pointer ${
                   currentPage === "empresa" 
                     ? "bg-primary/10 text-primary" 
                     : "text-foreground hover:bg-muted"
@@ -159,39 +159,37 @@ const SharedNavbar = ({ currentPage }: SharedNavbarProps) => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Para Empresas
-              </a>
+              </div>
             </Link>
-            <a 
-              href="#" 
-              className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors"
+            <div 
+              className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors cursor-pointer"
               onClick={() => setMobileMenuOpen(false)}
             >
               Blog
-            </a>
-            <a 
-              href="#" 
-              className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors"
+            </div>
+            <div 
+              className="block text-center text-base font-medium text-foreground py-3 rounded-md hover:bg-muted transition-colors cursor-pointer"
               onClick={() => setMobileMenuOpen(false)}
             >
               Ajuda
-            </a>
+            </div>
             
             <div className="flex flex-col space-y-3 pt-4 border-t border-border">
               <Link href="/login">
-                <a 
-                  className="block text-center text-base font-medium text-foreground py-3 rounded-md border border-border hover:bg-muted transition-colors"
+                <div 
+                  className="block text-center text-base font-medium text-foreground py-3 rounded-md border border-border hover:bg-muted transition-colors cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Entrar
-                </a>
+                </div>
               </Link>
               <Link href="/cadastro">
-                <a 
-                  className="block text-center text-base font-medium bg-primary text-primary-foreground py-3 rounded-md hover:bg-primary/90 transition-colors"
+                <div 
+                  className="block text-center text-base font-medium bg-primary text-primary-foreground py-3 rounded-md hover:bg-primary/90 transition-colors cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Cadastrar
-                </a>
+                </div>
               </Link>
             </div>
           </div>
