@@ -73,21 +73,21 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                 <div className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                   currentPage === "institucional" ? "text-primary" : "text-foreground"
                 }`}>
-                  Página Inicial
+                  {t('nav.home')}
                 </div>
               </Link>
               <Link href="/freelancer">
                 <div className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                   currentPage === "freelancer" ? "text-primary" : "text-foreground"
                 }`}>
-                  Para Freelancers
+                  {t('nav.freelancer')}
                 </div>
               </Link>
               <Link href="/empresa">
                 <div className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                   currentPage === "empresa" ? "text-primary" : "text-foreground"
                 }`}>
-                  Para Empresas
+                  {t('nav.business')}
                 </div>
               </Link>
               <div className="text-sm font-medium text-foreground transition-colors hover:text-primary cursor-pointer">

@@ -63,9 +63,11 @@ export default function EarningsCalculator() {
     },
   };
   
+  // Convertendo de Blinks para Lumpz (consideramos que 1 blink = 1 Lumpz)
   const blinksPerVideo = videoTypes[selectedVideoType].blinks;
-  const totalBlinks = blinksPerVideo * videoCount;
-  const valueInReais = totalBlinks;
+  const totalLumpz = blinksPerVideo * videoCount;
+  // Conversão para Reais (1 Lumpz = R$ 2)
+  const valueInReais = totalLumpz * 2;
   
   // Para animação do contador
   const [animatedValue, setAnimatedValue] = useState(valueInReais);
