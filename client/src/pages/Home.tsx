@@ -82,9 +82,9 @@ export default function Home() {
                   <VideoIcon className="h-8 w-8 text-primary" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">{t('features.feature1.title')}</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Portfólio Profissional</h3>
               <p className="text-muted-foreground text-center">
-                {t('features.feature1.description')}
+                Exiba seus melhores trabalhos e destaque suas habilidades, compartilhando um perfil personalizado, que impressiona os clientes.
               </p>
             </div>
             
@@ -95,9 +95,9 @@ export default function Home() {
                   <DollarSignIcon className="h-8 w-8 text-primary" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">{t('features.feature2.title')}</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Pagamentos Seguros</h3>
               <p className="text-muted-foreground text-center">
-                {t('features.feature2.description')}
+                Sistema de pagamento protegido com a moeda Lumpz, garantindo segurança para freelancers e clientes em todas as transações.
               </p>
             </div>
             
@@ -108,9 +108,9 @@ export default function Home() {
                   <UsersIcon className="h-8 w-8 text-primary" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">{t('features.feature3.title')}</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Matchmaking Inteligente</h3>
               <p className="text-muted-foreground text-center">
-                {t('features.feature3.description')}
+                Encontre os clientes perfeitos para seu perfil através do nosso algoritmo baseado em habilidades e preferências.
               </p>
             </div>
           </div>
@@ -121,9 +121,9 @@ export default function Home() {
       <section className="py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">{t('how.title')}</h2>
+            <h2 className="clipup-section-title">Como Funciona</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              {t('how.subtitle')}
+              Transforme seu talento em renda em apenas 4 passos simples
             </p>
           </div>
           
@@ -134,7 +134,7 @@ export default function Home() {
                 <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center">
                   <DollarSignIcon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground ml-4">{t('how.creators.title')}</h3>
+                <h3 className="text-2xl font-semibold text-foreground ml-4">Para criadores</h3>
               </div>
               
               <div className="space-y-4">
@@ -143,7 +143,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">1</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step1.title')}</span> {t('how.step1.description')}
+                    <span className="text-foreground font-medium">Cadastre-se</span> na plataforma em poucos minutos
                   </p>
                 </div>
                 
@@ -152,7 +152,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">2</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step2.title')}</span> {t('how.step2.description')}
+                    <span className="text-foreground font-medium">Crie seu perfil</span> e defina suas habilidades
                   </p>
                 </div>
                 
@@ -161,7 +161,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">3</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step3.title')}</span> {t('how.step3.description')}
+                    <span className="text-foreground font-medium">Receba propostas</span> de trabalho personalizadas
                   </p>
                 </div>
                 
@@ -170,7 +170,7 @@ export default function Home() {
                     <p className="text-primary text-xs font-bold">4</p>
                   </div>
                   <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">{t('how.step4.title')}</span> {t('how.step4.description')}
+                    <span className="text-foreground font-medium">Receba em Lumpz</span> e converta em reais facilmente
                   </p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function Home() {
                 <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center">
                   <PackageIcon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground ml-4">{t('how.business.title')}</h3>
+                <h3 className="text-2xl font-semibold text-foreground ml-4">Para empresas</h3>
               </div>
               
               <div className="space-y-4">
