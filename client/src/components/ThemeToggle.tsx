@@ -65,23 +65,41 @@ export function ThemeToggle() {
     <div className="relative">
       <button
         onClick={toggleMenu}
-        className="h-10 w-10 flex items-center justify-center rounded-full bg-muted text-muted-foreground hover:text-foreground transition-all duration-300"
+        className={`
+          h-10 w-10 flex items-center justify-center rounded-full 
+          bg-muted hover:bg-primary/10 
+          text-muted-foreground hover:text-primary 
+          transition-all duration-300 border border-transparent hover:border-primary/30
+          ${isAnimating ? 'ring-2 ring-offset-2 ring-primary/30 shadow-lg' : ''}
+        `}
         aria-label="Alterar tema"
       >
         {currentThemeIcon()}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 py-2 w-48 bg-card rounded-lg shadow-lg border border-border z-50">
+        <div className="absolute right-0 mt-2 py-2 w-56 bg-card rounded-lg shadow-xl border border-border z-50 animate-fade-in-rotate">
+          <div className="px-4 py-2 border-b border-border mb-1">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Selecione o tema</p>
+          </div>
           {themeOptions.map((option) => (
             <button
               key={option.value}
-              className={`w-full flex items-center px-4 py-2 text-sm hover:bg-muted transition-colors ${
-                theme === option.value ? "text-primary" : "text-foreground"
-              }`}
+              className={`
+                w-full flex items-center px-4 py-3 text-sm 
+                hover:bg-primary/5 transition-all duration-200
+                ${theme === option.value 
+                  ? "text-primary font-medium bg-primary/10" 
+                  : "text-foreground"}
+              `}
               onClick={() => handleThemeChange(option.value as "light" | "dark" | "system")}
             >
-              <option.icon className="mr-2 h-4 w-4" />
+              <span className={`
+                flex items-center justify-center mr-3 h-8 w-8 rounded-full 
+                ${theme === option.value ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}
+              `}>
+                <option.icon className="h-4 w-4" />
+              </span>
               {option.label}
               {theme === option.value && (
                 <svg

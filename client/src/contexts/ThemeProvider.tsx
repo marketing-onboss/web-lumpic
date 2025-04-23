@@ -23,7 +23,7 @@ export const ThemeContext = createContext<ThemeContextType>(initialState);
 export function ThemeProvider({
   children,
   defaultTheme = 'system',
-  storageKey = 'clipup-theme',
+  storageKey = 'lumpic-theme',
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
@@ -32,17 +32,42 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      root.classList.add(systemTheme);
-      return;
-    }
-
-    root.classList.add(theme);
+    
+    // Add transition class before changing theme
+    root.classList.add('theme-transition');
+    
+    // Apply transition effect on all colors
+    const applyTheme = () => {
+      root.classList.remove('light', 'dark');
+      
+      if (theme === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+        root.classList.add(systemTheme);
+      } else {
+        root.classList.add(theme);
+      }
+      
+      // Remove transition class after theme is applied (after animation completes)
+      setTimeout(() => {
+        root.classList.remove('theme-transition');
+      }, 500); // Match this with CSS transition duration
+    };
+    
+    // Small delay to ensure transition class is applied before theme changes
+    setTimeout(applyTheme, 10);
+    
+    // Setup listener for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => {
+      if (theme === 'system') {
+        applyTheme();
+      }
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
   const value = {
