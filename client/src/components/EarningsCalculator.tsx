@@ -222,7 +222,7 @@ export default function EarningsCalculator() {
                               />
                             )}
                             <span className="relative z-10">
-                              {type} ({data.blinks} Blinks)
+                              {type} ({data.blinks} Lumpz)
                             </span>
                           </Button>
                         </motion.div>
@@ -308,9 +308,9 @@ export default function EarningsCalculator() {
                         >
                           <div className="flex items-center mb-1">
                             <Sparkles className="h-4 w-4 text-primary mr-2" />
-                            <p className="text-muted-foreground text-sm">Impacto por vídeo</p>
+                            <p className="text-muted-foreground text-sm">Lumpz por vídeo</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">{blinksPerVideo} blinks</p>
+                          <p className="text-primary font-bold text-2xl">{blinksPerVideo} Lumpz</p>
                         </motion.div>
                         <motion.div 
                           className="bg-muted p-4 rounded-lg border border-muted shadow-sm"
@@ -323,7 +323,7 @@ export default function EarningsCalculator() {
                             <CalendarClock className="h-4 w-4 text-primary mr-2" />
                             <p className="text-muted-foreground text-sm">Alcance potencial</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">{totalBlinks * 150}+ pessoas</p>
+                          <p className="text-primary font-bold text-2xl">{totalLumpz * 150}+ pessoas</p>
                         </motion.div>
                         <motion.div 
                           className="bg-muted p-4 rounded-lg border border-muted shadow-sm"
@@ -336,7 +336,10 @@ export default function EarningsCalculator() {
                             <DollarSign className="h-4 w-4 text-primary mr-2" />
                             <p className="text-muted-foreground text-sm">Retorno estimado</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">R$ {(animatedValue * 3.5).toFixed(2)}</p>
+                          <p className="text-primary font-bold text-2xl">
+                            R$ {(animatedValue * 1.75).toFixed(2)} 
+                            <span className="text-sm font-normal ml-1 text-muted-foreground">({totalLumpz} Lumpz × R$2 × 1.75)</span>
+                          </p>
                         </motion.div>
                       </motion.div>
                     )}
