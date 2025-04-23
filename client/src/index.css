@@ -13,17 +13,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    /* ClipUp verde principal (#B8FF30) */
-    --primary: 83 100% 59%;
-    --primary-foreground: 240 10% 3.9%;
+    /* ClipUp verde principal - mais suave para tema claro */
+    --primary: 148 65% 42%;
+    --primary-foreground: 0 0% 100%;
 
     /* Verde mais escuro para contraste */
-    --secondary: 120 61% 33%;
+    --secondary: 160 50% 30%;
     --secondary-foreground: 0 0% 100%;
 
     /* Verde mais claro para acentuação */
-    --accent: 83 100% 85%;
-    --accent-foreground: 240 10% 3.9%;
+    --accent: 148 40% 90%;
+    --accent-foreground: 148 60% 20%;
 
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
@@ -54,26 +54,26 @@
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
+    --background: 220 10% 7%;
     --foreground: 0 0% 95%;
     
-    --card: 24 9.8% 10%;
+    --card: 215 14% 10%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 24 9.8% 10%;
+    --popover: 220 14% 10%;
     --popover-foreground: 0 0% 95%;
 
-    /* ClipUp verde principal no tema escuro (ligeiramente mais escuro) */
-    --primary: 83 90% 54%;
-    --primary-foreground: 240 10% 3.9%;
+    /* ClipUp verde principal no tema escuro (neon vibrante) */
+    --primary: 138 80% 50%;
+    --primary-foreground: 210 40% 98%;
 
     /* Verde mais escuro para contraste */
-    --secondary: 120 55% 28%;
+    --secondary: 160 60% 25%;
     --secondary-foreground: 0 0% 98%;
 
     /* Verde mais claro para acentuação */
-    --accent: 83 100% 72%;
-    --accent-foreground: 240 10% 3.9%;
+    --accent: 138 50% 25%;
+    --accent-foreground: 0 0% 98%;
 
     --muted: 0 0% 15%;
     --muted-foreground: 240 5% 64.9%;
@@ -122,74 +122,286 @@
 @layer components {
   /* Gradientes adaptativos para temas claro e escuro */
   .dark .hero-gradient {
-    background: radial-gradient(circle at 70% 30%, hsl(83, 40%, 18%) 0%, hsl(83, 40%, 12%) 70%);
+    background: radial-gradient(circle at 70% 30%, hsl(138, 50%, 18%) 0%, hsl(160, 50%, 10%) 80%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .dark .hero-gradient::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle at center, hsla(138, 80%, 50%, 0.1) 0%, transparent 25%);
+    animation: pulse 15s ease-in-out infinite alternate;
+    z-index: 0;
   }
   
   .light .hero-gradient {
-    background: radial-gradient(circle at 70% 30%, hsl(83, 100%, 92%) 0%, hsl(83, 60%, 97%) 70%);
+    background: radial-gradient(circle at 70% 30%, hsl(148, 30%, 92%) 0%, hsl(150, 30%, 97%) 80%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .light .hero-gradient::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle at center, hsla(148, 70%, 42%, 0.05) 0%, transparent 30%);
+    animation: pulse 15s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(5%, -5%) scale(1.05);
+    }
+    100% {
+      transform: translate(-5%, 5%) scale(0.95);
+    }
   }
   
   .gradient-border {
     position: relative;
     border-radius: 0.5rem;
     z-index: 1;
+    transition: all 0.5s ease;
   }
   
-  .gradient-border::before {
+  .dark .gradient-border::before {
     content: "";
     position: absolute;
     inset: -2px;
     border-radius: 0.6rem;
-    background: linear-gradient(45deg, hsl(83, 100%, 59%), hsl(120, 61%, 33%));
+    background: linear-gradient(45deg, hsl(138, 80%, 50%), hsl(160, 60%, 25%));
     z-index: -1;
-    opacity: 0.7;
-    transition: all 0.3s ease;
+    opacity: 0.8;
+    transition: all 0.5s ease;
   }
   
   .light .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 0.6rem;
+    background: linear-gradient(45deg, hsl(148, 65%, 42%), hsl(160, 50%, 30%));
+    z-index: -1;
     opacity: 0.5;
+    transition: all 0.5s ease;
   }
   
-  .card-glow:hover {
-    box-shadow: 0 0 25px hsla(83, 100%, 59%, 0.4);
-    transition: all 0.3s ease;
+  .gradient-border:hover::before {
+    filter: brightness(1.2) saturate(1.2);
+  }
+  
+  .dark .card-glow:hover {
+    box-shadow: 0 0 25px hsla(138, 80%, 50%, 0.4);
+    transform: translateY(-5px);
+    transition: all 0.4s ease;
+  }
+  
+  .light .card-glow:hover {
+    box-shadow: 0 0 25px hsla(148, 65%, 42%, 0.25);
+    transform: translateY(-5px);
+    transition: all 0.4s ease;
   }
   
   .dark .blink-section {
-    background: linear-gradient(to bottom, hsl(83, 40%, 12%), hsl(83, 30%, 18%));
+    background: linear-gradient(to bottom, hsl(138, 30%, 12%), hsl(160, 30%, 15%));
+    position: relative;
+    overflow: hidden;
   }
   
   .light .blink-section {
-    background: linear-gradient(to bottom, hsl(83, 100%, 95%), hsl(83, 100%, 98%));
+    background: linear-gradient(to bottom, hsl(148, 30%, 95%), hsl(150, 30%, 98%));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Efeito de partículas sutis */
+  .particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    opacity: 0.4;
+  }
+  
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.3;
+    animation: float 20s infinite linear;
   }
   
   /* Estilos específicos do ClipUp */
   .clipup-btn {
-    @apply px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition;
+    @apply px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium transition-all duration-300;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .clipup-btn:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  .clipup-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    transition: height 0.3s ease;
+  }
+  
+  .clipup-btn:hover::after {
+    height: 100%;
   }
   
   .clipup-btn-outline {
-    @apply px-6 py-3 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition;
+    @apply px-6 py-3 border border-primary text-primary rounded-md font-medium transition-all duration-300;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .clipup-btn-outline:hover {
+    @apply text-primary-foreground;
+    transform: translateY(-2px);
+  }
+  
+  .clipup-btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
+  
+  .clipup-btn-outline:hover::before {
+    left: 0;
   }
   
   .clipup-card {
-    @apply bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition;
+    @apply bg-card rounded-xl p-6 shadow-md transition-all duration-300;
+    border: 1px solid transparent;
+  }
+  
+  .clipup-card:hover {
+    @apply shadow-lg;
+    border-color: var(--primary);
+    transform: translateY(-5px);
   }
   
   .clipup-icon-container {
     @apply h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4;
+    transition: all 0.3s ease;
+  }
+  
+  .clipup-card:hover .clipup-icon-container {
+    @apply bg-primary/20;
+    transform: scale(1.1) rotate(5deg);
   }
   
   .clipup-feature-icon {
     @apply h-6 w-6 text-primary;
+    transition: all 0.3s ease;
+  }
+  
+  .clipup-card:hover .clipup-feature-icon {
+    transform: scale(1.1);
   }
   
   .clipup-section-title {
     @apply text-3xl font-bold text-foreground mb-4;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .clipup-section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+  }
+  
+  .clipup-section-title:hover::after {
+    width: 100%;
   }
   
   .clipup-section-description {
     @apply text-lg text-muted-foreground max-w-2xl mx-auto;
+  }
+  
+  /* Estilo para os cards com scroll parallax */
+  .parallax-card {
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+  
+  /* Animação de fade-in para elementos quando aparecem na tela */
+  .fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Animação para elementos em staggered */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .stagger-container.visible .stagger-item {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .stagger-container.visible .stagger-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  
+  .stagger-container.visible .stagger-item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  
+  .stagger-container.visible .stagger-item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  
+  .stagger-container.visible .stagger-item:nth-child(4) {
+    transition-delay: 0.4s;
   }
   
   /* Animações para dark mode toggle */
