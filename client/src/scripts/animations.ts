@@ -7,6 +7,8 @@ export function initAnimations() {
   setupFadeInAnimations();
   setupStaggeredAnimations();
   setupParallaxEffect();
+  addFloatAnimation();
+  initParticles();
 }
 
 // Animação de fade-in para elementos que entram na tela
@@ -49,10 +51,8 @@ function setupParallaxEffect() {
   
   document.addEventListener('mousemove', (e) => {
     const { clientX, clientY } = e;
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
     
-    parallaxElements.forEach(element => {
+    parallaxElements.forEach((element) => {
       const rect = element.getBoundingClientRect();
       const elementCenterX = rect.left + rect.width / 2;
       const elementCenterY = rect.top + rect.height / 2;
@@ -66,20 +66,35 @@ function setupParallaxEffect() {
       const transformX = distanceX * strength;
       const transformY = distanceY * strength;
       
-      element.style.transform = `translate(${transformX}px, ${transformY}px)`;
+      // Usa type assertion para acessar a propriedade style
+      (element as HTMLElement).style.transform = `translate(${transformX}px, ${transformY}px)`;
     });
   });
 }
 
+// Inicializa as partículas em todos os containers
+function initParticles() {
+  // Adiciona partículas na seção hero
+  addParticles('.hero-gradient', 20);
+  
+  // Adiciona partículas em outras seções que precisam
+  document.querySelectorAll('.blink-section').forEach((section) => {
+    addParticles(section as HTMLElement, 15);
+  });
+}
+
 // Adiciona círculos animados sutis como partículas de fundo
-export function addParticles(containerSelector: string, count: number = 15) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
+export function addParticles(container: string | HTMLElement, count: number = 15) {
+  const containerEl = typeof container === 'string' 
+    ? document.querySelector(container) 
+    : container;
+    
+  if (!containerEl) return;
   
   // Adiciona o container de partículas
   const particlesContainer = document.createElement('div');
   particlesContainer.className = 'particles-container';
-  container.appendChild(particlesContainer);
+  containerEl.appendChild(particlesContainer);
   
   // Gera partículas aleatórias
   for (let i = 0; i < count; i++) {
@@ -128,13 +143,19 @@ const floatAnimation = `
 
 // Adiciona a animação ao head
 function addFloatAnimation() {
+  if (document.getElementById('float-animation-style')) return;
+  
   const style = document.createElement('style');
+  style.id = 'float-animation-style';
   style.textContent = floatAnimation;
   document.head.appendChild(style);
 }
 
 // Inicializa as animações quando o DOM carrega
-document.addEventListener('DOMContentLoaded', () => {
-  initAnimations();
-  addFloatAnimation();
-});
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+  } else {
+    initAnimations();
+  }
+}
