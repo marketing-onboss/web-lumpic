@@ -77,21 +77,6 @@ export const VideoLightbox: React.FC<VideoLightboxProps> = ({
           <div className="rounded-full bg-primary/90 h-16 w-16 flex items-center justify-center backdrop-blur-sm transition-transform duration-300 hover:scale-110">
             <PlayIcon className="h-8 w-8 text-white" />
           </div>
-          
-          <div className="absolute inset-x-0 bottom-0 p-6">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/freelancer">
-                <button className="clipup-btn flex items-center justify-center w-full">
-                  {t('hero.freelancer.button')}
-                </button>
-              </Link>
-              <Link href="/empresa">
-                <button className="clipup-btn-outline w-full">
-                  {t('hero.business.button')}
-                </button>
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
 

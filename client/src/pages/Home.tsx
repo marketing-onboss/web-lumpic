@@ -68,9 +68,9 @@ export default function Home() {
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Recursos que impulsionam seu trabalho</h2>
+            <h2 className="clipup-section-title">{t('features.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Ferramentas e recursos projetados para conectar criadores de vídeo com clientes, simplificando o processo de contratação e entrega.
+              {t('features.subtitle')}
             </p>
           </div>
           
@@ -82,9 +82,9 @@ export default function Home() {
                   <VideoIcon className="h-8 w-8 text-primary" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Portfólio Profissional</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">{t('features.feature1.title')}</h3>
               <p className="text-muted-foreground text-center">
-                Exiba seus melhores trabalhos e destaque suas habilidades, compartilhando um perfil personalizado, que impressiona os clientes.
+                {t('features.feature1.description')}
               </p>
             </div>
             
@@ -95,9 +95,9 @@ export default function Home() {
                   <DollarSignIcon className="h-8 w-8 text-primary" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Pagamentos Seguros</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">{t('features.feature2.title')}</h3>
               <p className="text-muted-foreground text-center">
-                Sistema de pagamento protegido com a moeda Lumpz, garantindo segurança para freelancers e clientes em todas as transações.
+                {t('features.feature2.description')}
               </p>
             </div>
             
@@ -108,9 +108,9 @@ export default function Home() {
                   <UsersIcon className="h-8 w-8 text-primary" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Matchmaking Inteligente</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 text-center">{t('features.feature3.title')}</h3>
               <p className="text-muted-foreground text-center">
-                Encontre os clientes perfeitos para seu perfil através do nosso algoritmo baseado em habilidades e preferências.
+                {t('features.feature3.description')}
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function Home() {
                 <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center">
                   <DollarSignIcon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground ml-4">Para criadores</h3>
+                <h3 className="text-2xl font-semibold text-foreground ml-4">{t('how.creators.title')}</h3>
               </div>
               
               <div className="space-y-4">
@@ -178,7 +178,7 @@ export default function Home() {
               <div className="mt-8">
                 <Link href="/freelancer">
                   <button className="clipup-btn w-full">
-                    Quero ser criador
+                    {t('how.creators.button')}
                   </button>
                 </Link>
               </div>
@@ -190,7 +190,7 @@ export default function Home() {
                 <div className="h-14 w-14 bg-primary/10 rounded-full flex items-center justify-center">
                   <PackageIcon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground ml-4">Para empresas</h3>
+                <h3 className="text-2xl font-semibold text-foreground ml-4">{t('how.business.title')}</h3>
               </div>
               
               <div className="space-y-4">
@@ -234,7 +234,7 @@ export default function Home() {
               <div className="mt-8">
                 <Link href="/empresa">
                   <button className="clipup-btn-outline w-full">
-                    Quero contratar
+                    {t('how.business.button')}
                   </button>
                 </Link>
               </div>
