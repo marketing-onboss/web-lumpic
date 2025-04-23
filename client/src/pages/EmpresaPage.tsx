@@ -288,11 +288,11 @@ export default function EmpresaPage() {
         </div>
       </section>
       
-      {/* Porque escolher ClipUp */}
+      {/* Porque escolher Lumpic */}
       <section className="py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Por que escolher a ClipUp</h2>
+            <h2 className="clipup-section-title">Por que escolher a Lumpic</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
               Diferenciais que tornam nossa plataforma a escolha ideal para suas campanhas de vídeo
             </p>
@@ -468,7 +468,7 @@ export default function EmpresaPage() {
           <div className="text-center mb-12 fade-in-element">
             <h2 className="clipup-section-title">O que dizem nossos clientes</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Depoimentos de empresas que transformaram suas estratégias com a ClipUp
+              Depoimentos de empresas que transformaram suas estratégias com a Lumpic
             </p>
           </div>
           
@@ -525,7 +525,7 @@ export default function EmpresaPage() {
                 </div>
               </div>
               <p className="text-foreground text-lg italic mb-6">
-                "Estamos economizando 60% em custos de produção e obtendo resultados 3x melhores. A ClipUp revolucionou nossa estratégia de marketing."
+                "Estamos economizando 60% em custos de produção e obtendo resultados 3x melhores. A Lumpic revolucionou nossa estratégia de marketing."
               </p>
               <div className="flex items-center">
                 <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">P</div>
@@ -795,7 +795,7 @@ export default function EmpresaPage() {
                     fill="white"
                   />
                 </svg>
-                <span className="text-xl font-bold text-foreground">ClipUp</span>
+                <span className="text-xl font-bold text-foreground">Lumpic</span>
               </div>
               <p className="text-muted-foreground mb-4">
                 Conectando empresas e criadores de conteúdo para vídeos impactantes.
@@ -835,7 +835,7 @@ export default function EmpresaPage() {
           
           <div className="mt-12 pt-8 border-t border-muted flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} ClipUp. Todos os direitos reservados.
+              &copy; {new Date().getFullYear()} Lumpic. Todos os direitos reservados.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-muted-foreground hover:text-primary transition">
