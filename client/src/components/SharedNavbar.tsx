@@ -131,7 +131,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
         </div>
 
         {/* Mobile Menu */}
-      {mobileMenuOpen && (
+        {mobileMenuOpen && (
         <div className="md:hidden bg-card/95 backdrop-blur-md overflow-hidden transition-all duration-300">
           <div className="px-4 py-6 space-y-5">
             <Link href="/">
@@ -207,7 +207,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
             </div>
           </div>
         </div>
-      )}
+        )}
     </header>
 
     {/* Mobile Bottom Navigation - App Style */}

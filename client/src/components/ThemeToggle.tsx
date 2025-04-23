@@ -1,16 +1,31 @@
 import { useTheme } from "@/contexts/ThemeProvider";
 import { SunIcon, MoonIcon, MonitorIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const prevThemeRef = useRef(theme);
 
   // Soluciona o problema de hidratação
   useEffect(() => {
     setMounted(true);
   }, []);
+  
+  // Detect theme changes and trigger animation
+  useEffect(() => {
+    if (mounted && prevThemeRef.current !== theme) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 500); // Animation duration
+      
+      prevThemeRef.current = theme;
+      return () => clearTimeout(timer);
+    }
+  }, [theme, mounted]);
 
   if (!mounted) {
     return null;
@@ -32,13 +47,17 @@ export function ThemeToggle() {
   };
 
   const currentThemeIcon = () => {
+    const iconClass = isAnimating 
+      ? "h-5 w-5 animate-fade-in-rotate text-primary" 
+      : "h-5 w-5 transition-transform duration-300 ease-in-out";
+      
     switch (theme) {
       case "light":
-        return <SunIcon className="h-5 w-5" />;
+        return <SunIcon className={iconClass} />;
       case "dark":
-        return <MoonIcon className="h-5 w-5" />;
+        return <MoonIcon className={iconClass} />;
       case "system":
-        return <MonitorIcon className="h-5 w-5" />;
+        return <MonitorIcon className={iconClass} />;
     }
   };
 
