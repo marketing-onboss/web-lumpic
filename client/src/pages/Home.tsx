@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useEffect } from "react";
 import SharedNavbar from "@/components/SharedNavbar";
+import VideoLightbox from "@/components/VideoLightbox";
 import { 
   CameraIcon, PencilIcon, ClockIcon, TrendingUpIcon, HeartIcon, 
   CheckCircleIcon, VideoIcon, DollarSignIcon, UserIcon, LightbulbIcon,
@@ -53,31 +54,11 @@ export default function Home() {
               </div>
             </div>
             <div className="md:w-1/2 relative">
-              <div className="gradient-border bg-card rounded-lg shadow-xl overflow-hidden parallax-card">
-                <img 
-                  src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" 
-                  alt="Editor de vídeo trabalhando" 
-                  className="w-full h-auto rounded-lg object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg flex items-end">
-                  <div className="p-6 w-full">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                          <VideoIcon className="h-5 w-5 text-black" />
-                        </div>
-                        <div className="ml-3">
-                          <p className="text-white text-sm font-medium">+3.200 criadores</p>
-                          <p className="text-white/70 text-xs">Prontos para trabalhar</p>
-                        </div>
-                      </div>
-                      <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                        <p className="text-white text-sm font-medium">Projetos reais</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <VideoLightbox
+                thumbnailUrl="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
+                videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Lumpic - A plataforma que conecta criadores reais a marcas autênticas"
+              />
             </div>
           </div>
         </div>
