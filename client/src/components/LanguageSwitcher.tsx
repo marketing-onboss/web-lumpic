@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-type Language = 'pt-BR' | 'en-US' | 'es-ES';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 
 // Flag SVGs como componentes React
 const BrazilFlag = () => (
@@ -39,16 +38,15 @@ const languageFlags: Record<Language, { flag: React.ReactNode, name: string }> =
 
 export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>('pt-BR');
+  const { language, setLanguage } = useLanguage();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const changeLanguage = (language: Language) => {
-    setSelectedLanguage(language);
+  const changeLanguage = (lang: Language) => {
+    setLanguage(lang);
     setIsOpen(false);
-    // Aqui poderia ser implementada a lógica real de mudança de idioma da aplicação
   };
 
   return (
@@ -58,23 +56,23 @@ export function LanguageSwitcher() {
         className="flex items-center justify-center h-9 px-3 rounded-md border border-border hover:bg-muted transition-colors focus:outline-none"
         aria-label="Selecionar idioma"
       >
-        <span className="mr-1">{languageFlags[selectedLanguage].flag}</span>
-        <span className="sr-only md:not-sr-only md:text-xs">{languageFlags[selectedLanguage].name}</span>
+        <span className="mr-1">{languageFlags[language].flag}</span>
+        <span className="sr-only md:not-sr-only md:text-xs">{languageFlags[language].name}</span>
       </button>
 
       {isOpen && (
         <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-card border border-border z-50">
           <div className="py-1">
-            {(Object.keys(languageFlags) as Array<Language>).map((language) => (
+            {(Object.keys(languageFlags) as Array<Language>).map((lang) => (
               <button
-                key={language}
-                onClick={() => changeLanguage(language)}
+                key={lang}
+                onClick={() => changeLanguage(lang)}
                 className={`flex items-center w-full px-4 py-2 text-sm hover:bg-muted transition-colors ${
-                  selectedLanguage === language ? 'bg-primary/10 text-primary' : 'text-foreground'
+                  language === lang ? 'bg-primary/10 text-primary' : 'text-foreground'
                 }`}
               >
-                <span className="mr-2">{languageFlags[language].flag}</span>
-                <span>{languageFlags[language].name}</span>
+                <span className="mr-2">{languageFlags[lang].flag}</span>
+                <span>{languageFlags[lang].name}</span>
               </button>
             ))}
           </div>

@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface SharedNavbarProps {
   currentPage: "institucional" | "freelancer" | "empresa";
@@ -16,6 +17,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
