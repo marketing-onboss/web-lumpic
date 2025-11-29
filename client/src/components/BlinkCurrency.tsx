@@ -32,7 +32,7 @@ export default function BlinkCurrency() {
                 />
                 <FeatureItem 
                   icon={<RefreshIcon className="h-5 w-5" />}
-                  title="Ou usar seus Blinks para contratar outros serviços"
+                  title="Ou usar seus Lumpz para contratar outros serviços"
                   description="Circule na economia criativa da plataforma"
                 />
               </ul>
@@ -47,7 +47,7 @@ export default function BlinkCurrency() {
                 />
                 <BenefitItem 
                   icon={<BanIcon className="h-5 w-5" />}
-                  text="Sem intermediários ou surpresas"
+                  text="Pagamentos automáticos e transparentes"
                 />
                 <BenefitItem 
                   icon={<LockIcon className="h-5 w-5" />}
@@ -55,7 +55,7 @@ export default function BlinkCurrency() {
                 />
                 <BenefitItem 
                   icon={<BarChartIcon className="h-5 w-5" />}
-                  text="Economia de tempo e taxas menores"
+                  text="Plataforma 100% segura com suporte dedicado"
                 />
               </div>
             </div>
@@ -74,9 +74,9 @@ export default function BlinkCurrency() {
               {/* Dashboard mockup overlayed */}
               <div className="absolute -bottom-8 -right-8 bg-card p-4 rounded-xl shadow-xl border border-muted w-3/4 z-20">
                 <div className="flex justify-between items-center mb-4">
-                  <h4 className="text-foreground font-bold">Seu Saldo</h4>
-                  <span className="text-primary font-bold">12.540 Blinks</span>
-                </div>
+                    <h4 className="text-foreground font-bold">Seu Saldo</h4>
+                    <span className="text-primary font-bold">12.540 créditos Lumpz</span>
+                  </div>
                 <div className="bg-muted p-3 rounded-lg mb-4">
                   <div className="flex justify-between items-center">
                     <div>
@@ -92,9 +92,9 @@ export default function BlinkCurrency() {
 
             <div className="mt-16 bg-card rounded-xl p-8 shadow-lg border border-muted">
               <h3 className="text-xl font-bold text-foreground mb-4">Transparência e liberdade</h3>
-              <p className="text-card-foreground mb-6">
+                <p className="text-card-foreground mb-6">
                 Tudo que você ganha está no seu painel. Nada escondido. 
-                Nada retido. Acumule Blinks e receba em R$
+                Nada retido. Acumule créditos Lumpz e receba em R$
               </p>
               
               <h3 className="text-xl font-bold text-foreground mb-4">Receba Seus Ganhos do Jeito Que Quiser</h3>
@@ -107,7 +107,7 @@ export default function BlinkCurrency() {
               <div className="bg-muted p-4 rounded-lg">
                 <h4 className="text-foreground font-bold mb-2">Pagamento Semanal (Grátis)</h4>
                 <p className="text-muted-foreground">
-                  Receba todo o valor sem taxas, toda segunda-feira, direto na sua conta bancária. 
+                  Receba seus créditos toda segunda-feira com processamento automático e seguro, direto na sua conta. 
                   Ideal pra quem prefere uma agenda fixa e organizada.
                 </p>
               </div>
@@ -119,7 +119,7 @@ export default function BlinkCurrency() {
   );
 }
 
-function FeatureItem({ icon, title, description }) {
+function FeatureItem({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
     <li className="flex items-start">
       <div className="bg-primary rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1 mr-4">
@@ -133,7 +133,7 @@ function FeatureItem({ icon, title, description }) {
   );
 }
 
-function BenefitItem({ icon, text }) {
+function BenefitItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
     <div className="flex items-start">
       <div className="text-secondary text-lg mr-3 mt-1">

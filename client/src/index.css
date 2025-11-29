@@ -4,13 +4,13 @@
 
 @layer base {
   .light {
-    --background: 0 0% 100%;
+    --background: 220 25% 95.5%;
     --foreground: 240 10% 3.9%;
     
-    --card: 0 0% 100%;
+    --card: 220 20% 98%;
     --card-foreground: 240 10% 3.9%;
 
-    --popover: 0 0% 100%;
+    --popover: 220 20% 98%;
     --popover-foreground: 240 10% 3.9%;
 
     /* ClipUp verde principal - mais suave para tema claro */
@@ -22,17 +22,17 @@
     --secondary-foreground: 0 0% 100%;
 
     /* Verde mais claro para acentuação */
-    --accent: 148 40% 90%;
+    --accent: 148 40% 86%;
     --accent-foreground: 148 60% 20%;
 
-    --muted: 240 4.8% 95.9%;
+    --muted: 220 15% 90%;
     --muted-foreground: 240 3.8% 46.1%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
+    --border: 220 12% 85%;
+    --input: 220 10% 92%;
     --ring: 83 100% 59%;
 
     --radius: 0.5rem;
@@ -43,13 +43,13 @@
     --chart-4: 139 69% 45%;
     --chart-5: 167 78% 41%;
 
-    --sidebar-background: 0 0% 100%;
+    --sidebar-background: 220 20% 98%;
     --sidebar-foreground: 240 10% 3.9%;
     --sidebar-primary: 83 100% 59%;
     --sidebar-primary-foreground: 240 10% 3.9%;
-    --sidebar-accent: 83 100% 85%;
-    --sidebar-accent-foreground: 240 10% 3.9%;
-    --sidebar-border: 240 5.9% 90%;
+    --sidebar-accent: 148 40% 86%;
+    --sidebar-accent-foreground: 148 60% 20%;
+    --sidebar-border: 220 12% 85%;
     --sidebar-ring: 83 100% 59%;
   }
 
@@ -121,12 +121,77 @@
 
 @layer utilities {
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(-100% - 3rem)); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* marquee: expects .marquee-track to contain two identical groups */
+  .animate-marquee {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    will-change: transform;
+    animation: marquee 22s linear infinite;
+  }
+
+  /* Pause on hover/focus for usability */
+  .marquee-container:hover .animate-marquee,
+  .marquee-container:focus-within .animate-marquee {
+    animation-play-state: paused;
+  }
+
+  /* Softer side overlays for marquee to avoid hard dark stains */
+  .marquee-container .left-overlay {
+    border-top-right-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    background: linear-gradient(90deg,
+      hsl(var(--background) / 1) 0%,
+      hsl(var(--background) / 0.12) 35%,
+      transparent 70%);
+    box-shadow: none;
+  }
+
+  .marquee-container .right-overlay {
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    background: linear-gradient(270deg,
+      hsl(var(--background) / 1) 0%,
+      hsl(var(--background) / 0.12) 35%,
+      transparent 70%);
+    box-shadow: none;
+  }
+
+  /* ensure marquee track doesn't wrap and groups lay inline */
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
   }
   
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
+  /* Custom Scrollbar for Modal */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.2);
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+  
+  /* Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.3) hsl(var(--muted) / 0.2);
   }
 }
 
@@ -282,15 +347,16 @@
   
   /* Estilos específicos do ClipUp */
   .clipup-btn {
-    @apply px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium transition-all duration-300;
+    @apply px-7 py-3 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-xl;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    letter-spacing: 0.3px;
   }
   
   .clipup-btn:hover {
-    @apply shadow-lg;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(31, 191, 107, 0.35);
   }
   
   .clipup-btn::after {
@@ -300,7 +366,7 @@
     left: 0;
     width: 100%;
     height: 0;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     z-index: -1;
     transition: height 0.3s ease;
   }
@@ -310,15 +376,16 @@
   }
   
   .clipup-btn-outline {
-    @apply px-6 py-3 border border-primary text-primary rounded-md font-medium transition-all duration-300;
+    @apply px-7 py-3 border-2 border-primary text-primary rounded-lg font-semibold transition-all duration-300 bg-transparent hover:bg-primary/5;
     position: relative;
     z-index: 1;
     overflow: hidden;
+    letter-spacing: 0.3px;
   }
   
   .clipup-btn-outline:hover {
-    @apply text-primary-foreground;
-    transform: translateY(-2px);
+    @apply text-primary border-primary/80 shadow-md;
+    transform: translateY(-3px);
   }
   
   .clipup-btn-outline::before {
@@ -329,6 +396,7 @@
     width: 100%;
     height: 100%;
     background: var(--primary);
+    opacity: 0.05;
     transition: left 0.3s ease;
     z-index: -1;
   }
@@ -402,7 +470,7 @@
   .fade-in-element {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   
   .fade-in-element.visible {
@@ -419,23 +487,23 @@
   .stagger-container.visible .stagger-item {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   
   .stagger-container.visible .stagger-item:nth-child(1) {
-    transition-delay: 0.1s;
+    transition-delay: 0.15s;
   }
   
   .stagger-container.visible .stagger-item:nth-child(2) {
-    transition-delay: 0.2s;
-  }
-  
-  .stagger-container.visible .stagger-item:nth-child(3) {
     transition-delay: 0.3s;
   }
   
+  .stagger-container.visible .stagger-item:nth-child(3) {
+    transition-delay: 0.45s;
+  }
+  
   .stagger-container.visible .stagger-item:nth-child(4) {
-    transition-delay: 0.4s;
+    transition-delay: 0.6s;
   }
   
   /* Animações para dark mode toggle */
@@ -468,4 +536,47 @@
   .theme-toggle-icon-out {
     animation: rotateOut 0.5s forwards cubic-bezier(0.23, 1, 0.32, 1);
   }
+
+  /* Variações de background para modo claro - Premium */
+  .light .bg-section-primary {
+    background: linear-gradient(135deg, hsl(220 25% 95.5%) 0%, hsl(210 20% 93%) 100%);
+  }
+
+  .light .bg-section-secondary {
+    background: linear-gradient(135deg, hsl(220 20% 98%) 0%, hsl(210 15% 96%) 100%);
+  }
+
+  .light .bg-section-accent {
+    background: linear-gradient(135deg, hsl(148 25% 92%) 0%, hsl(150 20% 95%) 100%);
+  }
+
+  .light .bg-section-subtle {
+    background: linear-gradient(135deg, hsl(220 20% 96%) 0%, hsl(215 18% 94%) 100%);
+  }
+
+  .light .bg-section-warm {
+    background: linear-gradient(135deg, hsl(40 60% 95%) 0%, hsl(35 50% 93%) 100%);
+  }
+
+  /* Para Dark Mode manter o original */
+  .dark .bg-section-primary {
+    background: hsl(220 10% 7%);
+  }
+
+  .dark .bg-section-secondary {
+    background: hsl(215 14% 10%);
+  }
+
+  .dark .bg-section-accent {
+    background: hsl(160 30% 12%);
+  }
+
+  .dark .bg-section-subtle {
+    background: hsl(220 12% 8%);
+  }
+
+  .dark .bg-section-warm {
+    background: hsl(220 10% 9%);
+  }
 }
+

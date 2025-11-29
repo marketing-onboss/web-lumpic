@@ -7,7 +7,7 @@ export default function ServicesShowcase() {
       image: "https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?w=600&h=400&fit=crop",
       title: "Depoimentos de Clientes",
       description: "Aumente a credibilidade do seu negócio com depoimentos autênticos de clientes satisfeitos.",
-      price: "A partir de 500 Blinks",
+      price: "A partir de 500 créditos Lumpz",
       duration: "~5 min",
       badge: "+ Credibilidade",
       badgeColor: "bg-purple-500"
@@ -16,7 +16,7 @@ export default function ServicesShowcase() {
       image: "https://images.unsplash.com/photo-1607703703674-df96af81dffa?w=600&h=400&fit=crop",
       title: "Unboxings de Produtos",
       description: "Mostre seu produto sendo desembalado e experimentado por criadores de conteúdo autênticos.",
-      price: "A partir de 700 Blinks",
+      price: "A partir de 700 créditos Lumpz",
       duration: "~8 min",
       badge: "Alta conversão",
       badgeColor: "bg-green-500"
@@ -25,7 +25,7 @@ export default function ServicesShowcase() {
       image: "https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?w=600&h=400&fit=crop",
       title: "Reviews & Avaliações",
       description: "Obtenha feedback genuíno sobre seus produtos com avaliações detalhadas em vídeo.",
-      price: "A partir de 600 Blinks",
+      price: "A partir de 600 créditos Lumpz",
       duration: "~7 min",
       badge: "Autenticidade",
       badgeColor: "bg-blue-500"
@@ -34,7 +34,7 @@ export default function ServicesShowcase() {
       image: "https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?w=600&h=400&fit=crop",
       title: "Vídeos para Redes Sociais",
       description: "Conteúdo otimizado para engajamento e conversão nas principais plataformas sociais.",
-      price: "A partir de 900 Blinks",
+      price: "A partir de 900 créditos Lumpz",
       duration: "~10 min",
       badge: "Engajamento",
       badgeColor: "bg-amber-500"
@@ -43,7 +43,7 @@ export default function ServicesShowcase() {
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop",
       title: "Cases de Sucesso",
       description: "Demonstre o valor real do seu produto com histórias inspiradoras de clientes satisfeitos.",
-      price: "A partir de 1000 Blinks",
+      price: "A partir de 1000 créditos Lumpz",
       duration: "~15 min",
       badge: "Storytelling",
       badgeColor: "bg-emerald-500"

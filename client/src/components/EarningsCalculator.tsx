@@ -63,10 +63,10 @@ export default function EarningsCalculator() {
     },
   };
   
-  // Convertendo de Blinks para Lumpz (consideramos que 1 blink = 1 Lumpz)
+  // Convertendo de Blinks para créditos Lumpz (consideramos que 1 blink = 1 crédito Lumpz)
   const blinksPerVideo = videoTypes[selectedVideoType].blinks;
   const totalLumpz = blinksPerVideo * videoCount;
-  // Conversão para Reais (1 Lumpz = R$ 2)
+  // Conversão para Reais (1 crédito Lumpz = R$ 2)
   const valueInReais = totalLumpz * 2;
   
   // Para animação do contador
@@ -222,7 +222,7 @@ export default function EarningsCalculator() {
                               />
                             )}
                             <span className="relative z-10">
-                              {type} ({data.blinks} Lumpz)
+                              {type} ({data.blinks} créditos Lumpz)
                             </span>
                           </Button>
                         </motion.div>
@@ -308,9 +308,9 @@ export default function EarningsCalculator() {
                         >
                           <div className="flex items-center mb-1">
                             <Sparkles className="h-4 w-4 text-primary mr-2" />
-                            <p className="text-muted-foreground text-sm">Lumpz por vídeo</p>
+                            <p className="text-muted-foreground text-sm">créditos Lumpz por vídeo</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">{blinksPerVideo} Lumpz</p>
+                          <p className="text-primary font-bold text-2xl">{blinksPerVideo} créditos Lumpz</p>
                         </motion.div>
                         <motion.div 
                           className="bg-muted p-4 rounded-lg border border-muted shadow-sm"
@@ -323,7 +323,7 @@ export default function EarningsCalculator() {
                             <CalendarClock className="h-4 w-4 text-primary mr-2" />
                             <p className="text-muted-foreground text-sm">Alcance potencial</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">{totalLumpz * 150}+ pessoas</p>
+                            <p className="text-primary font-bold text-2xl">{totalLumpz * 150}+ pessoas</p>
                         </motion.div>
                         <motion.div 
                           className="bg-muted p-4 rounded-lg border border-muted shadow-sm"
@@ -336,9 +336,9 @@ export default function EarningsCalculator() {
                             <DollarSign className="h-4 w-4 text-primary mr-2" />
                             <p className="text-muted-foreground text-sm">Retorno estimado</p>
                           </div>
-                          <p className="text-primary font-bold text-2xl">
+                            <p className="text-primary font-bold text-2xl">
                             R$ {(animatedValue * 1.75).toFixed(2)} 
-                            <span className="text-sm font-normal ml-1 text-muted-foreground">({totalLumpz} Lumpz × R$2 × 1.75)</span>
+                            <span className="text-sm font-normal ml-1 text-muted-foreground">({totalLumpz} créditos Lumpz × R$2 × 1.75)</span>
                           </p>
                         </motion.div>
                       </motion.div>

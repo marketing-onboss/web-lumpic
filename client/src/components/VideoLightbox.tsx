@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { XIcon, PlayIcon } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLeadCapture } from '@/hooks/useLeadCapture';
 
 // Configure o elemento raiz para o modal
 if (typeof window !== 'undefined') {
@@ -22,8 +23,13 @@ export const VideoLightbox: React.FC<VideoLightboxProps> = ({
   title
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [, setLocation] = useLocation();
   const { t } = useLanguage();
   const isMobile = useIsMobile();
+  
+  // Handlers para CTAs com captura de lead
+  const handleFreelancerCTA = useLeadCapture(() => setLocation('/freelancer'));
+  const handleEmpresaCTA = useLeadCapture(() => setLocation('/empresa'));
 
   // Função para abrir o modal
   const openModal = () => {
@@ -109,16 +115,12 @@ export const VideoLightbox: React.FC<VideoLightboxProps> = ({
           </div>
           
           <div className="p-4 bg-background flex flex-col sm:flex-row gap-4">
-            <Link href="/freelancer" className="flex-1">
-              <button className="clipup-btn w-full">
-                {t('hero.freelancer.button')}
-              </button>
-            </Link>
-            <Link href="/empresa" className="flex-1">
-              <button className="clipup-btn-outline w-full">
-                {t('hero.business.button')}
-              </button>
-            </Link>
+            <button onClick={handleFreelancerCTA} className="clipup-btn w-full flex-1">
+              {t('hero.freelancer.button')}
+            </button>
+            <button onClick={handleEmpresaCTA} className="clipup-btn-outline w-full flex-1">
+              {t('hero.business.button')}
+            </button>
           </div>
         </div>
       </Modal>

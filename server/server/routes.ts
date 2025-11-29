@@ -12,7 +12,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const newUser = await storage.createUser(req.body);
       res.status(201).json(newUser);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(400).json({ message: errorMessage });
     }
   });
 
@@ -24,7 +25,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       res.json(user);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(500).json({ message: errorMessage });
     }
   });
 
@@ -34,7 +36,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const newService = await storage.createService(req.body);
       res.status(201).json(newService);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(400).json({ message: errorMessage });
     }
   });
 
@@ -43,7 +46,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const services = await storage.getAllServices();
       res.json(services);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(500).json({ message: errorMessage });
     }
   });
 
@@ -53,7 +57,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const newProject = await storage.createProject(req.body);
       res.status(201).json(newProject);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(400).json({ message: errorMessage });
     }
   });
 
@@ -62,7 +67,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const projects = await storage.getAllProjects();
       res.json(projects);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(500).json({ message: errorMessage });
     }
   });
 
@@ -72,7 +78,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const newTestimonial = await storage.createTestimonial(req.body);
       res.status(201).json(newTestimonial);
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(400).json({ message: errorMessage });
     }
   });
 
@@ -81,7 +88,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const testimonials = await storage.getAllTestimonials();
       res.json(testimonials);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(500).json({ message: errorMessage });
     }
   });
 

@@ -21,7 +21,7 @@ const faqs: FAQ[] = [
   },
   {
     question: "Como recebo o pagamento?",
-    answer: "Você acumula Blinks por cada trabalho concluído e pode convertê-los em reais a qualquer momento. Os saques são processados de forma semanal e transferidos diretamente para sua conta bancária ou via PIX, sem taxas adicionais.",
+    answer: "Você acumula créditos Lumpz por cada trabalho concluído e pode convertê-los em reais quando atingir o mínimo de 100 créditos Lumpz. Os saques são processados semanalmente e transferidos diretamente para sua conta bancária ou via PIX com segurança e rapidez.",
     category: "Pagamentos"
   },
   {

@@ -1,7 +1,10 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useEffect } from "react";
 import SharedNavbar from "@/components/SharedNavbar";
+import Footer from "@/components/Footer";
 import VideoLightbox from "@/components/VideoLightbox";
+import ImageCarousel from "@/components/ImageCarousel";
+import { useLeadCapture } from "@/hooks/useLeadCapture";
 import { 
   CameraIcon, PencilIcon, ClockIcon, TrendingUpIcon, HeartIcon, 
   CheckCircleIcon, VideoIcon, DollarSignIcon, UserIcon, LightbulbIcon,
@@ -11,8 +14,15 @@ import {
 } from "lucide-react";
 import { initAnimations } from "@/scripts/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import logoSrc from "@/assets/lumpic-logo.png";
+import img01 from "@/assets/01.png";
+import img02 from "@/assets/02.jpg";
+import img03 from "@/assets/03.png";
+import img04 from "@/assets/04.png";
 
 export default function Home() {
+  const [, setLocation] = useLocation();
+  
   // Inicializa as animações quando o componente montar
   useEffect(() => {
     initAnimations();
@@ -20,6 +30,10 @@ export default function Home() {
   
   // Hook de tradução
   const { t } = useLanguage();
+  
+  // Hook de captura de leads para CTAs
+  const handleFreelancerCTA = useLeadCapture(() => setLocation('/freelancer'));
+  const handleEmpresaCTA = useLeadCapture(() => setLocation('/empresa'));
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -40,24 +54,26 @@ export default function Home() {
               <p className="text-lg text-foreground/80 mb-8">
                 Crie ou contrate vídeos originais com agilidade, confiança e retorno real.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/freelancer">
-                  <button className="clipup-btn flex items-center">
-                    {t('hero.freelancer.button')}
-                  </button>
-                </Link>
-                <Link href="/empresa">
-                  <button className="clipup-btn-outline">
-                    {t('hero.business.button')}
-                  </button>
-                </Link>
+              <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-stretch">
+                <button onClick={handleFreelancerCTA} className="clipup-btn flex items-center justify-center flex-1 w-full gap-2">
+                  <span>✨</span>
+                  {t('hero.freelancer.button')}
+                </button>
+                <button onClick={handleEmpresaCTA} className="clipup-btn-outline flex items-center justify-center flex-1 w-full gap-2">
+                  <span>🚀</span>
+                  {t('hero.business.button')}
+                </button>
               </div>
             </div>
-            <div className="md:w-1/2 relative">
-              <VideoLightbox
-                thumbnailUrl="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
-                videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Lumpic - A plataforma que conecta criadores reais a marcas autênticas"
+            <div className="w-full md:w-1/2 relative max-h-[350px] sm:max-h-[400px] md:max-h-[500px]">
+              <ImageCarousel 
+                images={[
+                  { src: img01, alt: 'Lumpic - Imagem 1' },
+                  { src: img02, alt: 'Lumpic - Imagem 2' },
+                  { src: img03, alt: 'Lumpic - Imagem 3' },
+                  { src: img04, alt: 'Lumpic - Imagem 4' },
+                ]}
+                autoPlayInterval={5000}
               />
             </div>
           </div>
@@ -65,7 +81,7 @@ export default function Home() {
       </section>
       
       {/* Recursos Section - Baseado na imagem institucional.png */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background bg-section-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
             <h2 className="clipup-section-title">{t('features.title')}</h2>
@@ -97,7 +113,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Pagamentos Seguros</h3>
               <p className="text-muted-foreground text-center">
-                Sistema de pagamento protegido com a moeda Lumpz, garantindo segurança para freelancers e clientes em todas as transações.
+                Sistema de pagamento protegido com os créditos Lumpz, garantindo segurança para freelancers e clientes em todas as transações.
               </p>
             </div>
             
@@ -118,7 +134,7 @@ export default function Home() {
       </section>
       
       {/* Como Funciona - Resumo para dois lados */}
-      <section className="py-16 bg-card">
+      <section className="py-16 bg-card bg-section-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
             <h2 className="clipup-section-title">Como Funciona</h2>
@@ -169,18 +185,16 @@ export default function Home() {
                   <div className="h-6 w-6 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
                     <p className="text-primary text-xs font-bold">4</p>
                   </div>
-                  <p className="text-muted-foreground ml-3">
-                    <span className="text-foreground font-medium">Receba em Lumpz</span> e converta em reais facilmente
-                  </p>
+                    <p className="text-muted-foreground ml-3">
+                    <span className="text-foreground font-medium">Receba em créditos Lumpz</span> e converta em reais facilmente
+                    </p>
                 </div>
               </div>
               
               <div className="mt-8">
-                <Link href="/freelancer">
-                  <button className="clipup-btn w-full">
-                    Quero ser um criador
-                  </button>
-                </Link>
+                <button onClick={handleFreelancerCTA} className="clipup-btn w-full">
+                  Quero ser um criador
+                </button>
               </div>
             </div>
             
@@ -232,11 +246,9 @@ export default function Home() {
               </div>
               
               <div className="mt-8">
-                <Link href="/empresa">
-                  <button className="clipup-btn-outline w-full">
-                    Quero contratar criadores
-                  </button>
-                </Link>
+                <button onClick={handleEmpresaCTA} className="clipup-btn-outline w-full">
+                  Quero contratar criadores
+                </button>
               </div>
             </div>
           </div>
@@ -244,10 +256,10 @@ export default function Home() {
       </section>
       
       {/* Video Types Section */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background bg-section-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Qual tipo de vídeo você precisa?</h2>
+            <h2 className="clipup-section-title">Podemos te ajudar com tudo isso e muito mais!</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
               Diversas categorias de conteúdo para atender às necessidades específicas do seu negócio
             </p>
@@ -357,7 +369,7 @@ export default function Home() {
       </section>
       
       {/* Social Proof - Nova versão com estatísticas e marcas */}
-      <section className="py-16 bg-card">
+      <section className="py-16 bg-card bg-section-accent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
             <h2 className="clipup-section-title">Resultados comprovados</h2>
@@ -399,7 +411,7 @@ export default function Home() {
             <div className="bg-background rounded-xl p-6 shadow-md hover:shadow-lg transition stagger-item">
               <div className="flex flex-col items-center">
                 <DollarSignIcon className="h-10 w-10 text-primary mb-2" />
-                <h3 className="text-lg font-semibold text-foreground mb-1">Em Lumpz distribuídos</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-1">Em créditos Lumpz distribuídos</h3>
                 <p className="text-3xl font-bold text-primary">842K+</p>
               </div>
             </div>
@@ -407,35 +419,70 @@ export default function Home() {
           
           {/* Logotipos em movimento */}
           <div className="mb-12">
-            <div className="text-center mb-8">
-              <h3 className="text-xl font-semibold text-foreground">Empresas que confiam em nossos criadores</h3>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-foreground">Empresas que confiam em nossos criadores</h3>
+              <p className="text-muted-foreground mt-2">Grandes marcas usam nossa plataforma para criar conteúdo viral</p>
             </div>
             
-            <div className="relative overflow-hidden py-6 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-16 before:bg-gradient-to-r before:from-background after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-16 after:bg-gradient-to-l after:from-background">
-              <div className="flex animate-marquee space-x-12">
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
+            <div className="relative overflow-hidden py-8 marquee-container">
+              {/* Gradient overlays */}
+              <div className="absolute left-0 top-0 z-20 h-full w-12 left-overlay pointer-events-none"></div>
+              <div className="absolute right-0 top-0 z-20 h-full w-12 right-overlay pointer-events-none"></div>
+
+              <div className="marquee-track animate-marquee">
+                <div className="marquee-group flex items-center space-x-8">
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Samsung</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Apple</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Google</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Meta</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Amazon</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Microsoft</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Coca-Cola</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Netflix</span>
+                  </div>
                 </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
-                </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
-                </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
-                </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
-                </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
-                </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
-                </div>
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-md border border-border/30 bg-card px-4 py-2">
-                  <div className="h-6 w-24 rounded bg-muted/60"></div>
+
+                {/* duplicate for seamless looping */}
+                <div aria-hidden className="marquee-group flex items-center space-x-8">
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Samsung</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Apple</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Google</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Meta</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Amazon</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Microsoft</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Coca-Cola</span>
+                  </div>
+                  <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border-2 border-border/40 bg-gradient-to-br from-card to-card/80 px-6 py-4 hover:border-primary/60 hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    <span className="text-base font-bold text-foreground tracking-wide">Netflix</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -462,7 +509,7 @@ export default function Home() {
       </section>
       
       {/* Security Section */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background bg-section-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
             <h2 className="clipup-section-title">Contrate com tranquilidade</h2>
@@ -479,7 +526,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center">Dinheiro protegido</h3>
               <p className="text-muted-foreground text-center">
-                Seu dinheiro só é liberado após a entrega do vídeo aprovado e sua satisfação confirmada.
+                Seu dinheiro só é liberado após a entrega do projeto ser aprovado e sua satisfação confirmada.
               </p>
             </div>
             
@@ -602,11 +649,9 @@ export default function Home() {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="#">
-              <button className="clipup-btn-outline mx-auto">
+              <button onClick={handleFreelancerCTA} className="clipup-btn-outline mx-auto">
                 Ver mais depoimentos
               </button>
-            </Link>
           </div>
         </div>
       </section>
@@ -634,8 +679,8 @@ export default function Home() {
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <PackageIcon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Vídeos a partir de 10 Lumpz</h3>
-              <p className="text-muted-foreground">Apenas R$ 20,00 para começar seus primeiros projetos. Investimento acessível com alto retorno.</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Projetos com base em seu perfil</h3>
+              <p className="text-muted-foreground">Começe seus primeiros projetos com Investimento acessível e alto retorno com sistema de "matching". ou seja o profissional com as qualidades que você deseja!</p>
             </div>
             
             <div className="bg-card rounded-xl p-6 shadow-md hover:shadow-lg transition card-glow flex flex-col items-center text-center stagger-item">
@@ -643,64 +688,19 @@ export default function Home() {
                 <LightbulbIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Valores transparentes</h3>
-              <p className="text-muted-foreground">Cada serviço mostra exatamente o que está incluso, sem cobranças extras ou surpresas desagradáveis.</p>
+              <p className="text-muted-foreground">Cada serviço mostra exatamente o que está incluso, com total transparência no processo.</p>
             </div>
-          </div>
-          
-          <div className="mt-10 bg-card/50 p-8 rounded-xl shadow-md border border-primary/10">
-            <h3 className="text-xl font-bold text-foreground mb-4 text-center">Tabela comparativa de planos</h3>
-            
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b">
-                    <th className="py-4 px-6 text-left">Tipo de vídeo</th>
-                    <th className="py-4 px-6 text-center">Básico</th>
-                    <th className="py-4 px-6 text-center">Padrão</th>
-                    <th className="py-4 px-6 text-center">Premium</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="py-4 px-6">Depoimento</td>
-                    <td className="py-4 px-6 text-center">10 Lumpz</td>
-                    <td className="py-4 px-6 text-center">20 Lumpz</td>
-                    <td className="py-4 px-6 text-center">30 Lumpz</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-4 px-6">Unboxing</td>
-                    <td className="py-4 px-6 text-center">15 Lumpz</td>
-                    <td className="py-4 px-6 text-center">25 Lumpz</td>
-                    <td className="py-4 px-6 text-center">40 Lumpz</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6">Promocional</td>
-                    <td className="py-4 px-6 text-center">20 Lumpz</td>
-                    <td className="py-4 px-6 text-center">35 Lumpz</td>
-                    <td className="py-4 px-6 text-center">50 Lumpz</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          
-          <div className="text-center mt-8">
-            <Link href="#">
-              <button className="clipup-btn-outline mx-auto">
-                Ver detalhes completos de preços
-              </button>
-            </Link>
           </div>
         </div>
       </section>
       
       {/* Lumpz Currency Section */}
-      <section className="py-16 bg-card">
+      <section className="py-16 bg-card bg-section-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Conheça o Lumpz</h2>
+            <h2 className="clipup-section-title">Conheça os créditos Lumpz</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Nossa moeda digital exclusiva que simplifica transações e protege criadores e empresas
+              Nosso sistema de créditos que simplifica transações e protege criadores e empresas
             </p>
           </div>
           
@@ -713,7 +713,7 @@ export default function Home() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-foreground mb-1">Equivalência simples</h3>
-                    <p className="text-muted-foreground">Cada Lumpz equivale a aproximadamente R$ 2,00, facilitando a visualização de preços e o controle de orçamentos.</p>
+                    <p className="text-muted-foreground">Cada crédito Lumpz equivale a aproximadamente R$ 2,00, facilitando a visualização de preços e o controle de orçamentos.</p>
                   </div>
                 </div>
                 
@@ -733,7 +733,7 @@ export default function Home() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-foreground mb-1">Retiradas flexíveis</h3>
-                    <p className="text-muted-foreground">Criadores podem sacar seus ganhos em Lumpz para sua conta bancária a qualquer momento e sem burocracia.</p>
+                    <p className="text-muted-foreground">Criadores podem sacar seus ganhos em créditos Lumpz para sua conta bancária a qualquer momento e sem burocracia.</p>
                   </div>
                 </div>
                 
@@ -743,24 +743,23 @@ export default function Home() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-foreground mb-1">Programa de recompensas</h3>
-                    <p className="text-muted-foreground">Ganhe Lumpz extras por entregas antecipadas, avaliações positivas e indicações bem-sucedidas.</p>
+                    <p className="text-muted-foreground">Ganhe créditos Lumpz extras por entregas antecipadas, avaliações positivas e indicações bem-sucedidas.</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="order-1 md:order-2 flex justify-center">
-              <div className="relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary opacity-75 rounded-full blur-lg"></div>
-                <div className="relative bg-card rounded-full p-8 w-72 h-72 flex flex-col items-center justify-center shadow-xl">
-                  <div className="text-6xl font-bold text-primary mb-2">Lumpz</div>
-                  <div className="text-xl text-foreground mb-4">Moeda Digital</div>
-                  <div className="flex items-center">
-                    <span className="text-3xl font-semibold mr-2">1</span>
-                    <span className="text-xl">Lumpz</span>
-                    <span className="mx-2 text-muted-foreground">=</span>
-                    <span className="text-3xl font-semibold mr-2">R$</span>
-                    <span className="text-xl">2,00</span>
+            <div className="order-1 md:order-2 flex justify-center px-4">
+              <div className="relative w-full max-w-sm">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary opacity-75 rounded-3xl blur-lg"></div>
+                <div className="relative bg-card rounded-3xl p-8 flex flex-col items-center justify-center shadow-xl">
+                  <div className="text-sm font-semibold text-primary uppercase tracking-wide mb-3">Crédito Digital</div>
+                  <div className="flex items-baseline justify-center gap-2 mb-4">
+                    <span className="text-3xl font-bold text-foreground">1</span>
+                    <span className="text-lg text-muted-foreground">Lumpz</span>
+                  </div>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-4xl font-bold text-primary">R$ 2,00</span>
                   </div>
                 </div>
               </div>
@@ -770,24 +769,22 @@ export default function Home() {
       </section>
       
       {/* Pronto para transformar - CTA */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background bg-section-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-element">
-          <h2 className="clipup-section-title">Pronto para transformar suas ideias em vídeos incríveis?</h2>
+          <h2 className="clipup-section-title">Pronto para transformar suas ideias em trabalhos incríveis?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4 mb-10">
             Junte-se a uma comunidade crescente de criadores de vídeo e clientes que estão revolucionando o marketing digital.
           </p>
           <div className="flex justify-center">
-            <Link href="/freelancer">
-              <button className="clipup-btn flex items-center">
+              <button onClick={handleFreelancerCTA} className="clipup-btn flex items-center">
                 Começar gratuitamente
               </button>
-            </Link>
           </div>
         </div>
       </section>
       
       {/* Escolha como entrar - Baseado na imagem institucional.png */}
-      <section className="py-16 bg-card">
+      <section className="py-16 bg-card bg-section-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in-element">
             <h2 className="clipup-section-title">Escolha como entrar</h2>
@@ -803,11 +800,9 @@ export default function Home() {
               <p className="text-muted-foreground mb-6">
                 Encontre novos clientes, expanda seu portfólio e aumente seus ganhos produzindo vídeos.
               </p>
-              <Link href="/freelancer">
-                <button className="clipup-btn w-full">
-                  Entrar como Freelancer
-                </button>
-              </Link>
+              <button onClick={handleFreelancerCTA} className="clipup-btn w-full">
+                Entrar como Freelancer
+              </button>
             </div>
             
             {/* Opção Contratante */}
@@ -816,171 +811,16 @@ export default function Home() {
               <p className="text-muted-foreground mb-6">
                 Contrate profissionais talentosos para criar vídeos de qualidade para sua marca ou projeto.
               </p>
-              <Link href="/empresa">
-                <button className="clipup-btn w-full">
-                  Entrar como Contratante
-                </button>
-              </Link>
+              <button onClick={handleEmpresaCTA} className="clipup-btn w-full">
+                Entrar como Contratante
+              </button>
             </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Blog Articles Preview - Placeholder */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Nosso blog</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Dicas, tutoriais e cases de sucesso para criadores e empresas
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-container">
-            {/* Article 1 */}
-            <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition stagger-item">
-              <div className="h-48 bg-muted/30"></div>
-              <div className="p-6">
-                <div className="text-sm text-muted-foreground mb-2">12 Abril, 2025</div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 hover:text-primary transition">Como criar vídeos que convertem mais que anúncios tradicionais</h3>
-                <p className="text-muted-foreground mb-4">
-                  Aprenda técnicas para produzir conteúdo autêntico que gera mais engajamento e conversões.
-                </p>
-                <a href="#" className="text-primary font-medium hover:underline">Ler mais</a>
-              </div>
-            </div>
-            
-            {/* Article 2 */}
-            <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition stagger-item">
-              <div className="h-48 bg-muted/30"></div>
-              <div className="p-6">
-                <div className="text-sm text-muted-foreground mb-2">28 Março, 2025</div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 hover:text-primary transition">5 dicas para fazer mais Lumpz como criador iniciante</h3>
-                <p className="text-muted-foreground mb-4">
-                  Estratégias testadas para maximizar seus ganhos na plataforma, mesmo começando agora.
-                </p>
-                <a href="#" className="text-primary font-medium hover:underline">Ler mais</a>
-              </div>
-            </div>
-            
-            {/* Article 3 */}
-            <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition stagger-item">
-              <div className="h-48 bg-muted/30"></div>
-              <div className="p-6">
-                <div className="text-sm text-muted-foreground mb-2">15 Março, 2025</div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 hover:text-primary transition">Case: Como a Marca X triplicou conversões com vídeos da comunidade</h3>
-                <p className="text-muted-foreground mb-4">
-                  Estudo de caso detalhado sobre uma campanha que superou todas as expectativas com o Lumpic.
-                </p>
-                <a href="#" className="text-primary font-medium hover:underline">Ler mais</a>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-10 text-center">
-            <a href="#" className="clipup-btn-outline inline-block">Ver todos os artigos</a>
           </div>
         </div>
       </section>
       
       {/* Footer */}
-      <footer className="bg-card border-t border-muted py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-primary"
-                >
-                  <rect
-                    x="6"
-                    y="6"
-                    width="20"
-                    height="20"
-                    rx="5"
-                    className="fill-primary"
-                  />
-                  <path
-                    d="M15 12L20 16L15 20V12Z"
-                    fill="white"
-                  />
-                </svg>
-                <span className="text-xl font-bold text-foreground">Lumpic</span>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Conectando empresas e criadores de conteúdo para vídeos impactantes.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Para empresas</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Como funciona</a></li>
-                <li><a href="#" className="hover:text-primary transition">Contratar criadores</a></li>
-                <li><a href="#" className="hover:text-primary transition">Preços</a></li>
-                <li><a href="#" className="hover:text-primary transition">Casos de sucesso</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Para freelancers</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Por que se cadastrar</a></li>
-                <li><a href="#" className="hover:text-primary transition">Como receber</a></li>
-                <li><a href="#" className="hover:text-primary transition">Comissões</a></li>
-                <li><a href="#" className="hover:text-primary transition">Programa de afiliados</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Suporte</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Central de ajuda</a></li>
-                <li><a href="#" className="hover:text-primary transition">Contato</a></li>
-                <li><a href="#" className="hover:text-primary transition">Política de privacidade</a></li>
-                <li><a href="#" className="hover:text-primary transition">Termos de uso</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-muted flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Lumpic. Todos os direitos reservados.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">Facebook</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">Instagram</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">Twitter</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">YouTube</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

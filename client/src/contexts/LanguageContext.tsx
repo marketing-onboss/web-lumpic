@@ -33,6 +33,8 @@ const translations: Translations = {
     'nav.login': 'Entrar',
     'nav.signup': 'Cadastre-se',
     'nav.account': 'Conta',
+    'nav.contact': 'Contato',
+    'nav.contact_short': 'Contato',
     
     // Hero Section
     'hero.title': 'Vídeos reais. Resultados reais.',
@@ -52,11 +54,11 @@ const translations: Translations = {
     'how.step3.title': 'Encontre projetos',
     'how.step3.description': 'Navegue por oportunidades que combinam com você',
     'how.step4.title': 'Receba pagamentos',
-    'how.step4.description': 'Ganhe em Lumpz e converta para sua moeda',
+    'how.step4.description': 'Ganhe em créditos Lumpz e converta para sua moeda',
     
     // Features section
-    'features.title': 'Por que escolher o Lumpic?',
-    'features.subtitle': 'Plataforma completa para criadores de conteúdo',
+    'features.title': 'Por que escolher a Lumpic?',
+    'features.subtitle': 'Conectamos empresas e criadores para realizar trabalhos de alta performance.',
     'features.1.title': 'Pagamentos Seguros',
     'features.1.description': 'Sistema protegido com garantia de recebimento',
     'features.2.title': 'Oportunidades Globais',
@@ -67,10 +69,10 @@ const translations: Translations = {
     'features.4.description': 'Desenvolva suas habilidades e aumente seus ganhos',
     
     // Currency section
-    'currency.title': 'Conheça o Lumpz',
-    'currency.subtitle': 'A moeda do ecossistema Lumpic',
-    'currency.description': 'O Lumpz é a moeda oficial do Lumpic. Com ela, você pode receber por seus trabalhos, contratar serviços e acessar recursos exclusivos.',
-    'currency.value': '1 Lumpz = R$ 2,00',
+    'currency.title': 'Conheça os créditos Lumpz',
+    'currency.subtitle': 'O sistema de créditos do ecossistema Lumpic',
+    'currency.description': 'Os créditos Lumpz são a unidade virtual da plataforma. Com eles você pode receber por seus trabalhos, contratar serviços e acessar recursos exclusivos.',
+    'currency.value': '1 crédito Lumpz = R$ 2,00',
     'currency.cta': 'Saiba mais',
     
     // Testimonials
@@ -94,7 +96,7 @@ const translations: Translations = {
     'calculator.calculate': 'Calcular',
     'calculator.videoCount.label': 'Quantidade de vídeos',
     'calculator.videoType.label': 'Tipo de vídeo',
-    'calculator.lumpzValue': 'Valor em Lumpz',
+    'calculator.lumpzValue': 'Valor em créditos Lumpz',
     'calculator.realValue': 'Valor em Reais',
     
     // Call to action
@@ -123,7 +125,7 @@ const translations: Translations = {
     
     // Freelancer Page
     'freelancer.hero.title': 'Transforme seu talento em renda',
-    'freelancer.hero.subtitle': 'Crie vídeos, ganhe Lumpz e construa uma carreira de sucesso',
+    'freelancer.hero.subtitle': 'Crie vídeos, ganhe créditos Lumpz e construa uma carreira de sucesso',
     'freelancer.benefits.title': 'Benefícios para Freelancers',
     'freelancer.cta': 'Comece sua jornada',
     
@@ -144,6 +146,8 @@ const translations: Translations = {
     'nav.login': 'Log In',
     'nav.signup': 'Sign Up',
     'nav.account': 'Account',
+    'nav.contact': 'Contact',
+    'nav.contact_short': 'Contact',
     
     // Hero Section
     'hero.title': 'Real videos. Real results.',
@@ -255,6 +259,8 @@ const translations: Translations = {
     'nav.login': 'Iniciar Sesión',
     'nav.signup': 'Registrarse',
     'nav.account': 'Cuenta',
+    'nav.contact': 'Contacto',
+    'nav.contact_short': 'Contacto',
     
     // Sección Hero
     'hero.title': 'Videos reales. Resultados reales.',

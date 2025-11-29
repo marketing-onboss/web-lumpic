@@ -1,6 +1,9 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useEffect } from "react";
 import SharedNavbar from "@/components/SharedNavbar";
+import Footer from "@/components/Footer";
+import FreelancerEarningsCalculator from "@/components/FreelancerEarningsCalculator";
+import { useLeadCapture } from "@/hooks/useLeadCapture";
 import { 
   Camera, Smartphone, CheckCircle, Video, 
   DollarSign, User, Lightbulb, Users, 
@@ -10,8 +13,27 @@ import {
   Heart, Sliders, ChevronDown, Lock
 } from "lucide-react";
 import { initAnimations } from "@/scripts/animations";
+import logoSrc from "@/assets/lumpic-logo.png";
+import img05 from "@/assets/05.png";
+import img06 from "@/assets/06.png";
+import img07 from "@/assets/07.png";
+import img08 from "@/assets/08.png";
+import img09 from "@/assets/09.png";
+import img10 from "@/assets/10.png";
+import img11 from "@/assets/11.png";
+import img12 from "@/assets/12.png";
+import img13 from "@/assets/13.png";
 
 export default function FreelancerPage() {
+  const [, setLocation] = useLocation();
+  
+  // Handlers para CTAs com captura de lead
+  const handleCadastroCTA = useLeadCapture(() => setLocation('/cadastro'));
+  const handleComoFuncionaCTA = useLeadCapture(() => {
+    const el = document.getElementById('como-funciona');
+    el?.scrollIntoView({ behavior: 'smooth' });
+  });
+  
   // Inicializa as animações quando o componente montar
   useEffect(() => {
     initAnimations();
@@ -34,22 +56,18 @@ export default function FreelancerPage() {
                 Mostre seu rosto, compartilhe sua voz. Nós cuidamos do resto.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/cadastro">
-                  <button className="clipup-btn flex items-center">
-                    Começar Agora
-                  </button>
-                </Link>
-                <Link href="#como-funciona">
-                  <button className="clipup-btn-outline">
-                    Como Funciona
-                  </button>
-                </Link>
+                <button onClick={handleCadastroCTA} className="clipup-btn flex items-center">
+                  Começar Agora
+                </button>
+                <button onClick={handleComoFuncionaCTA} className="clipup-btn-outline">
+                  Como Funciona
+                </button>
               </div>
             </div>
             <div className="md:w-1/2 relative">
-              <div className="gradient-border bg-card rounded-lg shadow-xl overflow-hidden parallax-card">
+              <div className="gradient-border bg-card rounded-lg shadow-xl overflow-hidden parallax-card max-h-[500px]">
                 <img 
-                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80" 
+                  src={img13}
                   alt="Pessoa gravando um vídeo com smartphone" 
                   className="w-full h-auto rounded-lg object-cover"
                 />
@@ -123,7 +141,7 @@ export default function FreelancerPage() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Entregou? Recebeu!</h3>
               <p className="text-muted-foreground text-center">
-                Pagamentos rápidos e seguros em nossa moeda Lumpz, que pode ser convertida em reais a qualquer momento.
+                Pagamentos rápidos e seguros em nossos créditos Lumpz, que podem ser convertidos em reais a qualquer momento.
               </p>
             </div>
           </div>
@@ -248,17 +266,15 @@ export default function FreelancerPage() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3 text-center">Receba pagamentos</h3>
               <p className="text-muted-foreground text-center">
-                Ganhe Lumpz por cada entrega aprovada. Converta em reais a qualquer momento.
+                Ganhe créditos Lumpz por cada entrega aprovada. Converta em reais a qualquer momento.
               </p>
             </div>
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="/cadastro">
-              <button className="clipup-btn">
-                Começar minha jornada
-              </button>
-            </Link>
+            <button onClick={handleCadastroCTA} className="clipup-btn">
+              Começar minha jornada
+            </button>
           </div>
         </div>
       </section>
@@ -342,11 +358,9 @@ export default function FreelancerPage() {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="/cadastro">
-              <button className="clipup-btn">
-                Isso é para mim! Quero começar
-              </button>
-            </Link>
+            <button onClick={handleCadastroCTA} className="clipup-btn">
+              Isso é para mim! Quero começar
+            </button>
           </div>
         </div>
       </section>
@@ -409,11 +423,9 @@ export default function FreelancerPage() {
               Cada pessoa tem talentos únicos que podem ser valorizados. Encontre seu nicho e 
               estilo para se destacar na plataforma e atrair as melhores oportunidades.
             </p>
-            <Link href="/categorias-de-videos">
-              <button className="clipup-btn-outline">
-                Ver mais categorias e exemplos
-              </button>
-            </Link>
+            <button onClick={handleCadastroCTA} className="clipup-btn-outline">
+              Ver mais categorias e exemplos
+            </button>
           </div>
         </div>
       </section>
@@ -421,84 +433,7 @@ export default function FreelancerPage() {
       {/* Simulador de Ganhos */}
       <section className="py-16 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 fade-in-element">
-            <h2 className="clipup-section-title">Simulador de Ganhos</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              Calcule seu potencial de ganhos baseado no volume e tipo de vídeos que você pode criar
-            </p>
-          </div>
-          
-          <div className="bg-background rounded-xl p-8 shadow-md border border-primary/10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div>
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Quantidade de vídeos por mês
-                    </label>
-                    <div className="flex items-center">
-                      <input 
-                        type="range" 
-                        min="1" 
-                        max="20" 
-                        defaultValue="10"
-                        className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer"
-                      />
-                      <span className="ml-3 text-lg font-semibold text-primary">10</span>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Tipo de vídeo
-                    </label>
-                    <select className="w-full rounded-md border border-border bg-background px-3 py-2">
-                      <option>Depoimento (10-20 Lumpz)</option>
-                      <option>Unboxing (15-30 Lumpz)</option>
-                      <option>Review (20-40 Lumpz)</option>
-                      <option>Promocional (25-50 Lumpz)</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div className="mt-8 p-4 bg-primary/5 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    Os valores apresentados são estimativas baseadas na média de ganhos dos criadores ativos na plataforma. 
-                    Seus ganhos reais podem variar de acordo com diversos fatores, como qualidade do conteúdo, relevância 
-                    para os anunciantes e volume de trabalho.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex flex-col justify-center items-center">
-                <div className="mb-6 text-center">
-                  <h3 className="text-lg font-medium text-foreground mb-1">Ganhos em Lumpz</h3>
-                  <p className="text-4xl font-bold text-primary">500</p>
-                </div>
-                
-                <div className="mb-6 text-center">
-                  <h3 className="text-lg font-medium text-foreground mb-1">Conversão</h3>
-                  <p className="text-xl text-muted-foreground">Aproximadamente R$ 2 por Lumpz</p>
-                </div>
-                
-                <div className="text-center">
-                  <h3 className="text-lg font-medium text-foreground mb-1">Ganhos totais estimados</h3>
-                  <p className="text-4xl font-bold text-primary">R$ 1.000</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-10 text-center">
-              <p className="text-xl font-semibold text-foreground mb-6">
-                Comece agora mesmo e transforme seu tempo livre em renda extra!
-              </p>
-              <Link href="/cadastro">
-                <button className="clipup-btn">
-                  Criar minha conta agora
-                </button>
-              </Link>
-            </div>
-          </div>
+          <FreelancerEarningsCalculator />
         </div>
       </section>
       
@@ -508,9 +443,9 @@ export default function FreelancerPage() {
           <div className="flex flex-col md:flex-row items-center gap-10">
             <div className="md:w-2/5">
               <div className="text-left fade-in-element">
-                <h2 className="clipup-section-title mb-6">Conheça o sistema Lumpz</h2>
+                <h2 className="clipup-section-title mb-6">Conheça o sistema de créditos Lumpz</h2>
                 <p className="text-lg text-muted-foreground mt-4 mb-6">
-                  Nossa moeda digital que facilita pagamentos e traz maior segurança para freelancers e contratantes
+                  Um sistema de créditos simples e transparente que transforma seu trabalho em renda real, sem complicações ou intermediários.
                 </p>
                 
                 <div className="space-y-4 mb-8">
@@ -518,51 +453,51 @@ export default function FreelancerPage() {
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
                       <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
-                    <p className="ml-3 text-foreground">Pagamentos instantâneos e automáticos</p>
+                    <p className="ml-3 text-foreground">Você recebe em créditos Lumpz a cada entrega aprovada</p>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
                       <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
-                    <p className="ml-3 text-foreground">Sem intermediários ou surpresas</p>
+                    <p className="ml-3 text-foreground">Conversão transparente: 1 crédito Lumpz = R$ 2,00</p>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
                       <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
-                    <p className="ml-3 text-foreground">Controle total do que você ganha</p>
+                    <p className="ml-3 text-foreground">Saque seus créditos em reais quando quiser</p>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
                       <Check className="h-3.5 w-3.5 text-primary" />
                     </div>
-                    <p className="ml-3 text-foreground">Economia de tempo e taxas menores</p>
+                    <p className="ml-3 text-foreground">Suporte dedicado para resolver qualquer dúvida ou problema</p>
                   </div>
                 </div>
                 
                 <div className="bg-card/50 rounded-xl p-6 border border-primary/10">
-                  <h3 className="font-semibold text-foreground mb-4">Detalhes:</h3>
+                  <h3 className="font-semibold text-foreground mb-4">Como funciona:</h3>
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                         <ArrowRight className="h-3 w-3 text-primary" />
                       </div>
-                      <p className="ml-2 text-sm text-muted-foreground">Você recebe em Lumpz a cada entrega aprovada</p>
+                      <p className="ml-2 text-sm text-muted-foreground">Você entrega o vídeo e recebe seus créditos Lumpz instantaneamente após aprovação</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                         <ArrowRight className="h-3 w-3 text-primary" />
                       </div>
-                      <p className="ml-2 text-sm text-muted-foreground">Pode acumular e sacar em reais quando quiser</p>
+                      <p className="ml-2 text-sm text-muted-foreground">Acumule seus créditos na carteira digital dentro da plataforma</p>
                     </li>
                     <li className="flex items-start">
                       <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                         <ArrowRight className="h-3 w-3 text-primary" />
                       </div>
-                      <p className="ml-2 text-sm text-muted-foreground">Saque flexível a partir de 100 reais acumulados em Lumpz</p>
+                      <p className="ml-2 text-sm text-muted-foreground">Saque em reais com mínimo de 100 créditos Lumpz acumulados, totalmente grátis</p>
                     </li>
                   </ul>
                 </div>
@@ -578,41 +513,41 @@ export default function FreelancerPage() {
                         <CreditCard className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-xl font-bold text-foreground">Sistema Lumpz</h3>
-                        <p className="text-sm text-muted-foreground">Acumule Lumpz e saque em BRL</p>
+                        <h3 className="text-xl font-bold text-foreground">Créditos Lumpz</h3>
+                        <p className="text-sm text-muted-foreground">Sistema de créditos transparente</p>
                       </div>
                     </div>
                     <div className="bg-primary/10 px-3 py-2 rounded-lg">
-                      <p className="text-xs font-semibold text-primary">Valor estimado por Lumpz</p>
+                      <p className="text-xs font-semibold text-primary">1 crédito Lumpz = R$ 2,00</p>
                     </div>
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-6 mb-8">
                     <div className="flex-1 bg-card/50 rounded-xl p-5 border border-border">
                       <p className="text-sm text-muted-foreground mb-1">Saldo atual</p>
-                      <p className="text-2xl font-bold text-foreground">500 <span className="text-primary">Lumpz</span></p>
+                      <p className="text-2xl font-bold text-foreground">500 <span className="text-primary">créditos Lumpz</span></p>
                       <p className="text-sm text-muted-foreground mt-1">= R$ 1.000,00</p>
                     </div>
                     
                     <div className="flex-1 bg-card/50 rounded-xl p-5 border border-border">
                       <p className="text-sm text-muted-foreground mb-1">Pendente</p>
-                      <p className="text-2xl font-bold text-foreground">50 <span className="text-primary">Lumpz</span></p>
+                      <p className="text-2xl font-bold text-foreground">50 <span className="text-primary">créditos Lumpz</span></p>
                       <p className="text-sm text-muted-foreground mt-1">= R$ 100,00</p>
                     </div>
                   </div>
                   
                   <div className="bg-card/50 rounded-xl p-6 border border-primary/10 mb-6">
-                    <h4 className="font-semibold text-foreground mb-3">Transparência e liberdade</h4>
+                    <h4 className="font-semibold text-foreground mb-3">Completo controle e transparência</h4>
                     <p className="text-muted-foreground text-sm mb-4">
-                      Tudo que você ganha está no seu painel. Nada escondido. Nada retido.
+                      Acompanhe cada crédito Lumpz que você ganha. Nenhuma taxa escondida, nada retido. Você controla seus ganhos 100%.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-between items-center">
                       <p className="text-sm text-foreground">
-                        Receba seus ganhos do jeito que quiser
+                        Saque seus créditos em reais quando precisar
                       </p>
                       <div className="mt-3 sm:mt-0">
                         <span className="bg-primary/10 text-primary text-xs font-medium px-3 py-1.5 rounded-full">
-                          Pagamento Semanal (Grátis)
+                          100% Seguro
                         </span>
                       </div>
                     </div>
@@ -701,8 +636,8 @@ export default function FreelancerPage() {
             <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-40 bg-primary/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1603383928972-0dbadcb23578?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80" 
-                  alt="Depoimento de cliente"
+                  src={img06} 
+                  alt="Pessoa fazendo depoimento para câmera"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -712,7 +647,7 @@ export default function FreelancerPage() {
                   Vídeos curtos falando sobre experiências positivas com produtos ou serviços.
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-semibold text-primary">10-20 Lumpz</span>
+                  <span className="text-sm font-semibold text-primary">10-20 créditos Lumpz</span>
                   <span className="text-sm text-muted-foreground">Alta demanda</span>
                 </div>
               </div>
@@ -722,8 +657,8 @@ export default function FreelancerPage() {
             <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-40 bg-primary/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1569171188700-9c4a4f8a4446?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80" 
-                  alt="Unboxing de produto"
+                  src={img05} 
+                  alt="Pessoa fazendo unboxing de produto"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -732,8 +667,8 @@ export default function FreelancerPage() {
                 <p className="text-muted-foreground mb-4">
                   Abertura e primeira impressão de produtos, destacando características.
                 </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-semibold text-primary">15-30 Lumpz</span>
+                  <div className="flex justify-between items-center">
+                  <span className="text-sm font-semibold text-primary">15-30 créditos Lumpz</span>
                   <span className="text-sm text-muted-foreground">Média demanda</span>
                 </div>
               </div>
@@ -743,8 +678,8 @@ export default function FreelancerPage() {
             <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition stagger-item">
               <div className="h-40 bg-primary/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1551817958-c5b51e7b4a33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80" 
-                  alt="Vídeo promocional"
+                  src={img07} 
+                  alt="Publicidade e campanha promocional"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -754,7 +689,7 @@ export default function FreelancerPage() {
                   Conteúdo persuasivo para campanhas publicitárias e lançamentos.
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-semibold text-primary">20-50 Lumpz</span>
+                  <span className="text-sm font-semibold text-primary">20-50 créditos Lumpz</span>
                   <span className="text-sm text-muted-foreground">Alta demanda</span>
                 </div>
               </div>
@@ -762,11 +697,9 @@ export default function FreelancerPage() {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="/veja-mais-tipos">
-              <button className="clipup-btn-outline">
-                Ver todos os tipos de vídeos
-              </button>
-            </Link>
+            <button onClick={handleCadastroCTA} className="clipup-btn-outline">
+              Ver todos os tipos de vídeos
+            </button>
           </div>
         </div>
       </section>
@@ -782,67 +715,16 @@ export default function FreelancerPage() {
           </div>
           
           <div className="mb-8">
-            <div className="flex justify-between items-center flex-wrap gap-3 mb-6">
-              <div className="flex overflow-x-auto scrollbar-hide gap-2 pb-2">
-                <button className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium">
-                  Todos
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Vídeo Depoimento
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Unboxing
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Vídeo Promocional
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Tutorial
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Review
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Animação
-                </button>
-                <button className="px-4 py-2 rounded-full bg-background hover:bg-muted text-foreground text-sm font-medium">
-                  Edição
-                </button>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <div className="relative flex items-center">
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-background hover:bg-muted text-foreground text-sm font-medium border border-border">
-                    <div className="flex items-center">
-                      <span>Ordenar por</span>
-                      <ChevronDown className="h-4 w-4 ml-1 text-muted-foreground" />
-                    </div>
-                  </button>
-                </div>
-                
-                <div className="relative flex items-center">
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-background hover:bg-muted text-foreground text-sm font-medium border border-border">
-                    <div className="flex items-center">
-                      <span>Preço</span>
-                      <ChevronDown className="h-4 w-4 ml-1 text-muted-foreground" />
-                    </div>
-                  </button>
-                </div>
-                
-                <button className="p-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary">
-                  <Sliders className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
+            {/* Removed filter buttons for minimalista approach */}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 mb-10">
             {/* Serviço 1 - Visível */}
             <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" 
-                  alt="Serviço"
+                  src={img08} 
+                  alt="Vídeo Depoimento Profissional"
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
@@ -865,7 +747,10 @@ export default function FreelancerPage() {
                   <p className="text-xs text-muted-foreground ml-auto">32 vendas</p>
                 </div>
                 <div className="flex items-center justify-between mt-3">
-                  <p className="text-base font-semibold text-primary">2.500 Lumpz</p>
+                  <div>
+                    <p className="text-base font-semibold text-primary">2.500 créditos Lumpz</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">R$ 5.000,00</p>
+                  </div>
                   <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
                     Ver detalhes
                   </button>
@@ -877,8 +762,8 @@ export default function FreelancerPage() {
             <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1664&q=80" 
-                  alt="Serviço"
+                  src={img09} 
+                  alt="Unboxing de Produtos"
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
@@ -901,7 +786,10 @@ export default function FreelancerPage() {
                   <p className="text-xs text-muted-foreground ml-auto">18 vendas</p>
                 </div>
                 <div className="flex items-center justify-between mt-3">
-                  <p className="text-base font-semibold text-primary">3.200 Lumpz</p>
+                  <div>
+                    <p className="text-base font-semibold text-primary">3.200 créditos Lumpz</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">R$ 6.400,00</p>
+                  </div>
                   <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
                     Ver detalhes
                   </button>
@@ -913,8 +801,8 @@ export default function FreelancerPage() {
             <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
-                  alt="Serviço"
+                  src={img10} 
+                  alt="Vídeo Promocional para Redes Sociais"
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
@@ -937,7 +825,10 @@ export default function FreelancerPage() {
                   <p className="text-xs text-muted-foreground ml-auto">26 vendas</p>
                 </div>
                 <div className="flex items-center justify-between mt-3">
-                  <p className="text-base font-semibold text-primary">4.000 Lumpz</p>
+                  <div>
+                    <p className="text-base font-semibold text-primary">4.000 créditos Lumpz</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">R$ 8.000,00</p>
+                  </div>
                   <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
                     Ver detalhes
                   </button>
@@ -949,8 +840,8 @@ export default function FreelancerPage() {
             <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80" 
-                  alt="Serviço"
+                  src={img11} 
+                  alt="Tutorial em Vídeo"
                   className="w-full h-48 object-cover"
                 />
                 <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
@@ -973,7 +864,10 @@ export default function FreelancerPage() {
                   <p className="text-xs text-muted-foreground ml-auto">15 vendas</p>
                 </div>
                 <div className="flex items-center justify-between mt-3">
-                  <p className="text-base font-semibold text-primary">2.800 Lumpz</p>
+                  <div>
+                    <p className="text-base font-semibold text-primary">2.800 créditos Lumpz</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">R$ 5.600,00</p>
+                  </div>
                   <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
                     Ver detalhes
                   </button>
@@ -981,91 +875,66 @@ export default function FreelancerPage() {
               </div>
             </div>
             
-            {/* Serviço 5 - Borrado */}
-            <div className="bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
-              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10 flex flex-col items-center justify-center">
-                <Lock className="h-8 w-8 text-primary mb-3" />
-                <p className="text-lg font-semibold text-foreground mb-2">Conteúdo Exclusivo</p>
-                <p className="text-sm text-muted-foreground mb-4 px-6 text-center">Cadastre-se para acessar todos os serviços disponíveis</p>
-                <Link href="/cadastro">
-                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium">
-                    Criar conta grátis
+            
+            {/* Serviço 6 - Conteúdo Exclusivo */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 relative">
+              <div className="absolute inset-0 backdrop-blur-[8px] bg-gradient-to-br from-primary/5 to-primary/10 z-10 flex flex-col items-center justify-center">
+                <Lock className="h-10 w-10 text-primary mb-4" />
+                <p className="text-lg font-semibold text-foreground mb-2 text-center">Conteúdo Exclusivo</p>
+                <p className="text-sm text-muted-foreground mb-6 px-6 text-center">Cadastre-se para acessar todos os serviços disponíveis</p>
+                <button onClick={handleCadastroCTA} className="px-5 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition">
+                  Criar conta grátis
+                </button>
+              </div>
+              <div>
+                <div className="w-full h-48 bg-gradient-to-br from-muted to-muted/50"></div>
+                <div className="p-4">
+                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
+                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serviço 7 - Vídeo UGC para Empresas */}
+            <div className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative">
+                <img 
+                  src={img12} 
+                  alt="Vídeo UGC para Empresas"
+                  className="w-full h-48 object-cover"
+                />
+                <button className="absolute top-3 right-3 h-8 w-8 rounded-full bg-background/80 flex items-center justify-center hover:bg-background">
+                  <Heart className="h-4 w-4 text-muted-foreground" />
+                </button>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center mb-3">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium text-primary mr-2">V</div>
+                  <p className="text-sm text-muted-foreground">Vitória Costa</p>
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2">Vídeo UGC para Empresas</h3>
+                <div className="flex mb-3">
+                  <div className="flex">
+                    {Array(5).fill(0).map((_, i) => (
+                      <Star key={i} className={`h-4 w-4 ${i < 5 ? 'text-primary' : 'text-muted'}`} />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground ml-1">5.0 (28)</p>
+                  <p className="text-xs text-muted-foreground ml-auto">28 vendas</p>
+                </div>
+                <div className="flex items-center justify-between mt-3">
+                  <div>
+                    <p className="text-base font-semibold text-primary">3.800 créditos Lumpz</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">R$ 7.600,00</p>
+                  </div>
+                  <button className="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                    Ver detalhes
                   </button>
-                </Link>
-              </div>
-              <div>
-                <div className="w-full h-48 bg-muted"></div>
-                <div className="p-4">
-                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
-                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
-                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
-                  <div className="flex items-center justify-between mt-3">
-                    <div className="h-5 w-20 bg-muted rounded"></div>
-                    <div className="h-8 w-24 bg-muted rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Serviço 6 - Borrado */}
-            <div className="bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
-              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10"></div>
-              <div>
-                <div className="w-full h-48 bg-muted"></div>
-                <div className="p-4">
-                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
-                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
-                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
-                  <div className="flex items-center justify-between mt-3">
-                    <div className="h-5 w-20 bg-muted rounded"></div>
-                    <div className="h-8 w-24 bg-muted rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Serviço 7 - Borrado */}
-            <div className="hidden md:block bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
-              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10"></div>
-              <div>
-                <div className="w-full h-48 bg-muted"></div>
-                <div className="p-4">
-                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
-                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
-                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
-                  <div className="flex items-center justify-between mt-3">
-                    <div className="h-5 w-20 bg-muted rounded"></div>
-                    <div className="h-8 w-24 bg-muted rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Serviço 8 - Borrado */}
-            <div className="hidden md:block bg-background rounded-xl overflow-hidden shadow-md transition-all duration-300 relative">
-              <div className="absolute inset-0 backdrop-blur-[12px] bg-background/40 z-10"></div>
-              <div>
-                <div className="w-full h-48 bg-muted"></div>
-                <div className="p-4">
-                  <div className="h-4 w-32 bg-muted rounded mb-3"></div>
-                  <div className="h-5 w-48 bg-muted rounded mb-2"></div>
-                  <div className="h-4 w-full bg-muted rounded mb-3"></div>
-                  <div className="flex items-center justify-between mt-3">
-                    <div className="h-5 w-20 bg-muted rounded"></div>
-                    <div className="h-8 w-24 bg-muted rounded"></div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="text-center">
-            <Link href="/cadastro">
-              <button className="clipup-btn">
-                Ver todos os serviços disponíveis
-              </button>
-            </Link>
-          </div>
         </div>
       </section>
       
@@ -1157,11 +1026,9 @@ export default function FreelancerPage() {
               Junte-se a milhares de criadores que estão monetizando seu tempo e talento com vídeos simples e autênticos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/cadastro">
-                <button className="clipup-btn">
-                  Começar agora - É grátis!
-                </button>
-              </Link>
+              <button onClick={handleCadastroCTA} className="clipup-btn">
+                Começar agora - É grátis!
+              </button>
               <Link href="/faq-freelancers">
                 <button className="clipup-btn-outline">
                   Dúvidas frequentes
@@ -1173,97 +1040,7 @@ export default function FreelancerPage() {
       </section>
       
       {/* Footer */}
-      <footer className="bg-card border-t border-muted py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-primary"
-                >
-                  <rect
-                    x="6"
-                    y="6"
-                    width="20"
-                    height="20"
-                    rx="5"
-                    className="fill-primary"
-                  />
-                  <path
-                    d="M15 12L20 16L15 20V12Z"
-                    fill="white"
-                  />
-                </svg>
-                <span className="text-xl font-bold text-foreground">ClipUp</span>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Conectando empresas e criadores de conteúdo para vídeos impactantes.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Para freelancers</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Como funciona</a></li>
-                <li><a href="#" className="hover:text-primary transition">Tipos de vídeos</a></li>
-                <li><a href="#" className="hover:text-primary transition">Pagamentos</a></li>
-                <li><a href="#" className="hover:text-primary transition">Dicas e tutoriais</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Para empresas</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Por que contratar</a></li>
-                <li><a href="#" className="hover:text-primary transition">Como contratar</a></li>
-                <li><a href="#" className="hover:text-primary transition">Casos de sucesso</a></li>
-                <li><a href="#" className="hover:text-primary transition">Preços</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Suporte</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Central de ajuda</a></li>
-                <li><a href="#" className="hover:text-primary transition">Contato</a></li>
-                <li><a href="#" className="hover:text-primary transition">Política de privacidade</a></li>
-                <li><a href="#" className="hover:text-primary transition">Termos de uso</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-muted flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} ClipUp. Todos os direitos reservados.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">Facebook</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">Instagram</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
-                </svg>
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition">
-                <span className="sr-only">Twitter</span>
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
