@@ -116,6 +116,63 @@ server {
     location / {
         proxy_pass http://localhost:5000;
         proxy_http_version 1.1;
+
+## Deploy no Laravel Forge (sem Node em produção)
+
+Se você estiver usando o Laravel Forge para hospedar o site e quer evitar executar Node em runtime
+(usar Node apenas para construir os assets durante o deploy), siga estas recomendações rápidas:
+
+
+Exemplo de etapas a incluir no script de deploy do Forge (executado dentro do diretório do release):
+
+```bash
+# instalar dependências e construir apenas o cliente
+npm ci
+npm run build:client
+
+# copiar o build gerado para a pasta public do release (script incluído no repositório)
+bash ./deploy/01_copy_public.sh "$release_path"
+
+# (Opcional) rodar migrações ou outros comandos PHP
+php artisan migrate --force || true
+```
+
+Se preferir, eu posso criar um exemplo `deploy/forge-deploy.sh` que executa a construção e copia o `dist/public` para `public` durante o deploy.
+
+### Script de deploy recomendado para Forge (exemplo)
+
+Crie ou cole o seguinte trecho no painel do Forge como script de deploy (substitua caminhos se necessário):
+
+```bash
+$CREATE_RELEASE()
+
+cd $FORGE_RELEASE_DIRECTORY
+
+# instalar dependências
+npm ci || npm install
+
+# construir apenas o cliente (Vite)
+npx vite build
+
+# copiar build para public/
+rsync -av --delete dist/public/ public/
+
+# garantir permissões
+chown -R forge:forge public || true
+
+# (opcional) rodar migrações
+php artisan migrate --force || true
+
+$ACTIVATE_RELEASE()
+```
+
+Ou copie o script `deploy/forge-deploy.sh` do repositório e chame `bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"` no painel do Forge.
+Observações:
+- O repositório contém `deploy/01_copy_public.sh` que faz `rsync --delete` de `dist/public/` para `public/` e ajusta permissões para `forge:forge`.
+- O `package.json` foi atualizado com `build:client` e `build:server`. Use `build:client` no deploy do Forge para evitar empacotar/rodar código Node no servidor.
+- Se você migrar totalmente para Laravel/PHP no backend, remova ou ignore `build:server` e `start` no processo de deploy para reduzir tempo e evitar dependências Node em produção.
+
+Se quiser, eu posso adicionar um exemplo pronto de script de deploy (arquivo `deploy/forge-deploy.sh`) e atualizar o `DEPLOY.md` com instruções passo-a-passo para o Forge.
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
