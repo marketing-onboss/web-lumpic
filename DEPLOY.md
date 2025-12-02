@@ -167,10 +167,68 @@ $ACTIVATE_RELEASE()
 ```
 
 Ou copie o script `deploy/forge-deploy.sh` do repositório e chame `bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"` no painel do Forge.
+
 Observações:
 - O repositório contém `deploy/01_copy_public.sh` que faz `rsync --delete` de `dist/public/` para `public/` e ajusta permissões para `forge:forge`.
 - O `package.json` foi atualizado com `build:client` e `build:server`. Use `build:client` no deploy do Forge para evitar empacotar/rodar código Node no servidor.
 - Se você migrar totalmente para Laravel/PHP no backend, remova ou ignore `build:server` e `start` no processo de deploy para reduzir tempo e evitar dependências Node em produção.
+
+### Deploy sem Node no servidor (Recomendado)
+
+Se o servidor de produção não pode ter Node instalado, use este fluxo: faça o build localmente e envie apenas os arquivos estáticos (`dist/public/`) para o diretório `public/` do release no Forge. O servidor só precisa servir arquivos estáticos via Nginx/PHP.
+
+Fluxo sugerido (local):
+
+1. No seu computador, instale dependências e gere o build do cliente:
+
+```bash
+# instalar dependências (uma vez)
+npm ci
+
+# construir apenas o cliente Vite
+npm run build:client
+```
+
+2. Copie os arquivos gerados (`dist/public/`) para o servidor Forge usando `rsync` (exemplo):
+
+```bash
+# exemplo: ajuste host e caminho do site
+rsync -avz --delete dist/public/ forge@your-server:/home/forge/lumpic.com/current/public/
+```
+
+3. Ajuste permissões e verifique:
+
+```bash
+ssh forge@your-server "chown -R forge:forge /home/forge/lumpic.com/current/public || true"
+ssh forge@your-server "ls -la /home/forge/lumpic.com/current/public/index.html"
+```
+
+4. Se o Nginx continuar retornando 404 para rotas da SPA, confirme no painel do Forge que a configuração do site tem:
+
+```
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+Script helper local (no repositório):
+
+Use o script `deploy/local-rsync.sh` para automatizar build + rsync (já incluído no repositório).
+
+Exemplo de uso:
+
+```bash
+# torna executável (uma vez)
+chmod +x deploy/local-rsync.sh
+
+# executar (substitua host e caminho)
+./deploy/local-rsync.sh forge@your-server /home/forge/lumpic.com/current/public
+```
+
+Vantagens deste fluxo:
+- Nenhum Node em produção.
+- Deploy rápido e previsível (apenas arquivos estáticos enviados).
+- Evita problemas com versões de Node no servidor e reduz superfície de ataque.
 
 Se quiser, eu posso adicionar um exemplo pronto de script de deploy (arquivo `deploy/forge-deploy.sh`) e atualizar o `DEPLOY.md` com instruções passo-a-passo para o Forge.
         proxy_set_header Upgrade $http_upgrade;
