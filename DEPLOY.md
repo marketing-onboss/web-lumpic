@@ -369,3 +369,47 @@ Para atualizar a aplicação após o deploy inicial:
 3. Reimplante usando o mesmo método utilizado no deploy inicial
 
 Para plataformas como Netlify e Vercel, você pode configurar deploy automático a partir do seu repositório Git para que cada push desencadeie uma nova implantação.
+
+## Subir commits e testar no Forge (passo a passo)
+
+Siga estes passos para commitar as mudanças locais (ex.: novo script em `deploy/01_copy_public.sh`) e disparar o deploy no Forge.
+
+- Verifique o status do Git e inclua apenas os arquivos desejados:
+
+```bash
+git status --porcelain
+git add deploy/01_copy_public.sh DEPLOY.md
+git commit -m "chore(deploy): add copy script and deploy instructions"
+```
+
+- Se preferir revisar antes do commit, use `git add -p` ou abra o diff com `git diff`.
+
+- Envie para a branch `master` (ou a branch que o Forge está configurado para usar):
+
+```bash
+# substituir origin se seu remote tiver outro nome
+git push origin master
+```
+
+- No painel do Forge:
+  - Confirme que o site está conectado ao repositório/branch correto.
+  - Verifique o script de deploy (Deployment Script) e defina-o para rodar o comando abaixo (ou deixe que o Forge execute automaticamente o script do `package.json`):
+
+```bash
+npm ci
+npm run build:client
+bash ./deploy/01_copy_public.sh "$FORGE_RELEASE_DIRECTORY"
+```
+
+- Alternativas:
+  - Se o Forge estiver configurado para executar um script definido no `package.json`, você pode usar `npm run deploy:forge` no campo de deploy.
+  - Se preferir não executar Node no servidor, faça o build localmente e use `deploy/local-rsync.sh` para enviar apenas `dist/public/` para o servidor.
+
+Observações importantes antes do push:
+- Garanta que o Forge tem Node.js (LTS) instalado ou que o deploy faça provisionamento/instalação.
+- Defina as variáveis de ambiente de produção no painel do Forge (`VITE_API_BASE_URL`, chaves etc.).
+- Se o `npm ci` falhar localmente por problemas de OpenSSL/permissões no Windows, isso não necessariamente acontecerá no servidor Linux do Forge — ainda assim é bom testar o build em uma máquina que consiga rodar `npm ci`.
+
+Se quiser, eu posso:
+- executar os comandos `git add/commit/push` aqui na sua workspace (preciso da sua confirmação), ou
+- gerar um `forge-deploy.sh` mais completo e colocá-lo em `deploy/` para você usar no painel do Forge.
