@@ -278,13 +278,17 @@ git push origin master
 
 - No painel do Forge:
   - Confirme que o site está conectado ao repositório/branch correto.
-  - Verifique o script de deploy (Deployment Script) e defina-o para rodar o comando abaixo (ou deixe que o Forge execute automaticamente o script do `package.json`):
+  - Verifique o script de deploy (Deployment Script).
+  - Recomendado (Node-free): faça o build no CI e use o deploy script que copia os artefatos já construídos.
 
 ```bash
-npm ci
-npm run build:client
-bash ./deploy/01_copy_public.sh "$FORGE_RELEASE_DIRECTORY"
+# CI-built artifacts expected. This script copies dist/public -> public on the server
+bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"
 ```
+
+  - Nota: o script acima espera que `dist/public/` já exista (produzido pelo CI). Se preferir
+    construir no Forge (não recomendado para um servidor sem Node), garanta que Node esteja
+    instalado no servidor e configure as variáveis `VITE_` no painel do Forge antes do build.
 
 - Alternativas:
   - Se o Forge estiver configurado para executar um script definido no `package.json`, você pode usar `npm run deploy:forge` no campo de deploy.
