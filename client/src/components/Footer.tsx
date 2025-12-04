@@ -19,23 +19,26 @@ export default function Footer() {
     return () => observer.disconnect();
   }, []);
   return (
-    <footer className="bg-background pt-20 pb-12 border-t border-muted">
+    <footer
+      className="bg-background pt-12 pb-8 border-t border-muted"
+      style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 3.5rem)' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 lg:gap-24 mb-16">
-          <div className="flex flex-col">
-            <div className="mb-8 flex items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 lg:gap-16 mb-8">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="mb-4 w-full flex items-center justify-center md:justify-start">
               <img
                 src={isDark ? logoSrc : logoLightSrc}
                 alt="Lumpic"
-                className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto object-contain flex-shrink-0"
+                className="h-28 sm:h-32 md:h-24 lg:h-28 w-auto object-contain transition-all duration-300"
               />
             </div>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              A plataforma que conecta freelancers de vídeo com oportunidades reais de renda.
+            <p className="text-muted-foreground mb-4 leading-relaxed max-w-sm">
+              Juntamos quem tem demanda com quem tem talento.
             </p>
-            <div className="text-sm text-muted-foreground mb-6">
+            <div className="text-sm text-muted-foreground mb-4">
               <p className="font-medium text-foreground mb-1">Contato</p>
-              <p className="mb-2">
+              <p className="mb-1">
                 <a href="mailto:suporte@lumpic.com" className="text-primary hover:text-primary/80">suporte@lumpic.com</a>
               </p>
               <p>
@@ -43,17 +46,17 @@ export default function Footer() {
                 <a href="mailto:parceiro@lumpic.com" className="text-primary hover:text-primary/80">parceiro@lumpic.com</a>
               </p>
             </div>
-            <div className="flex space-x-5">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <SocialLink icon={<InstagramIcon className="h-5 w-5" />} />
               <SocialLink icon={<YoutubeIcon className="h-5 w-5" />} />
               <SocialLink icon={<TiktokIcon className="h-5 w-5" />} />
               <SocialLink icon={<LinkedinIcon className="h-5 w-5" />} />
             </div>
           </div>
-          
-          <div>
-            <h3 className="text-foreground font-bold mb-8 text-lg tracking-tight">Para Freelancers</h3>
-            <ul className="space-y-4">
+
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-foreground font-bold mb-6 text-lg tracking-tight">Para Freelancers</h3>
+            <ul className="space-y-3 flex flex-col items-center md:items-start">
               <FooterLink href="/getting-started" text="Como Começar" target="_blank" />
               <FooterLink href="/video-tips" text="Dicas de Vídeo" target="_blank" />
               <FooterLink href="/payment-policy" text="Políticas de Pagamento" target="_blank" />
@@ -62,10 +65,10 @@ export default function Footer() {
               <FooterLink href="/community" text="Comunidade" target="_blank" />
             </ul>
           </div>
-          
-          <div>
-            <h3 className="text-foreground font-bold mb-8 text-lg tracking-tight">Para Contratantes</h3>
-            <ul className="space-y-4">
+
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-foreground font-bold mb-6 text-lg tracking-tight">Para Contratantes</h3>
+            <ul className="space-y-3 flex flex-col items-center md:items-start">
               <FooterLink href="/hiring" text="Como Contratar" target="_blank" />
               <FooterLink href="/benefits" text="Benefícios" target="_blank" />
               <FooterLink href="/quality" text="Garantia de Qualidade" target="_blank" />
@@ -75,16 +78,16 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-muted pt-12 mt-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
-            <p className="text-muted-foreground text-sm order-2 md:order-1">
+        <div className="border-t border-muted pt-6 mt-6">
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 md:gap-12">
+            <p className="text-muted-foreground text-sm order-2 md:order-1 text-center md:text-left">
               © 2026 Lumpic. Todos os direitos reservados.
             </p>
-            <div className="flex space-x-8 order-1 md:order-2">
+            <ul className="flex flex-wrap justify-center gap-4 order-1 md:order-2 list-none">
               <FooterLink href="/terms-of-use" text="Termos de Uso" target="_blank" className="text-sm" />
               <FooterLink href="/privacy-policy" text="Política de Privacidade" target="_blank" className="text-sm" />
               <FooterLink href="/cookies" text="Cookies" target="_blank" className="text-sm" />
-            </div>
+            </ul>
           </div>
         </div>
       </div>

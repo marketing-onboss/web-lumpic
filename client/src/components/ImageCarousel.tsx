@@ -51,9 +51,9 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
 
   const slideVariants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 800 : -800,
-      opacity: 0.8,
-      scale: 0.95,
+      x: dir > 0 ? '100%' : '-100%',
+      opacity: 0.95,
+      scale: 0.98,
     }),
     center: {
       zIndex: 1,
@@ -63,9 +63,9 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
     },
     exit: (dir: number) => ({
       zIndex: 0,
-      x: dir < 0 ? 800 : -800,
-      opacity: 0.8,
-      scale: 0.95,
+      x: dir < 0 ? '100%' : '-100%',
+      opacity: 0.95,
+      scale: 0.98,
     }),
   };
 
@@ -77,7 +77,7 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
   return (
     <div className="relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden bg-gradient-to-b from-muted/50 to-muted shadow-lg">
       {/* Image Container */}
-      <AnimatePresence initial={false} custom={direction} mode="wait">
+      <AnimatePresence initial={false} custom={direction} mode="sync">
         <motion.div
           key={currentIndex}
           custom={direction}
@@ -86,9 +86,9 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
           animate="center"
           exit="exit"
           transition={{
-            x: { type: 'spring', stiffness: 150, damping: 20 },
-            opacity: { duration: 0.6, ease: 'easeInOut' },
-            scale: { duration: 0.6, ease: 'easeInOut' },
+            x: { type: 'spring', stiffness: 200, damping: 28 },
+            opacity: { duration: 0.45, ease: 'easeInOut' },
+            scale: { duration: 0.45, ease: 'easeInOut' },
           }}
           drag="x"
           dragElastic={1}
@@ -108,7 +108,7 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
             className="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
           />
         </motion.div>
       </AnimatePresence>
@@ -156,7 +156,7 @@ export default function ImageCarousel({ images, autoPlayInterval = 5000 }: Image
 
       {/* Play/Pause Indicator */}
       <div className="absolute top-4 left-4 z-20 bg-black/40 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm">
-        {isAutoPlay ? '▶ Auto' : '⏸ Manual'}
+        {isAutoPlay ? '▶ Reproduzindo' : '⏸ Pausado'}
       </div>
     </div>
   );

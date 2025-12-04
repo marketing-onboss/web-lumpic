@@ -3,6 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calculator, TrendingUp, ChevronDown, ChevronUp, Sparkles, Clock, DollarSign, CalendarClock, Info } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLeadCapture } from "@/hooks/useLeadCapture";
 
 interface VideoType {
   name: string;
@@ -17,6 +18,7 @@ export default function FreelancerEarningsCalculator() {
   const [selectedVideoType, setSelectedVideoType] = useState("Depoimentos");
   const [showCalculator, setShowCalculator] = useState(true);
   const [isCalculated, setIsCalculated] = useState(false);
+  const handleCadastroCTA = useLeadCapture();
   
   const videoTypes: Record<string, VideoType> = {
     "Depoimentos": {
@@ -353,11 +355,11 @@ export default function FreelancerEarningsCalculator() {
                     Estes são cálculos estimados com base nos valores de mercado. Seus ganhos reais podem variar de acordo 
                     com a qualidade do conteúdo, facilidade de produção, disponibilidade e demanda por seu tipo de vídeo.
                   </p>
-                  <motion.div
+                    <motion.div
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    <Button className="w-full shadow-lg shadow-primary/20 font-medium">
+                    <Button onClick={handleCadastroCTA} className="w-full shadow-lg shadow-primary/20 font-medium">
                       Começar a ganhar agora <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </motion.div>

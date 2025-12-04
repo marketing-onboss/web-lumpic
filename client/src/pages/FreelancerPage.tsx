@@ -50,7 +50,7 @@ export default function FreelancerPage() {
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10 fade-in-element">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Use apenas seu smartphone para gravar vídeos e transforme isso em renda sem sair de casa
+                Se Você Sabe Contar Histórias em Vídeo, Nós Temos as Marcas que Querem Te Contratar Agora.
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
                 Mostre seu rosto, compartilhe sua voz. Nós cuidamos do resto.
@@ -1025,15 +1025,10 @@ export default function FreelancerPage() {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
               Junte-se a milhares de criadores que estão monetizando seu tempo e talento com vídeos simples e autênticos.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button onClick={handleCadastroCTA} className="clipup-btn">
+            <div className="flex justify-center">
+              <button onClick={handleCadastroCTA} className="clipup-btn w-full sm:w-auto max-w-md">
                 Começar agora - É grátis!
               </button>
-              <Link href="/faq-freelancers">
-                <button className="clipup-btn-outline">
-                  Dúvidas frequentes
-                </button>
-              </Link>
             </div>
           </div>
         </div>

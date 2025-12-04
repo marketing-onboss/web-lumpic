@@ -23,6 +23,44 @@ npm install
 npm run build
 ```
 
+## Variáveis de ambiente (build-time)
+
+O Vite expõe ao código cliente apenas variáveis que comecem com `VITE_`. Essas variáveis são incorporadas no momento do *build* — ou seja, você precisa defini-las no ambiente onde roda `npm run build` (no CI ou painel de hospedagem).
+
+Recomendações rápidas:
+- Não comite valores reais em `.env` ou `.env.production`; mantenha exemplos em `.env.example` ou `.env.production.example`.
+- Defina as variáveis no painel do seu provedor (Vercel, Netlify, Render, etc.) ou como *secrets* no seu CI.
+- Trocar o valor depois do build exige rebuild + redeploy.
+
+Exemplo de variáveis (arquivo local de exemplo):
+```
+VITE_GA_MEASUREMENT_ID=G-XXXXXXX
+VITE_FACEBOOK_PIXEL_ID=YOUR_PIXEL_ID
+VITE_CLARITY_ID=YOUR_CLARITY_ID
+```
+
+PowerShell — build local com variáveis temporárias:
+```powershell
+$env:VITE_GA_MEASUREMENT_ID='G-XXXXXXX'
+$env:VITE_FACEBOOK_PIXEL_ID='1234567890'
+npm run build
+```
+
+GitHub Actions (exemplo mínimo):
+```yaml
+steps:
+  - uses: actions/checkout@v4
+  - name: Install
+    run: npm ci
+  - name: Build
+    run: npm run build
+    env:
+      VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+      VITE_FACEBOOK_PIXEL_ID: ${{ secrets.VITE_FACEBOOK_PIXEL_ID }}
+```
+
+Se preferir alterar valores sem rebuild, implemente uma configuração em tempo de execução (ex.: `GET /config.json`) que o cliente busca no carregamento, mas isso exige código adicional.
+
 ## 1. Deploy no Netlify
 
 O Netlify é uma excelente escolha para hospedar aplicações React/Vite com backend serverless.

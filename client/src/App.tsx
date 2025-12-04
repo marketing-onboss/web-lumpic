@@ -21,7 +21,7 @@ import Referral from "@/pages/Referral";
 import Contact from "@/pages/Contact";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfUse from "@/pages/TermsOfUse";
-import { ThemeProvider } from "@/contexts/ThemeProvider";
+// ThemeProvider is provided at the application root (main.tsx)
 import { LeadCaptureProvider, useLeadCaptureContext } from "@/contexts/LeadCaptureContext";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
 // Frontend now posts leads to server endpoint `/api/leads`
@@ -54,17 +54,15 @@ function Router() {
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="light">
-      <QueryClientProvider client={queryClient}>
-        <LeadCaptureProvider>
-          <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-            <Router />
-            <Toaster />
-            <LeadCaptureModalWrapper />
-          </div>
-        </LeadCaptureProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <LeadCaptureProvider>
+        <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+          <Router />
+          <Toaster />
+          <LeadCaptureModalWrapper />
+        </div>
+      </LeadCaptureProvider>
+    </QueryClientProvider>
   );
 }
 

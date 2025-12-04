@@ -26,9 +26,28 @@ export function ThemeProvider({
   storageKey = 'lumpic-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  );
+  const [theme, setTheme] = useState<Theme>(() => {
+    try {
+      const stored = localStorage.getItem(storageKey) as Theme | null;
+      if (stored) return stored;
+
+      // If defaultTheme is 'system', follow the system preference.
+      if (defaultTheme === 'system') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // If defaultTheme is 'dark', prefer dark but respect an explicit system light preference.
+      if (defaultTheme === 'dark') {
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+
+      // Fallback to provided defaultTheme ('light' or other)
+      return defaultTheme;
+    } catch (e) {
+      // In environments without window/localStorage, fall back safely
+      return defaultTheme;
+    }
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;

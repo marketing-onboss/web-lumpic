@@ -73,7 +73,7 @@ const SharedNavbar: React.FC<SharedNavbarProps> = ({ currentPage }) => {
                   <img
                     src={isDark ? logoSrc : logoLightSrc}
                     alt="Lumpic"
-                    className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain transition-all duration-300 group-hover:scale-110"
+                    className="h-28 sm:h-32 md:h-24 lg:h-28 w-auto object-contain transition-all duration-300 group-hover:scale-110 -mt-4 md:mt-0"
                   />
                 </div>
               </div>

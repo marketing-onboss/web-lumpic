@@ -117,10 +117,10 @@ export default function EmpresaPage() {
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10 fade-in-element">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Vídeos autênticos que convertem muito mais que campanhas genéricas
+                Pare de Publicar Vídeos Genéricos em suas campanhas que só Queimam o Seu Orçamento de Marketing
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Contrate criadores reais para produzir vídeos genuínos que geram maior engajamento, confiança e vendas para sua marca.
+                Acesse instantaneamente a Elite dos Criadores de Conteúdo validados. Não contrate apenas um "freelancer"; contrate um especialista em alta performance que entrega vídeos originais prontos para converter — sem a dor de cabeça de gerenciar amadores.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button onClick={handleContratarCTA} className="clipup-btn flex items-center">
@@ -132,13 +132,15 @@ export default function EmpresaPage() {
               </div>
             </div>
             <div className="md:w-1/2 relative">
-              <div className="gradient-border bg-card rounded-lg shadow-xl overflow-hidden parallax-card max-h-[500px]">
+              <div className="gradient-border bg-card rounded-lg shadow-xl overflow-hidden parallax-card h-[320px] sm:h-[400px] md:h-[500px] bg-muted/10">
                 <img 
                   src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
                   alt="Vídeo promocional em produção" 
-                  className="w-full h-auto rounded-lg object-cover"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg flex items-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg flex items-end pointer-events-none">
                   <div className="p-6 w-full">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">

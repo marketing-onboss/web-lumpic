@@ -37,8 +37,8 @@ const translations: Translations = {
     'nav.contact_short': 'Contato',
     
     // Hero Section
-    'hero.title': 'Vídeos reais. Resultados reais.',
-    'hero.subtitle': 'Chega de campanhas frias com conteúdo genérico. Contrate criadores de conteúdo especialistas.',
+    'hero.title': 'Conectamos Marcas que Precisam Escalar a Criadores que Sabem Entregar.',
+    'hero.subtitle': 'Esqueça o conteúdo genérico e a desvalorização profissional. A Lumpic é o ambiente seguro onde Empresas encontram vídeos originais de alta conversão e Criadores encontram projetos que valorizam sua expertise.',
     'hero.cta': 'Comece Agora',
     'hero.explore': 'Explorar',
     'hero.freelancer.button': 'Quero ser freelancer',
