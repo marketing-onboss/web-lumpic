@@ -1,0 +1,29 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": [],
+      "icon": "terminal-bash"
+    },
+    "WSL (Ubuntu)": {
+      "path": "C:\\Windows\\System32\\wsl.exe",
+      "args": ["-d","Ubuntu"],
+      "icon": "terminal-linux"
+    },
+    "PHP Interactive": {
+      "path": "php",
+      "args": ["-a"],
+      "icon": "terminal-php"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows.overrides": {},
+  "files.exclude": {
+    "**/.env": true,
+    "**/.env.local": true
+  }
+}

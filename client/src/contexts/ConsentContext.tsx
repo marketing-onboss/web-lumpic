@@ -16,7 +16,12 @@ type ConsentContextType = {
 const ConsentContext = createContext<ConsentContextType | undefined>(undefined);
 
 export function ConsentProvider({ children }: { children: React.ReactNode }) {
-  const [consent, setConsentState] = useState<Consent | null>(null);
+  // Allow forcing consent in development for easier testing of analytics.
+  // Set `VITE_FORCE_CONSENT=true` in a local (private) `.env` to enable.
+  const FORCE_CONSENT = (import.meta.env.VITE_FORCE_CONSENT as string) === 'true';
+  const [consent, setConsentState] = useState<Consent | null>(
+    FORCE_CONSENT ? { analytics: true } : null,
+  );
 
   useEffect(() => {
     try {

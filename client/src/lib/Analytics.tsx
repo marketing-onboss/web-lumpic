@@ -3,7 +3,9 @@ import React, { useEffect } from 'react';
 const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
 const FB_PIXEL_ID = import.meta.env.VITE_FACEBOOK_PIXEL_ID as string | undefined;
 const CLARITY_ID = import.meta.env.VITE_CLARITY_ID as string | undefined;
-import { useConsent } from '@/contexts/ConsentContext';
+// Option A: load analytics immediately on page load (no consent gating)
+// The project previously gated analytics/scripts behind a consent banner.
+// User requested immediate loading, so we do not depend on consent here.
 
 function loadScript(src: string, attrs: Record<string, string> = {}) {
   if (document.querySelector(`script[src="${src}"]`)) return;
@@ -15,11 +17,8 @@ function loadScript(src: string, attrs: Record<string, string> = {}) {
 }
 
 export default function AnalyticsLoader(): null {
-  const { consent } = useConsent();
-
   useEffect(() => {
-    if (!consent) return; // wait until user chooses
-    if (!consent.analytics) return; // user declined analytics
+    // Load analytics and marketing scripts immediately (no consent check)
 
     // Google Analytics 4 (gtag)
     if (GA_ID) {
@@ -91,7 +90,7 @@ export default function AnalyticsLoader(): null {
     }
 
     // no cleanup — scripts are global
-  }, [consent]);
+  }, []);
 
   return null;
 }

@@ -102,269 +102,113 @@ O Vultr fornece servidores VPS que são adequados para hospedar a aplicação co
 sudo apt update
 sudo apt install -y nodejs npm nginx
 ```
-
-5. Configure o NGINX como proxy reverso:
-
-```bash
-sudo nano /etc/nginx/sites-available/lumpic
-
-# Adicione a seguinte configuração:
-server {
-    listen 80;
-    server_name seu-dominio.com www.seu-dominio.com;
-    
-    location / {
-        proxy_pass http://localhost:5000;
-        proxy_http_version 1.1;
-
-## Deploy no Laravel Forge (sem Node em produção)
-
-Se você estiver usando o Laravel Forge para hospedar o site e quer evitar executar Node em runtime
-(usar Node apenas para construir os assets durante o deploy), siga estas recomendações rápidas:
-
----
-
-## Configuração detalhada para Laravel Forge (sem Node em runtime)
-
-Este projeto agora inclui um endpoint PHP leve em `public/api/leads.php` que substitui o antigo servidor Node/Express. O fluxo recomendado para rodar sem Node em produção é:
-
-1. Fazer o build do cliente (local ou CI) e copiar `dist/public/` para o diretório `public/` do release no Forge.
-2. Colocar a API PHP (já presente em `public/api/leads.php`) no servidor; ela usa a variável de ambiente `BREVO_API_KEY` para encaminhar leads ao Brevo.
-3. Configurar Nginx para servir a SPA e encaminhar requisições PHP para PHP-FPM. Um exemplo de configuração está em `deploy/nginx-forge.conf`.
-
-Passo-a-passo mínimo:
-
-```bash
-# No CI / local
-npm ci
-npm run build
-
-# Fazer rsync/cópia de dist/public/ para public/ no servidor Forge
 rsync -avz --delete dist/public/ forge@your-server:/home/forge/your-site/current/public/
+## Deploy (resumo pragmático)
+
+Este documento resume o fluxo de deploy recomendado para o estado atual do projeto: o frontend é um SPA construído com Vite e o backend de leads é um endpoint PHP leve em `public/api/leads.php`.
+
+Objetivo principal
+- Produzir os artefatos estáticos do cliente (`dist/public/`) e publicá-los em `public/` do release no servidor (Forge). O servidor de produção NÃO precisa de Node.
+
+Recomendações rápidas
+- Recomendo **build no CI** (GitHub Actions) e envio dos arquivos estáticos ao Forge. Alternativa: build durante o deploy no Forge.
+- Não exponha chaves sensíveis no `VITE_` — só use `VITE_` para valores públicos (Measurement IDs, pixel IDs). A chave `BREVO_API_KEY` deve ser configurada apenas no ambiente do servidor (Forge) e NUNCA empacotada como `VITE_` em produção.
+
+Variáveis importantes
+- Variáveis de build (expostas ao cliente, definidas **no build**):
+  - `VITE_GA_MEASUREMENT_ID` (GA4)
+  - `VITE_FACEBOOK_PIXEL_ID`
+  - `VITE_CLARITY_ID`
+  - `VITE_BREVO_LIST_FREELANCERS`, `VITE_BREVO_LIST_EMPRESAS` (opcionais)
+
+- Variáveis de runtime (somente servidor):
+  - `BREVO_API_KEY` (usada por `public/api/leads.php`) — defina no painel do Forge (site → Environment) ou no servidor.
+
+Nota: valores `VITE_` são lidos apenas no momento do build; alterar um `VITE_` requer rebuild e redeploy.
+
+## Variáveis de ambiente necessárias (produção)
+
+Defina as variáveis abaixo em produção. Observação importante: **valores que começam com `VITE_` são expostos ao cliente** e devem conter apenas IDs públicos (measurement IDs, pixel IDs, list IDs). **Chaves secretas nunca devem começar com `VITE_`** — coloque-as como variáveis de runtime no painel do servidor (Forge) ou em seu provedor.
+
+- `BREVO_API_KEY` (runtime — servidor) — Chave privada da Brevo/Sendinblue usada por `public/api/leads.php` para encaminhar leads. **Defina esta variável apenas no painel do Forge (Environment) ou no ambiente do servidor; não a coloque em `VITE_`.**
+- `VITE_GA_MEASUREMENT_ID` (build-time) — Google Analytics 4 Measurement ID (ex: `G-XXXXXXXXXX`). Defina como secret no CI (ou no Environment do Forge se você buildar no Forge).
+- `VITE_FACEBOOK_PIXEL_ID` (build-time) — Facebook Pixel ID (número). Defina no build (CI secrets ou Forge Environment).
+- `VITE_CLARITY_ID` (build-time) — Microsoft Clarity project ID. Defina no build.
+- `VITE_BREVO_LIST_FREELANCERS` (build-time, opcional) — ID da lista Brevo para freelancers (número) usada pelo cliente.
+- `VITE_BREVO_LIST_EMPRESAS` (build-time, opcional) — ID da lista Brevo para empresas (número) usada pelo cliente.
+
+Se sua pipeline faz o build no GitHub Actions (recomendado), adicione os `VITE_` como `secrets` do repositório e injete-os no passo de build. Exemplo:
+
+```yaml
+env:
+  VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+  VITE_FACEBOOK_PIXEL_ID: ${{ secrets.VITE_FACEBOOK_PIXEL_ID }}
+  VITE_CLARITY_ID: ${{ secrets.VITE_CLARITY_ID }}
 ```
 
-No painel do Forge, adicione as variáveis necessárias no site > Environment:
+No Forge (se você construir no servidor), defina os `VITE_` na seção Environment do site **antes** do passo de build do release para que o Vite os injete no bundle.
 
-- `BREVO_API_KEY` = sua chave privada do Brevo (runtime)
-- `BREVO_LIST_FREELANCERS` (opcional)
-- `BREVO_LIST_EMPRESAS` (opcional)
+Variáveis auxiliares de deploy (opcionais, apenas se usar rsync/SSH no workflow):
+- `SSH_HOST` / `SSH_USERNAME` / `SSH_PRIVATE_KEY` / `TARGET_DIR` — usadas pelo CI para copiar `dist/public/` para o servidor.
 
-Teste local rápido com PHP embutido (apenas para validar o endpoint PHP):
+Resumo: coloque os IDs públicos em `VITE_` durante o build; coloque `BREVO_API_KEY` (segredo) **somente** no runtime do servidor.
 
-```bash
-# a partir da raiz do projeto
-php -S 127.0.0.1:8080 -t public/
+Build & Deploy (exemplos)
 
-curl -X POST http://127.0.0.1:8080/api/leads -H 'Content-Type: application/json' -d '{"email":"teste@example.com","type":"freelancer","nome":"Teste"}'
+1) Build no CI (recomendado)
+
+- Configure secrets no GitHub (`VITE_GA_MEASUREMENT_ID`, `VITE_FACEBOOK_PIXEL_ID`, etc.).
+- No workflow: instale dependências, rode `npm run build:client`, e em seguida envie `dist/public/` para o servidor (rsync/SSH) ou para seu destino estático.
+
+Exemplo (trecho GitHub Action):
+
+```yaml
+- name: Build and deploy
+  run: |
+    npm ci
+    npm run build:client
+    rsync -avz --delete dist/public/ forge@${{ secrets.SSH_HOST }}:${{ secrets.TARGET_DIR }}
+  env:
+    VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+    VITE_FACEBOOK_PIXEL_ID: ${{ secrets.VITE_FACEBOOK_PIXEL_ID }}
+    VITE_CLARITY_ID: ${{ secrets.VITE_CLARITY_ID }}
 ```
 
-Notas:
+2) Build no Forge (alternativa)
 
-- O runtime de produção não precisa de Node. O Node continua necessário apenas para desenvolvimento e para gerar o build (CI/local).
-- Os artefatos do servidor Node antigo foram movidos para `legacy-server/README.md` para histórico.
-- Se quiser automatizar o build + cópia no deploy do Forge, eu posso gerar `deploy/forge-deploy.sh` que faz `npm ci`, `npm run build` e copia `dist/public/` para `public/`.
-
-Exemplo de etapas a incluir no script de deploy do Forge (executado dentro do diretório do release):
+- No painel do Forge, adicione `VITE_` vars como Environment (serão visíveis no build step). Configure também `BREVO_API_KEY` como runtime no painel.
+- Exemplo de passos no script de deploy do Forge:
 
 ```bash
-# instalar dependências e construir apenas o cliente
 npm ci
 npm run build:client
-
-# copiar o build gerado para a pasta public do release (script incluído no repositório)
-bash ./deploy/01_copy_public.sh "$release_path"
-
-# (Opcional) rodar migrações ou outros comandos PHP
-php artisan migrate --force || true
-```
-
-Se preferir, eu posso criar um exemplo `deploy/forge-deploy.sh` que executa a construção e copia o `dist/public` para `public` durante o deploy.
-
-### Script de deploy recomendado para Forge (exemplo)
-
-Crie ou cole o seguinte trecho no painel do Forge como script de deploy (substitua caminhos se necessário):
-
-```bash
-$CREATE_RELEASE()
-
-cd $FORGE_RELEASE_DIRECTORY
-
-# instalar dependências
-npm ci || npm install
-
-# construir apenas o cliente (Vite)
-npx vite build
-
-# copiar build para public/
+# mover/copy dist/public/ para public/
 rsync -av --delete dist/public/ public/
-
-# garantir permissões
 chown -R forge:forge public || true
-
-# (opcional) rodar migrações
-php artisan migrate --force || true
-
-$ACTIVATE_RELEASE()
 ```
 
-Ou copie o script `deploy/forge-deploy.sh` do repositório e chame `bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"` no painel do Forge.
+Endpoint de leads (produção)
+- O repositório inclui `public/api/leads.php` que encaminha leads para Brevo usando `BREVO_API_KEY` do ambiente do servidor. Em produção, use esse endpoint para não expor chaves no cliente.
 
-Observações:
-- O repositório contém `deploy/01_copy_public.sh` que faz `rsync --delete` de `dist/public/` para `public/` e ajusta permissões para `forge:forge`.
-- O `package.json` foi atualizado com `build:client` e `build:server`. Use `build:client` no deploy do Forge para evitar empacotar/rodar código Node no servidor.
-- Se você migrar totalmente para Laravel/PHP no backend, remova ou ignore `build:server` e `start` no processo de deploy para reduzir tempo e evitar dependências Node em produção.
-
-### Deploy sem Node no servidor (Recomendado)
-
-Se o servidor de produção não pode ter Node instalado, use este fluxo: faça o build localmente e envie apenas os arquivos estáticos (`dist/public/`) para o diretório `public/` do release no Forge. O servidor só precisa servir arquivos estáticos via Nginx/PHP.
-
-Fluxo sugerido (local):
-
-1. No seu computador, instale dependências e gere o build do cliente:
+Testes locais rápidos
+- Gerar build local e servir com PHP embutido para testar `public/api/leads.php`:
 
 ```bash
-# instalar dependências (uma vez)
 npm ci
-
-# construir apenas o cliente Vite
 npm run build:client
+# servir a pasta public (ex.: testar endpoint PHP)
+php -S 127.0.0.1:8080 -t public/
 ```
 
-2. Copie os arquivos gerados (`dist/public/`) para o servidor Forge usando `rsync` (exemplo):
+Segurança e boas práticas
+- Nunca commite chaves reais em arquivos `.env` no repositório.
+- Configure `BREVO_API_KEY` diretamente no painel do Forge (ou em variáveis de ambiente no servidor). Use `VITE_` apenas para IDs públicos.
+- Após alterar `VITE_` no painel do Forge ou no CI, é necessário rebuild + redeploy para o cliente receber a nova configuração.
 
-```bash
-# exemplo: ajuste host e caminho do site
-rsync -avz --delete dist/public/ forge@your-server:/home/forge/lumpic.com/current/public/
-```
+Resumo final
+- Recomendado: build no CI com `VITE_` definidos em secrets e deploy dos artefatos estáticos para o Forge; definir `BREVO_API_KEY` no painel do Forge para runtime.
+- `public/api/leads.php` é o endpoint seguro no servidor para enviar leads (usa `BREVO_API_KEY`).
 
-3. Ajuste permissões e verifique:
-
-```bash
-ssh forge@your-server "chown -R forge:forge /home/forge/lumpic.com/current/public || true"
-ssh forge@your-server "ls -la /home/forge/lumpic.com/current/public/index.html"
-```
-
-4. Se o Nginx continuar retornando 404 para rotas da SPA, confirme no painel do Forge que a configuração do site tem:
-
-```
-location / {
-  try_files $uri $uri/ /index.html;
-}
-```
-
-Script helper local (no repositório):
-
-Use o script `deploy/local-rsync.sh` para automatizar build + rsync (já incluído no repositório).
-
-Exemplo de uso:
-
-```bash
-# torna executável (uma vez)
-chmod +x deploy/local-rsync.sh
-
-# executar (substitua host e caminho)
-./deploy/local-rsync.sh forge@your-server /home/forge/lumpic.com/current/public
-```
-
-Vantagens deste fluxo:
-- Nenhum Node em produção.
-- Deploy rápido e previsível (apenas arquivos estáticos enviados).
-- Evita problemas com versões de Node no servidor e reduz superfície de ataque.
-
-Se quiser, eu posso adicionar um exemplo pronto de script de deploy (arquivo `deploy/forge-deploy.sh`) e atualizar o `DEPLOY.md` com instruções passo-a-passo para o Forge.
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-
-6. Ative o site e reinicie o NGINX:
-
-```bash
-sudo ln -s /etc/nginx/sites-available/lumpic /etc/nginx/sites-enabled/
-sudo nginx -t
-sudo systemctl restart nginx
-```
-
-7. Clone o repositório e configure a aplicação:
-
-```bash
-# Clonar o repositório
-git clone https://github.com/seu-usuario/lumpic-web.git
-cd lumpic-web
-
-# Instalar dependências e construir
-npm install
-npm run build
-
-# Iniciar o servidor em modo produção
-NODE_ENV=production npm start
-```
-
-8. Configure um serviço systemd para manter a aplicação em execução:
-
-```bash
-sudo nano /etc/systemd/system/lumpic.service
-
-# Adicione:
-[Unit]
-Description=Lumpic Web App
-After=network.target
-
-[Service]
-Type=simple
-User=seu-usuario
-WorkingDirectory=/caminho/para/lumpic-web
-ExecStart=/usr/bin/npm start
-Restart=on-failure
-Environment=NODE_ENV=production
-
-[Install]
-WantedBy=multi-user.target
-```
-
-9. Inicie e habilite o serviço:
-
-```bash
-sudo systemctl start lumpic
-sudo systemctl enable lumpic
-```
-
-## 4. Deploy no Railway
-
-Railway é uma plataforma PaaS moderna com configuração simplificada.
-
-1. Crie uma conta no [Railway](https://railway.app/)
-2. Instale a CLI do Railway:
-
-```bash
-npm i -g @railway/cli
-railway login
-```
-
-3. No diretório do projeto, inicialize e configure:
-
-```bash
-railway init
-```
-
-4. Deploy para o Railway:
-
-```bash
-railway up
-```
-
-5. Configure as variáveis de ambiente na interface web do Railway se necessário.
-
-## Verificações Pós-Deploy
-
-Após completar o deploy em qualquer plataforma, verifique:
-
-1. Se a aplicação está acessível via URL fornecida pela plataforma
-2. Se todas as rotas estão funcionando corretamente
-3. Se o sistema de temas (claro/escuro) está operando como esperado
 4. Se o sistema de idiomas está funcionando adequadamente
 5. Se o lightbox de vídeo e outros componentes interativos estão operacionais
 
