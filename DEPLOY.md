@@ -122,6 +122,47 @@ server {
 Se você estiver usando o Laravel Forge para hospedar o site e quer evitar executar Node em runtime
 (usar Node apenas para construir os assets durante o deploy), siga estas recomendações rápidas:
 
+---
+
+## Configuração detalhada para Laravel Forge (sem Node em runtime)
+
+Este projeto agora inclui um endpoint PHP leve em `public/api/leads.php` que substitui o antigo servidor Node/Express. O fluxo recomendado para rodar sem Node em produção é:
+
+1. Fazer o build do cliente (local ou CI) e copiar `dist/public/` para o diretório `public/` do release no Forge.
+2. Colocar a API PHP (já presente em `public/api/leads.php`) no servidor; ela usa a variável de ambiente `BREVO_API_KEY` para encaminhar leads ao Brevo.
+3. Configurar Nginx para servir a SPA e encaminhar requisições PHP para PHP-FPM. Um exemplo de configuração está em `deploy/nginx-forge.conf`.
+
+Passo-a-passo mínimo:
+
+```bash
+# No CI / local
+npm ci
+npm run build
+
+# Fazer rsync/cópia de dist/public/ para public/ no servidor Forge
+rsync -avz --delete dist/public/ forge@your-server:/home/forge/your-site/current/public/
+```
+
+No painel do Forge, adicione as variáveis necessárias no site > Environment:
+
+- `BREVO_API_KEY` = sua chave privada do Brevo (runtime)
+- `BREVO_LIST_FREELANCERS` (opcional)
+- `BREVO_LIST_EMPRESAS` (opcional)
+
+Teste local rápido com PHP embutido (apenas para validar o endpoint PHP):
+
+```bash
+# a partir da raiz do projeto
+php -S 127.0.0.1:8080 -t public/
+
+curl -X POST http://127.0.0.1:8080/api/leads -H 'Content-Type: application/json' -d '{"email":"teste@example.com","type":"freelancer","nome":"Teste"}'
+```
+
+Notas:
+
+- O runtime de produção não precisa de Node. O Node continua necessário apenas para desenvolvimento e para gerar o build (CI/local).
+- Os artefatos do servidor Node antigo foram movidos para `legacy-server/README.md` para histórico.
+- Se quiser automatizar o build + cópia no deploy do Forge, eu posso gerar `deploy/forge-deploy.sh` que faz `npm ci`, `npm run build` e copia `dist/public/` para `public/`.
 
 Exemplo de etapas a incluir no script de deploy do Forge (executado dentro do diretório do release):
 
