@@ -49,6 +49,17 @@ else
         echo "Tried derived current path '$CAND' but it does not exist. Continuing fallbacks..."
       fi
     fi
+    # Additional fallback: check a known site root for this project (lumpic.com)
+    if [ -z "${RELEASE_DIR:-}" ] || [ ! -d "${RELEASE_DIR}" ]; then
+      if [ -d "/home/forge/lumpic.com/releases" ]; then
+        LATEST_SITE_RELEASE="$(ls -1d /home/forge/lumpic.com/releases/* 2>/dev/null | sort -V | tail -n1 || true)"
+        if [ -n "$LATEST_SITE_RELEASE" ] && [ -d "$LATEST_SITE_RELEASE" ]; then
+          RELEASE_DIR="$LATEST_SITE_RELEASE"
+          echo "Found lumpic.com latest release: $RELEASE_DIR"
+          cd "$RELEASE_DIR"
+        fi
+      fi
+    fi
     # 2) Try to find a 'releases' sibling directory and pick the newest numeric release
     SEARCH_BASE="$(pwd -P)"
     if [ -d "$SEARCH_BASE/releases" ]; then
