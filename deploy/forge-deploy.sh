@@ -1,130 +1,32 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Forge deploy script (clean single copy)
+# Minimal safe deploy script for Forge (no git operations)
+# Copies prebuilt client artifacts from dist/public -> public
 # Usage: bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"
 
 RELEASE_DIR=${1:-${FORGE_RELEASE_DIRECTORY:-""}}
 if [ -z "$RELEASE_DIR" ]; then
-  echo "Warning: Release directory not provided. Will attempt to detect current release directory." >&2
-else
-  echo "Release dir (requested): $RELEASE_DIR"
+  # assume we're in a release dir
+  RELEASE_DIR="$(pwd -P)"
 fi
 
-# If provided RELEASE_DIR doesn't exist, try sensible fallbacks instead of failing immediately
-if [ -n "$RELEASE_DIR" ] && [ -d "$RELEASE_DIR" ]; then
-  cd "$RELEASE_DIR"
-else
-  echo "Requested release dir does not exist or was not provided. Will retry briefly before fallbacks..."
-  RETRIES=8
-  SLEEP_SECS=1
-  FOUND=0
-  for i in $(seq 1 $RETRIES); do
-    if [ -n "$RELEASE_DIR" ] && [ -d "$RELEASE_DIR" ]; then
-      echo "Release dir appeared on retry #$i: $RELEASE_DIR"
-      cd "$RELEASE_DIR"
-      FOUND=1
-      break
-    fi
-    sleep $SLEEP_SECS
-  done
-  if [ "$FOUND" -eq 0 ]; then
-    echo "Retry attempts exhausted. Trying fallbacks..."
-
-    if [ -n "${FORGE_RELEASE_DIRECTORY:-}" ] && [ -d "${FORGE_RELEASE_DIRECTORY}" ]; then
-      RELEASE_DIR="${FORGE_RELEASE_DIRECTORY}"
-      echo "Using FORGE_RELEASE_DIRECTORY: $RELEASE_DIR"
-      cd "$RELEASE_DIR"
-    else
-      if [ -n "$RELEASE_DIR" ] && echo "$RELEASE_DIR" | grep -q "/releases/" 2>/dev/null; then
-        CAND="${RELEASE_DIR%%/releases/*}/current"
-        if [ -d "$CAND" ]; then
-          RELEASE_DIR="$CAND"
-          echo "Requested release path not present; using '${CAND}' (current) instead"
-          cd "$RELEASE_DIR"
-        fi
-      fi
-      if [ -z "${RELEASE_DIR:-}" ] || [ ! -d "${RELEASE_DIR}" ]; then
-        if [ -d "/home/forge/lumpic.com/releases" ]; then
-          LATEST_SITE_RELEASE="$(ls -1d /home/forge/lumpic.com/releases/* 2>/dev/null | sort -V | tail -n1 || true)"
-          if [ -n "$LATEST_SITE_RELEASE" ] && [ -d "$LATEST_SITE_RELEASE" ]; then
-            RELEASE_DIR="$LATEST_SITE_RELEASE"
-            echo "Found lumpic.com latest release: $RELEASE_DIR"
-            cd "$RELEASE_DIR"
-          fi
-        fi
-      fi
-      SEARCH_BASE="$(pwd -P)"
-      if [ -d "$SEARCH_BASE/releases" ]; then
-        LATEST="$(ls -1d $SEARCH_BASE/releases/* 2>/dev/null | sort -V | tail -n1 || true)"
-        if [ -n "$LATEST" ] && [ -d "$LATEST" ]; then
-          RELEASE_DIR="$LATEST"
-          echo "Found latest release dir: $RELEASE_DIR"
-          cd "$RELEASE_DIR"
-        else
-          RELEASE_DIR="$SEARCH_BASE"
-          echo "No release dir found. Falling back to current directory: $RELEASE_DIR"
-          cd "$RELEASE_DIR"
-        fi
-      else
-        RELEASE_DIR="$(pwd -P)"
-        echo "No releases folder found. Using PWD: $RELEASE_DIR"
-        cd "$RELEASE_DIR"
-      fi
-    fi
-  fi
-fi
-
-echo "Now in release dir: $(pwd -P)"
-
-# Normalize RELEASE_DIR to an absolute path and remove trailing slashes
-if command -v realpath >/dev/null 2>&1; then
-  RELEASE_DIR="$(realpath "$RELEASE_DIR")"
-else
-  RELEASE_DIR="$(cd "$RELEASE_DIR" && pwd -P)"
-fi
-RELEASE_DIR="${RELEASE_DIR%/}"
-echo "Normalized release dir: $RELEASE_DIR"
-
-if [ -d .git ] && command -v git >/dev/null 2>&1; then
-  echo "Fetching latest from origin..."
-  git remote show origin >/dev/null 2>&1 || true
-  git fetch --all --prune || true
-  BRANCH="$(git rev-parse --abbrev-ref HEAD || echo master)"
-  echo "Resetting to origin/$BRANCH"
-  git reset --hard "origin/$BRANCH" || git reset --hard "origin/HEAD" || true
-else
-  echo "No .git folder or git not available — assuming Forge provided the release checkout."
-fi
-
-echo "Node build on server is disabled by default (Node-free deployment)."
-echo "This script expects CI to produce 'dist/public' before deploy."
+echo "Deploying release: $RELEASE_DIR"
 
 DIST_DIR="$RELEASE_DIR/dist/public"
-if [ -n "${FORGE_WEB_DIRECTORY:-}" ]; then
-  TARGET_PUBLIC="${FORGE_WEB_DIRECTORY%/}"
-elif [ -n "${FORGE_WEB_DIR:-}" ]; then
-  TARGET_PUBLIC="${FORGE_WEB_DIR%/}"
-else
-  TARGET_PUBLIC="$RELEASE_DIR/public"
-fi
+TARGET_PUBLIC="${FORGE_WEB_DIRECTORY:-${FORGE_WEB_DIR:-$RELEASE_DIR/public}}"
 
-if [ -n "$TARGET_PUBLIC" ]; then
-  if command -v realpath >/dev/null 2>&1; then
-    TARGET_PUBLIC="$(realpath "$TARGET_PUBLIC")"
-  else
-    TARGET_PUBLIC="$(cd "$TARGET_PUBLIC" 2>/dev/null && pwd -P || echo "$TARGET_PUBLIC")"
-  fi
+# Normalize target public
+if command -v realpath >/dev/null 2>&1; then
+  TARGET_PUBLIC="$(realpath "$TARGET_PUBLIC")"
+else
+  TARGET_PUBLIC="$(cd "$TARGET_PUBLIC" 2>/dev/null && pwd -P || echo "$TARGET_PUBLIC")"
 fi
 
 echo "Using target public directory: $TARGET_PUBLIC"
 
 if [ ! -d "$DIST_DIR" ]; then
-  echo "Build output not found at $DIST_DIR" >&2
-  echo "This deployment expects the client build artifacts to be present in 'dist/public'." >&2
-  echo "Recommended options:" >&2
-  echo "  - Build in CI (GitHub Actions) and rsync 'dist/public/' to the server (preferred)." >&2
-  echo "  - Or build locally and commit or upload 'dist/public/' before running this script." >&2
+  echo "Error: build output not found at $DIST_DIR" >&2
   exit 2
 fi
 
@@ -136,27 +38,12 @@ else
   cp -R "$DIST_DIR/"* "$TARGET_PUBLIC/"
 fi
 
-echo "Adjusting permissions (best-effort)"
+echo "Adjusting ownership (best-effort)"
 if id -u forge >/dev/null 2>&1; then
   chown -R forge:forge "$TARGET_PUBLIC" || true
-else
-  echo "User 'forge' not found on this host — skipping chown"
 fi
 
-if [ -f "$RELEASE_DIR/dist/index.js" ]; then
-  echo "Found dist/index.js — restarting pm2 process 'web'"
-  if command -v pm2 >/dev/null 2>&1; then
-    if pm2 describe web >/dev/null 2>&1; then
-      pm2 restart web || true
-    else
-      pm2 start "$RELEASE_DIR/dist/index.js" --name web || true
-    fi
-  else
-    echo "pm2 not found; skipping pm2 restart"
-  fi
-fi
-
-echo "Deploy script finished successfully. public/ updated with dist/public contents."
+echo "Deploy finished successfully."
 #!/usr/bin/env bash
 set -euo pipefail
 
