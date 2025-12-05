@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Normalized line endings to LF in repository to avoid CRLF syntax issues on Linux
+
 # deploy/local-rsync.sh
 # Build the Vite client locally and sync the generated `dist/public/` to the
 # Forge server `current/public` (or any destination you choose) using rsync.

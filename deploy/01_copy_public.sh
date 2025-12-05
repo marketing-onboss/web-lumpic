@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Normalized line endings to LF in repository to avoid CRLF syntax issues on Linux
+
 # deploy/01_copy_public.sh
 # Copies the built frontend from `dist/public` into the site's `public` folder.
 # By default it assumes the deploy working directory is `/home/forge/<site>/current`

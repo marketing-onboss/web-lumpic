@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Normalized line endings to LF in repository to avoid CRLF syntax issues on Linux
+
 # Forge deploy script
 # Usage (Forge): bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"
 
