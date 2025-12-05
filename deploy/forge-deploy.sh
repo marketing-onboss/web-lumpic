@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Normalized line endings to LF in repository to avoid CRLF syntax issues on Linux
-# Forge deploy script
-# Usage (Forge): bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"
+# Forge deploy script (clean single copy)
+# Usage: bash ./deploy/forge-deploy.sh "$FORGE_RELEASE_DIRECTORY"
 
 RELEASE_DIR=${1:-${FORGE_RELEASE_DIRECTORY:-""}}
 if [ -z "$RELEASE_DIR" ]; then
@@ -17,7 +16,6 @@ if [ -n "$RELEASE_DIR" ] && [ -d "$RELEASE_DIR" ]; then
   cd "$RELEASE_DIR"
 else
   echo "Requested release dir does not exist or was not provided. Will retry briefly before fallbacks..."
-  # Retry a few times in case Forge is still creating the release directory (race condition)
   RETRIES=8
   SLEEP_SECS=1
   FOUND=0
@@ -33,24 +31,19 @@ else
   if [ "$FOUND" -eq 0 ]; then
     echo "Retry attempts exhausted. Trying fallbacks..."
 
-    # 1) If FORGE_RELEASE_DIRECTORY env exists and is a dir, use it
     if [ -n "${FORGE_RELEASE_DIRECTORY:-}" ] && [ -d "${FORGE_RELEASE_DIRECTORY}" ]; then
       RELEASE_DIR="${FORGE_RELEASE_DIRECTORY}"
       echo "Using FORGE_RELEASE_DIRECTORY: $RELEASE_DIR"
       cd "$RELEASE_DIR"
     else
-      # If the requested release path contains '/releases/<id>' try the corresponding 'current' symlink
       if [ -n "$RELEASE_DIR" ] && echo "$RELEASE_DIR" | grep -q "/releases/" 2>/dev/null; then
         CAND="${RELEASE_DIR%%/releases/*}/current"
         if [ -d "$CAND" ]; then
           RELEASE_DIR="$CAND"
           echo "Requested release path not present; using '${CAND}' (current) instead"
           cd "$RELEASE_DIR"
-        else
-          echo "Tried derived current path '$CAND' but it does not exist. Continuing fallbacks..."
         fi
       fi
-      # Additional fallback: check a known site root for this project (lumpic.com)
       if [ -z "${RELEASE_DIR:-}" ] || [ ! -d "${RELEASE_DIR}" ]; then
         if [ -d "/home/forge/lumpic.com/releases" ]; then
           LATEST_SITE_RELEASE="$(ls -1d /home/forge/lumpic.com/releases/* 2>/dev/null | sort -V | tail -n1 || true)"
@@ -61,7 +54,6 @@ else
           fi
         fi
       fi
-      # 2) Try to find a 'releases' sibling directory and pick the newest numeric release
       SEARCH_BASE="$(pwd -P)"
       if [ -d "$SEARCH_BASE/releases" ]; then
         LATEST="$(ls -1d $SEARCH_BASE/releases/* 2>/dev/null | sort -V | tail -n1 || true)"
@@ -70,13 +62,11 @@ else
           echo "Found latest release dir: $RELEASE_DIR"
           cd "$RELEASE_DIR"
         else
-          # 3) fallback to current working directory
           RELEASE_DIR="$SEARCH_BASE"
           echo "No release dir found. Falling back to current directory: $RELEASE_DIR"
           cd "$RELEASE_DIR"
         fi
       else
-        # 4) final fallback: use PWD
         RELEASE_DIR="$(pwd -P)"
         echo "No releases folder found. Using PWD: $RELEASE_DIR"
         cd "$RELEASE_DIR"
@@ -96,9 +86,6 @@ fi
 RELEASE_DIR="${RELEASE_DIR%/}"
 echo "Normalized release dir: $RELEASE_DIR"
 
-# Ensure we have the latest code from origin (Forge normally checks out the repo
-# before running the deploy script, but this ensures the release pulls the latest
-# commit from the remote branch when you click 'Deploy Now').
 if [ -d .git ] && command -v git >/dev/null 2>&1; then
   echo "Fetching latest from origin..."
   git remote show origin >/dev/null 2>&1 || true
@@ -113,9 +100,7 @@ fi
 echo "Node build on server is disabled by default (Node-free deployment)."
 echo "This script expects CI to produce 'dist/public' before deploy."
 
-# Build output dir produced by CI/locally (expected)
 DIST_DIR="$RELEASE_DIR/dist/public"
-# Allow Forge to define a different web/public directory (FORGE_WEB_DIRECTORY or FORGE_WEB_DIR)
 if [ -n "${FORGE_WEB_DIRECTORY:-}" ]; then
   TARGET_PUBLIC="${FORGE_WEB_DIRECTORY%/}"
 elif [ -n "${FORGE_WEB_DIR:-}" ]; then
@@ -124,7 +109,6 @@ else
   TARGET_PUBLIC="$RELEASE_DIR/public"
 fi
 
-# Normalize target public
 if [ -n "$TARGET_PUBLIC" ]; then
   if command -v realpath >/dev/null 2>&1; then
     TARGET_PUBLIC="$(realpath "$TARGET_PUBLIC")"
@@ -148,20 +132,17 @@ echo "Copying build to $TARGET_PUBLIC"
 if command -v rsync >/dev/null 2>&1; then
   rsync -a --delete "$DIST_DIR/" "$TARGET_PUBLIC/"
 else
-  # Fallback to cp
   rm -rf "$TARGET_PUBLIC" && mkdir -p "$TARGET_PUBLIC"
   cp -R "$DIST_DIR/"* "$TARGET_PUBLIC/"
 fi
 
 echo "Adjusting permissions (best-effort)"
-# Only attempt chown if the 'forge' user exists on the system
 if id -u forge >/dev/null 2>&1; then
   chown -R forge:forge "$TARGET_PUBLIC" || true
 else
   echo "User 'forge' not found on this host — skipping chown"
 fi
 
-# Optional: restart pm2 if a server bundle exists (legacy behavior)
 if [ -f "$RELEASE_DIR/dist/index.js" ]; then
   echo "Found dist/index.js — restarting pm2 process 'web'"
   if command -v pm2 >/dev/null 2>&1; then
