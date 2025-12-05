@@ -38,6 +38,13 @@ else
   cp -R "$DIST_DIR/"* "$TARGET_PUBLIC/"
 fi
 
+# Copy additional public files (like api/leads.php) that are not in dist/public
+echo "Copying additional public files (API endpoints, etc.)"
+if [ -d "$RELEASE_DIR/public/api" ]; then
+  mkdir -p "$TARGET_PUBLIC/api"
+  cp -R "$RELEASE_DIR/public/api/"* "$TARGET_PUBLIC/api/" || true
+fi
+
 echo "Adjusting ownership (best-effort)"
 if id -u forge >/dev/null 2>&1; then
   chown -R forge:forge "$TARGET_PUBLIC" || true
