@@ -15,7 +15,22 @@ fi
 if [ -n "$RELEASE_DIR" ] && [ -d "$RELEASE_DIR" ]; then
   cd "$RELEASE_DIR"
 else
-  echo "Requested release dir does not exist or was not provided. Trying fallbacks..."
+  echo "Requested release dir does not exist or was not provided. Will retry briefly before fallbacks..."
+  # Retry a few times in case Forge is still creating the release directory (race condition)
+  RETRIES=8
+  SLEEP_SECS=1
+  FOUND=0
+  for i in $(seq 1 $RETRIES); do
+    if [ -n "$RELEASE_DIR" ] && [ -d "$RELEASE_DIR" ]; then
+      echo "Release dir appeared on retry #$i: $RELEASE_DIR"
+      cd "$RELEASE_DIR"
+      FOUND=1
+      break
+    fi
+    sleep $SLEEP_SECS
+  done
+  if [ "$FOUND" -eq 0 ]; then
+    echo "Retry attempts exhausted. Trying fallbacks..."
 
   # 1) If FORGE_RELEASE_DIRECTORY env exists and is a dir, use it
   if [ -n "${FORGE_RELEASE_DIRECTORY:-}" ] && [ -d "${FORGE_RELEASE_DIRECTORY}" ]; then
@@ -125,8 +140,13 @@ else
   cp -R "$DIST_DIR/"* "$TARGET_PUBLIC/"
 fi
 
-echo "Adjusting permissions"
-chown -R forge:forge "$TARGET_PUBLIC" || true
+echo "Adjusting permissions (best-effort)"
+# Only attempt chown if the 'forge' user exists on the system
+if id -u forge >/dev/null 2>&1; then
+  chown -R forge:forge "$TARGET_PUBLIC" || true
+else
+  echo "User 'forge' not found on this host — skipping chown"
+fi
 
 # Optional: restart pm2 if a server bundle exists (legacy behavior)
 if [ -f "$RELEASE_DIR/dist/index.js" ]; then
