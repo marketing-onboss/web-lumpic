@@ -31,7 +31,8 @@ jobs:
       - name: Include PHP API endpoints
         run: |
           mkdir -p dist/public/api
-          cp -R public/api/. dist/public/api/
+          cp -r public/api/* dist/public/api/ 2>/dev/null || true
+          ls -la dist/public/api/
 
       - name: Prepare SSH
         uses: webfactory/ssh-agent@v0.8.1
